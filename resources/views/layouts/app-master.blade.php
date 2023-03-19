@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-6asOXdI3HPxSxJzkw0B/Xy+BLIvG2QcXpgH4Ad8aOIWb97+IQz/6ZwUZZFY8U6W5+6d5J6XbN6HRZfLmj1hgw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div class="bg-light p-5 rounded">
+    
 
     <!-- Bootstrap core CSS -->
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -27,7 +27,24 @@
     
     <!-- Custom styles for this template -->
     <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
-    
+    <style>
+      
+
+      
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25)),
+                  url(background.jpg);
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+      </style>
 </head>
 <body>
     
@@ -113,7 +130,7 @@
           <ul class="navbar-nav ml-auto">
             
             <li class="nav-item">
-              <a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i> Se connecter</a>
+              <a class="nav-link" href="{{ route('login.show') }}"><i class="fas fa-user"></i> Se connecter</a>
             </li>
           </ul>
         </div>
@@ -127,21 +144,13 @@
      
         
 
-    <style>
-      .banner{
-        width: 100%;
-        height: 100vh;
-        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.25)),url(background.jpg);
-        background-size: cover;
-        background-position: center;
-      }
-      </style>
+  
    <div class="banner">
 
         @yield('content')
 
   </div>
-  /*  <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+  <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
       
   </body>
 </html>
