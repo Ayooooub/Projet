@@ -42,6 +42,12 @@
       <td>{{ $user->email }}</td>
       <td>{{ $user->numtel }}</td>
       <td>{{ $user->usertype }}</td>
+      <td> <form action="{{ route('users.destroy', $user->id)  }} " method="post" > 
+              @csrf 
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger"> Supprimer</button>
+            </form>
+      </td>
     </tr>
     @endforeach
   </tbody>

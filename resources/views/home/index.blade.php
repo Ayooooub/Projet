@@ -96,7 +96,7 @@
         <div class="card-body">
           <h5 class="card-title">Gestion des clients</h5>
           <p class="card-text">Créer, modifier, supprimer et ajouter des profils de clients.</p>
-          <a href="#" class="btn btn-primary">Gérer les clients</a>
+          <a href="{{ route('users.show')}}" class="btn btn-primary">Gérer les clients</a>
         </div>
       </div>
     </div>

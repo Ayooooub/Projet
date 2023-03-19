@@ -43,6 +43,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
        
     });
-    Route::get('/users', 'UserController@show');
+    Route::get('/users', 'UserController@show')->name('users.show');
+
+    Route::get('/useracess', 'UserController@index')->name('users.acess');
+    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
 
 });
