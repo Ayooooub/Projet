@@ -1,25 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
    
+    
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-6asOXdI3HPxSxJzkw0B/Xy+BLIvG2QcXpgH4Ad8aOIWb97+IQz/6ZwUZZFY8U6W5+6d5J6XbN6HRZfLmj1hgw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
     <!-- Bootstrap core CSS -->
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{!! url('assets/css/signin.css') !!}" rel="stylesheet">
+
+    
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
     
     <style>
    
@@ -44,15 +52,13 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+   
 </head>
 <body>
 
     
     
        
-        
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="homepage.php"><b>Kay.com</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,8 +91,7 @@
                 
                 <a class="dropdown-item" href="#">Terrains</a>
                 
-              </div>
-            </li>
+                
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Louer
@@ -98,7 +103,7 @@
                 
                 <a class="dropdown-item" href="#">Terrains</a>
                 
-              </div>
+               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Vendre</a>
@@ -146,6 +151,9 @@
 
 
       </nav>
+     
+        
+
       <div class="banner">
   
    
