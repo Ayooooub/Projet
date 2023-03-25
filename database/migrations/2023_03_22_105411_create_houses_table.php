@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('adresse');
             $table->string('type');
+            $table->float('prix');
+            $table->integer('nbpiece');
             $table->integer('surface');
             $table->mediumText('image');
             $table->timestamps();

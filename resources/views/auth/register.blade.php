@@ -102,7 +102,7 @@
                   </div>
                   <button type="submit" class="btn btn-primary mt-3" name="create">Créer un compte</button>
                   <div class="create-account">
-                       <p style="text-align: center;"> Déjà inscrit ? <a href="seconnecter.php">se connecter</a> </p> 
+                       <p style="text-align: center; margin-top: 20px;"> Déjà inscrit ? <a href="{{ route('login.show')}}">se connecter</a> </p> 
                   </div>
                     @include('auth.partials.copy')
               </form>

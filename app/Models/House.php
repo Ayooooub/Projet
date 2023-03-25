@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class House extends Model
 {
     protected $table ='houses';
-    protected $fillable = ['adresse', 'type', 'surface', 'image'];
+    protected $fillable = ['adresse', 'type', 'surface', 'image','nbpiece'];
+   
 }

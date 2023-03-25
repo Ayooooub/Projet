@@ -14,6 +14,11 @@
 .card-title, .card-text {
   color:black;
 }
+body{
+  background-color: white;
+
+
+}
 .card-subtitle {
   font-size: 20px;
   color: blue;
@@ -367,17 +372,17 @@ background-color: #0069d9;
     adaptées à tous les budgets. Que vous cherchiez une maison familiale spacieuse, une maison de ville ou un petit pied-à-terre,
     notre sélection saura répondre à vos besoins. Nous sommes là pour vous aider à trouver votre maison de rêve!</p>
     <div class="row" style="margin-top: 40px;">
-        @foreach ($house as $item)
-            <div class="col-md-4">
+        @foreach ($houses as $item)
+            <div class="col-md-4" >
                 <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="house7.jpg" alt="Maison">
+                <img class="card-img-top" src="{{ asset('uploads/houses/'.$item->image ) }}" alt="Maison">
                 <div  class="card-body">
                     <h5 class="card-title d-inline-block align-middle">{{ $item->type }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted d-inline-block align-middle ml-5">800 000 DH</h6>
+                    <h6 class="card-subtitle mb-2 text-muted d-inline-block align-middle ml-5">{{   $item->prix    }} DH</h6>
                     <p class="card-text mt-3">
-                    <span class="badge badge-secondary mr-2">4 chambres</span>
+                    <span class="badge badge-secondary mr-2">{{ $item->nbpiece }} pièces</span>
                     <span class="badge badge-secondary mr-2">{{ $item->surface }}m²</span>
-                    <span class="badge badge-secondary ">2 pièces</span>
+                   
                     </p>
                     
                     <div class="d-flex justify-content-between align-items-center mt-3">

@@ -29,7 +29,8 @@
                 }
                 .form-signup input[type="text"],
                 .form-signup input[type="email"],
-                .form-signup input[type="password"]
+                .form-signup input[type="number"],
+                .form-signup input[type="file"]
                {
                   border-radius: 10px;
                   margin-bottom: 20px;
@@ -43,7 +44,8 @@
                   padding: 10px 10px;
                   font-size: 18px;
                   margin-top: 20px;
-                  width: 100%;
+                  margin-left:25%;
+                  width: 50%;
                 }
                 .form-signup button[type="submit"]:hover {
                   background-color: #447598;
@@ -52,61 +54,53 @@
 </style>
 
 
-<!-- <div class="container">
+
+
+
+ <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form class="form-signup" method="post" action="{{ route('register.perform') }}">
-                  <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                  <h2>Créer un Compte</h2>
+                <form class="form-signup" method="post" action="{{  route('sell.store')  }}" enctype="multipart/form-data">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                  
+                  <div class="form-group mt-2 mb-0">
+                        <label for="Adresse"> Adresse</label>
+                        <input type="text" class="form-control" name="adresse" placeholder="Entrez votre adresse" required>
+                       
+                  </div>
                   <div class="form-group mb-0">
                         <div class="row">
                               <div class="col">
-                                <label for="name">Nom:</label>
+                                <label for="prix">Prix:</label>
                                 
-                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required>
+                                <input type="number" class="form-control" name="prix" placeholder="" required>
                               </div>
                               <div class="col">
-                                <label for="name">Prénom:</label>
-                                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                                <label for="surface">Surface:</label>
+                                <input type="number" class="form-control" name="surface" placeholder="" required>
                               </div>
                         </div>
                   </div>
+
+
+                  
                   <div class="form-group mt-2 mb-0">
-                        <label for="email">Adresse email:</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" required>
-                        @if ($errors->has('email'))
-                           <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-                        @endif
+                        <label for="image">Image :</label>
+                        <input type="file" class="form-control"  name="image" required>
+                            
                   </div>
+                  
                   <div class="form-group mt-2 mb-0">
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}"
-                            placeholder="Entrez votre mot de passe" required>
-                            @if ($errors->has('password'))
-                                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
-                            @endif
+                      <label for="nbpiece">Nombre de pièces:</label>
+                      <input type="number" class="form-control" name="nbpiece" placeholder="" required>
                   </div>
-                  <div class="form-group mt-2 mb-0">
-                      <label for="password">Mot de passe:</label>
-                      <input type="password" class="form-control" id="password" name="password_confirmation" value="{{ old('password_confirmation') }}"
-                          placeholder="Confirmez votre mot de passe" required>
-                          @if ($errors->has('password_confirmation'))
-                              <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
-                          @endif
-                  </div>
-                  <div class="form-group mt-2 mb-0">
-                      <label for="numtel">Téléphone:</label>
-                      <input type="text" class="form-control" id="tele" name="numtel" placeholder="Entrez votre numéro de téléphone " required>
-                  </div>
-                  <button type="submit" class="btn btn-primary mt-3" name="create">Créer un compte</button>
-                  <div class="create-account">
-                       <p style="text-align: center;"> Déjà inscrit ? <a href="seconnecter.php">se connecter</a> </p> 
-                  </div>
+                  <button type="submit" class="btn btn-primary mt-3" name="save">Soumettre</button>
+                  
                     @include('auth.partials.copy')
               </form>
           </div>
       </div>
   </div>
- -->
+ 
 
 @endsection
