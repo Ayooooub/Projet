@@ -81,8 +81,17 @@
                               </div>
                         </div>
                   </div>
-
-
+                  <div class="form-row mt-3">
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="checkbox" value="Appartement" id="check2" name="App-checkbox"> Appartement
+                          </div>
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="checkbox" value="Maison" id="check3" name="Maison-checkbox"> Maison
+                          </div>
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check2"> Parking
+                          </div> 
+                 </div>
                   
                   <div class="form-group mt-2 mb-0">
                         <label for="image">Image :</label>

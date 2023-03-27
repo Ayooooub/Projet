@@ -14,7 +14,12 @@ class HouseController extends Controller
    public function store(Request $request){
     
         $house =new House;
-        $house->type = 'Maison';
+        if ($request->filled('Maison-checkbox')) 
+            $house->type = $request->input('Maison-checkbox');
+        else if($request->filled('App-checkbox'))
+            $house->type = $request->input('App-checkbox');
+            
+        
         $house->surface = $request->input('surface');
         $house->adresse = $request->input('adresse');
         $house->prix = $request->input('prix');

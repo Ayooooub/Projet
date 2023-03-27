@@ -7,50 +7,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <style>
     
-   .card {
+body{
+  background-color: #eeeeee;
+}
+
+.card {
   margin-bottom: 30px;
 }
 /* Change the color of the title and text to blue */
 .card-title, .card-text {
   color:black;
 }
-body{
-  background-color: white;
 
+.price{
+  color: #4E5E69 !important;
+  
 
-}
-.card-subtitle {
-  font-size: 20px;
-  color: blue;
-  margin-left: 30px;
-}
-.card-body{
-    background-color:beige;
 }
 
-.blue-box-light {
-  background-color: #ADD8E6;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.blue-box-small {
-  background-color: #007bff;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
 
 .white-text {
   color: #fff;
 }
 
 
-/* Make the price, number of rooms, and surface become red on hover */
-.card-text:hover {
-  color:black;
-}
+
 
 /* Style the number of rooms, surface, and price to become bold and underlined on hover */
 .card-text:hover span {
@@ -72,14 +53,30 @@ body{
   margin-top: 10px;
 }
 
+.badge{
+  color: black;
+  background-color: #EBF1F6;
+}
 .btn-outline-secondary {
-  color: #6c757d;
-  border-color: #6c757d;
+  
+  background-color: #C3D6E4;
+  border-color: black;
+  color: black;
+  font-weight: bold;
 }
 
 .btn-outline-secondary:hover {
   color: #fff;
+  background-color:  #9cbcd3;
+}
+.btn-outline-secondary:active, 
+.btn-outline-secondary.active , 
+.btn-outline-secondary:focus{
   
+  color: #fff!important;
+  background-color: #9cbcd3 !important;
+  box-shadow: none !important;
+
 }
 .chat-icon {
   position: fixed;
@@ -201,7 +198,7 @@ background-color: #0069d9;
 }
 
  </style></head>
- <body style="background-color: #d0dfee;">
+ <body >
     <div class="chat-icon">
         <i style="color: white;" class="fas fa-comment-alt"></i>
       </div>
@@ -296,89 +293,27 @@ background-color: #0069d9;
   }
   
       </script>
+
+  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#"><b>Kay.com</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Acceuil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Conseils & Articles
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="#">Actualités</a>
-            <a class="dropdown-item" href="#">Articles</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Conseils</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Acheter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
             
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Louer
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
-            
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Vendre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Estimer</a>
-        </li>
-        
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li  class="nav-item"  ><a class="nav-link"><i class="fas fa-heart" >
-        </i>         Mes favoris   </a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i>  Se connecter</a>
-        </li>
-      </ul>
-    </div>
+          
   </nav>
   <div class="container" style="margin-top: 20px;">
-    <h1 style="font-size: 36px;">Découvrez toutes nos maisons à l'achat</h1>
     
-    <p style="font-size: 20px; margin-top: 25px; ">
-    Vous êtes à la recherche d'une maison à acheter,vous êtes au bon endroit. Nous proposons une sélection de maisons à vendre dans différentes régions, 
-    adaptées à tous les budgets. Que vous cherchiez une maison familiale spacieuse, une maison de ville ou un petit pied-à-terre,
-    notre sélection saura répondre à vos besoins. Nous sommes là pour vous aider à trouver votre maison de rêve!</p>
+    
+    
     <div class="row" style="margin-top: 40px;">
         @foreach ($houses as $item)
             <div class="col-md-4" >
                 <div class="card mb-4 box-shadow">
                 <img class="card-img-top" src="{{ asset('uploads/houses/'.$item->image ) }}" alt="Maison">
                 <div  class="card-body">
-                    <h5 class="card-title d-inline-block align-middle">{{ $item->type }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted d-inline-block align-middle ml-5">{{   $item->prix    }} DH</h6>
+                    <h6 class="card-title d-inline-block align-middle">{{ $item->type }}</h5>
+                    <div class="float-right">
+                        <h6 class="card-subtitle mb-2 text-muted d-inline-block align-middle price text-right" >{{   $item->prix    }} DH</h6>
+                    </div>
                     <p class="card-text mt-3">
                     <span class="badge badge-secondary mr-2">{{ $item->nbpiece }} pièces</span>
                     <span class="badge badge-secondary mr-2">{{ $item->surface }}m²</span>
