@@ -1,5 +1,7 @@
 <html>
   <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -13,22 +15,19 @@ body{
 
 .card {
   margin-bottom: 30px;
+  
+  height: 400px;
 }
 /* Change the color of the title and text to blue */
-.card-title, .card-text {
-  color:black;
-}
+
 
 .price{
-  color: #4E5E69 !important;
+  color: black !important;
+  font-weight: bold;
   
-
 }
 
 
-.white-text {
-  color: #fff;
-}
 
 
 
@@ -40,44 +39,53 @@ body{
 }
 
 .card-img-top {
-  height: 225px;
+  height: 200px;
   object-fit: cover;
+ 
 }
 
-.card-text {
-  font-size: 1.1rem;
-  line-height: 1.5;
+.card-body{
+  height: 150px;
+
+
 }
 
-.btn-group {
-  margin-top: 10px;
-}
+
 
 .badge{
-  color: black;
-  background-color: #EBF1F6;
+  color: black  ;
+  background-color: #C3D6E4;
 }
 .btn-outline-secondary {
-  
+
   background-color: #C3D6E4;
   border-color: black;
   color: black;
-  font-weight: bold;
+ 
 }
 
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color:  #9cbcd3;
+  background-color:  #6798BB;
 }
 .btn-outline-secondary:active, 
 .btn-outline-secondary.active , 
 .btn-outline-secondary:focus{
   
   color: #fff!important;
-  background-color: #9cbcd3 !important;
+  background-color: #6798BB !important;
   box-shadow: none !important;
 
 }
+
+</style>
+
+
+
+
+<style>
+
+/**************** Virtual assistant ******************/
 .chat-icon {
   position: fixed;
   bottom: 20px;
@@ -300,39 +308,71 @@ background-color: #0069d9;
             
           
   </nav>
+  <!-- <div class="container mt-3">
+  <div class="form-group">
+    <label for="filter">Filter:</label>
+    <select class="form-control" id="filter">
+      <option value="all">All</option>
+      <option value="houses">Houses</option>
+      <option value="apartments">Apartments</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="filter">Filter:</label>
+    <select class="form-control" id="filter">
+      <option value="all">All</option>
+      <option value="houses">Houses</option>
+      <option value="apartments">Apartments</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="filter">Filter:</label>
+    <select class="form-control" id="filter">
+      <option value="all">All</option>
+      <option value="houses">Houses</option>
+      <option value="apartments">Apartments</option>
+    </select>
+  </div>
+</div> -->
+
   <div class="container" style="margin-top: 20px;">
     
     
-    
-    <div class="row" style="margin-top: 40px;">
-        @foreach ($houses as $item)
-            <div class="col-md-4" >
-                <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{ asset('uploads/houses/'.$item->image ) }}" alt="Maison">
-                <div  class="card-body">
-                    <h6 class="card-title d-inline-block align-middle">{{ $item->type }}</h5>
-                    <div class="float-right">
-                        <h6 class="card-subtitle mb-2 text-muted d-inline-block align-middle price text-right" >{{   $item->prix    }} DH</h6>
-                    </div>
-                    <p class="card-text mt-3">
-                    <span class="badge badge-secondary mr-2">{{ $item->nbpiece }} pièces</span>
-                    <span class="badge badge-secondary mr-2">{{ $item->surface }}m²</span>
-                   
-                    </p>
-                    
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-sm btn-outline-secondary">Voir</a>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter aux favoris</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
+  <div class="row" style="margin-top: 40px;">
+  @foreach ($houses as $item)
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <a href="/houses/{{ $item->id }}">
+          <img class="card-img-top" src="{{ asset('uploads/houses/'.$item->image ) }}" alt="Maison">
+        </a>
+        <div class="card-body">
+          <h6 class="card-title">{{ $item->type }}</h6>
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <p class="card-text mb-1">
+                <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+             
+             
+                <span class="badge badge-secondary">{{ $item->nbpiece }} pièces</span>
+              </p>
             </div>
-        @endforeach
-      
-  </div>
-  
+            <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} DH</h6>
+          </div>
+          <p class="card-text mt-3">
+            {{ $item->adresse  }}
+          </p>
+          <div class="btn-group d-flex justify-content-center align-items-center mt-3" role="group">
+            <button type="button" class="btn btn-outline-secondary w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
+            <button type="button" class="btn btn-outline-secondary w-100"> <i class="far fa-heart"></i> Favoris</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
+</div>
+
+
+
 
 
 

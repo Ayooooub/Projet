@@ -88,21 +88,29 @@
                           <div class="form-check">
                                 <input class="form-check-input checkbox-no-label" type="checkbox" value="Maison" id="check3" name="Maison-checkbox"> Maison
                           </div>
-                          <div class="form-check">
-                                <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check2"> Parking
-                          </div> 
+                          
                  </div>
                   
                   <div class="form-group mt-2 mb-0">
                         <label for="image">Image :</label>
-                        <input type="file" class="form-control"  name="image" required>
+                        <input multiple type="file" class="form-control"  name="image" required>
                             
                   </div>
-                  
+            
                   <div class="form-group mt-2 mb-0">
                       <label for="nbpiece">Nombre de pièces:</label>
                       <input type="number" class="form-control" name="nbpiece" placeholder="" required>
                   </div>
+
+                  <div class="form-row mt-3">
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="checkbox" value="Vente" id="check2" name="Vente"> A vendre
+                          </div>
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="checkbox" value="Location" id="check3" name="Location"> A louer
+                          </div>
+                         
+                 </div>
                   <button type="submit" class="btn btn-primary mt-3" name="save">Soumettre</button>
                   
                     @include('auth.partials.copy')

@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('houses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('adresse');
-            $table->string('type');
-            $table->float('prix', 15, 2);
-            $table->integer('nbpiece');
-            $table->string('type_annonce');
-            $table->integer('surface');
-            $table->mediumText('image');
+        Schema::create('house_images', function (Blueprint $table) {
+            $table->id();
+            $table->string('image_name');
+            $table->unsignedBigInteger('house_id');
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('houses');
+        Schema::dropIfExists('house_images');
     }
 };

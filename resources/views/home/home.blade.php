@@ -228,7 +228,7 @@
       </nav>
             
       
-	<script>
+	 <script>
 	$(document).ready(function(){
 		$("#rentButton").click(function(){
 			$("#buyForm, #sellForm").hide();
@@ -253,17 +253,17 @@
 		<div class="row justify-content-center ">
 			<div class="col-lg-6 col-md-8 col-sm-10" >
         <div class="card form-card mx-auto">
-          <form">
+          
           <div class="btn-group btn-group-lg" role="group" >
             <button type="button" class="btn btn-secondary active" id="rentButton">Louer</button>
             <button type="button" class="btn btn-secondary" id="buyButton">Acheter</button>
               <button type="button" class="btn btn-secondary" id="sellButton">Estimer</button>
           </div>
-          <div id="rentForm" style="display:block;">
+          <form id="rentForm" style="display:block;" action="{{ url('/search-rent') }}" type="get">
                   <div class="form-row" >
-                    <input type="text" placeholder="Adresse " class="form-control input-no-label"  >
-                    <input type="number" placeholder="Budget DH" class="form-control input-no-label">
-                    <input type="number" placeholder="Surface    m²" class="form-control input-no-label" >
+                    <input type="text" placeholder="Adresse " name="adresse" class="form-control input-no-label"  >
+                    <input type="number" placeholder="Budget DH" name ="price" class="form-control input-no-label">
+                    <input type="number" placeholder="Surface    m²"  name="surface" class="form-control input-no-label" >
                   </div>
             <div class="form-row mt-3">
               <div class="form-check">
@@ -280,31 +280,30 @@
 
               <button type="submit" id="searchbtn">Rechercher </button>
             </div>
-          </div>
-          <div id="buyForm" style="display:none;">
+        </form>
+          <form id="buyForm" style="display:none;" action="{{ url('/search-buy') }}" type="get">
             <div class="form-row" >
-              <input type="text" placeholder="Adresse " class="form-control input-no-label"  >
-              <input type="number" placeholder="Budget DH" class="form-control input-no-label">
-              <input type="number" placeholder="Surface    m²" class="form-control input-no-label" >
+              <input type="text" placeholder="Adresse " name="adresse"class="form-control input-no-label"  >
+              <input type="number" placeholder="Budget DH" name="price" class="form-control input-no-label">
+              <input type="number" placeholder="Surface    m²" name="surface" class="form-control input-no-label" >
             </div>
-      <div class="form-row mt-3">
-        <div class="form-check">
-          <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check2"> Appartements
-        </div>
-        <div class="form-check">
-          <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check3"> Maisons
-        </div>
-        <div class="form-check">
-          <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check2"> Parking
-        </div> 
-      </div>
-      <div class="form-row">
-
-        <button type="submit" id="searchbtn">Rechercher </button>
-      </div>
+            <div class="form-row mt-3">
+              <div class="form-check">
+                  <input class="form-check-input checkbox-no-label" type="checkbox" name="building_types[]" value="Appartement" id="check2"> Appartements
+              </div>
+              <div class="form-check">
+                   <input class="form-check-input checkbox-no-label" type="checkbox" name="building_types[]" value="Maison" id="check3"> Maisons
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input checkbox-no-label" type="checkbox" value="building_types[]" id="check2"> Parking
+              </div> 
+            </div>
+            <div class="form-row">
+              <button type="submit" id="searchbtn">Rechercher </button>
+            </div>
           
-      </div>
-          <div id="sellForm" style="display:none;">
+        </form>
+          <form id="sellForm" style="display:none;">
             
               
            
@@ -330,11 +329,21 @@
             <button  Style="margin-right: 70px; margin-top: 30px;"type="submit" id="estimerbtn"><b style="color: white;">Estimer</b> </button>
           </div>
           </div>
-          </div></div>
-          </form>
+          </div>
+        </form>
+          
         </div>
       </div>
 		</div>
 	</div>
-
+  <!-- <form action="{{ url('/search') }}" type="get">
+  <div id="rentForm" style="display:block;">
+    <div class="form-row">
+      <input type="text" placeholder="Adresse" name="adresse" class="form-control input-no-label">
+      <input type="number" placeholder="Budget DH" name="price" class="form-control input-no-label" name="budget">
+      <input type="number" placeholder="Surface m²" name="surface" class="form-control input-no-label" name="surface">
+    </div>
+    <button type="submit" id="searchbtn">Rechercher</button>
+  </div>
+</form> -->
   

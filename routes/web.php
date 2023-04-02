@@ -44,10 +44,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
        
     });
     Route::get('/users', 'UserController@show')->name('users.show');
-   
     Route::get('/useracess', 'UserController@index')->name('users.acess');
     Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+   
     Route::get('/sell', function(){ return view('searchpages.sell');})->name('searchpages.sell');
     Route::post('/sell','HouseController@store')->name('sell.store');
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
+    Route::get('/search-rent','HouseController@rentsearch');
+    Route::get('/search-buy','HouseController@buysearch');
+    Route::get('/form', function(){ return view('home.home');});
+    Route::get('/houses/{id}', 'HouseController@show');
 });
