@@ -37,7 +37,12 @@
 
 
 
-      
+   .navbar {
+    height: 70px;
+  }
+  .navbar-brand img {
+    max-height: 150px;
+  }
     </style>
 
     
@@ -49,7 +54,10 @@
     
        
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="homepage.php"><b>Kay.com</b></a>
+      <a class="navbar-brand" href="homepage.php">
+  <img src="images/logo4.png" alt="Kay.com logo">
+</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

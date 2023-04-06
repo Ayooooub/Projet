@@ -94,10 +94,10 @@
                  </div>
                   
                   <div class="form-group mt-2 mb-0">
-                        <label for="image">Image :</label>
-                        <input type="file" class="form-control"  name="image" required>
-                            
-                  </div>
+    <label for="image">Images :</label>
+    <input type="file" class="form-control" name="images[]" multiple required>
+</div>
+
                   
                   <div class="form-group mt-2 mb-0">
                       <label for="nbpiece">Nombre de pièces:</label>
@@ -111,5 +111,5 @@
       </div>
   </div>
  
-
+  
 @endsection

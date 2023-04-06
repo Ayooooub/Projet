@@ -172,6 +172,78 @@ body{
   cursor: pointer;
   transition: all 0.3s ease;
 }
+.chat-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chat-body {
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.chat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.chat-footer input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  margin-right: 10px;
+}
+
+.chat-footer button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.chat-message.outgoing {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-message.outgoing i {
+  margin-right: 8px;
+}
+
+.chat-message.incoming {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-message.incoming i {
+  margin-right: 8px;
+}
+
 
 .chat-footer button:hover {
 background-color: #0069d9;
@@ -196,6 +268,65 @@ background-color: #0069d9;
     transform: translateY(-10px);
   }
 }
+.chat-bubble {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.chat-bubble.outgoing {
+  justify-content: flex-end;
+}
+
+.chat-bubble.incoming {
+  justify-content: flex-start;
+}
+
+.chat-message {
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 70%;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.chat-message.outgoing {
+  background-color: #2979ff;
+  color: #fff;
+  margin-right: 8px;
+}
+
+.chat-message.incoming {
+  background-color: #f3f3f3;
+  color: #333;
+  margin-left: 8px;
+}
+
+.chat-message:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid #2979ff;
+  top: 50%;
+  margin-top: -12px;
+}
+
+.chat-message.outgoing:after {
+  right: -10px;
+}
+
+.chat-message.incoming:after {
+  left: -10px;
+  border-right-color: #f3f3f3;
+  border-left: 12px solid transparent;
+}
+
 
  </style></head>
  <body >
@@ -256,25 +387,48 @@ background-color: #0069d9;
     }
   });
   
-  // Send a message to the chatbot and receive a response
   function sendMessage(message) {
-    if (message.trim() === '') {
-      return;
-    }
-    const chatMessage = document.createElement('div');
-    chatMessage.classList.add('chat-message', 'outgoing');
-    chatMessage.textContent = message;
-    chatBody.appendChild(chatMessage);
-    inputField.value = '';
-    setTimeout(() => {
-      const response = getResponse(message);
-      const chatMessage = document.createElement('div');
-      chatMessage.classList.add('chat-message', 'incoming');
-      chatMessage.textContent = response;
-      chatBody.appendChild(chatMessage);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }, 1000);
+  if (message.trim() === '') {
+    return;
   }
+
+  // Create outgoing message element with icon and chat bubble design
+  const chatMessage = document.createElement('div');
+  chatMessage.classList.add('chat-message', 'outgoing');
+  const icon = document.createElement('i');
+  icon.classList.add('fas', 'fa-user');
+  chatMessage.appendChild(icon);
+  const text = document.createElement('span');
+  text.textContent = message;
+  chatMessage.appendChild(text);
+  const chatBubble = document.createElement('div');
+  chatBubble.classList.add('chat-bubble', 'outgoing');
+  chatBubble.appendChild(chatMessage);
+  chatBody.appendChild(chatBubble);
+
+  inputField.value = '';
+
+  setTimeout(() => {
+    const response = getResponse(message);
+
+    // Create incoming message element with icon and chat bubble design
+    const chatMessage = document.createElement('div');
+    chatMessage.classList.add('chat-message', 'incoming');
+    const icon = document.createElement('i');
+    icon.classList.add('fas', 'fa-robot');
+    chatMessage.appendChild(icon);
+    const text = document.createElement('span');
+    text.textContent = response;
+    chatMessage.appendChild(text);
+    const chatBubble = document.createElement('div');
+    chatBubble.classList.add('chat-bubble', 'incoming');
+    chatBubble.appendChild(chatMessage);
+    chatBody.appendChild(chatBubble);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 1000);
+}
+
+
   
   // Get a response from the chatbot based on the user's message
   function getResponse(message) {
@@ -282,6 +436,8 @@ background-color: #0069d9;
       acheter: "Chez nous, l'achat de votre propriété idéale est facile ! Que vous cherchiez une maison, un appartement ou un terrain, sélectionnez simplement le type de bien dans le menu en haut, ou remplissez le formulaire d'achat à l'accueil pour trouver la perle rare.",
       vendre: "Vous souhaitez vendre votre bien rapidement et efficacement ? C'est facile avec Kay! Commencez par sélectionner le type de bien dans le menu en haut,puis continuez en remplissant notre formulaire détaillé pour décrire les caractéristiques de votre bien.",
       louer: 'Vous cherchez un logement à louer ? Kay en ligne vous simplifie la vie ! Il vous suffit de sélectionner le type de bien que vous recherchez dans le menu en haut, puis de remplir notre formulaire de demande de location pour nous faire part de vos critères.',
+      bonjour: "bonjour, comment je peux vous aider",
+      bonsoir: "bonsoir, comment je peux vous aider"
     };
     const words = message.toLowerCase().split(' ');
     for (const word of words) {
@@ -289,7 +445,7 @@ background-color: #0069d9;
         return keywords[word];
       }
     }
-    return "I'm sorry, I didn't understand your message.";
+    return "Désolé,utilise les keywords acheter vendre louer.";
   }
   
       </script>

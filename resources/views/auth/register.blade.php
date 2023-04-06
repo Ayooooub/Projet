@@ -57,7 +57,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form class="form-signup" method="post" action="{{ route('register.perform') }}">
+                <form class="form-signup" method="post" action="{{ route('register.perform') }}"  enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                   <h2>Créer un Compte</h2>
                   <div class="form-group mb-0">
@@ -96,6 +96,10 @@
                               <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
                           @endif
                   </div>
+                  <div class="form-group">
+                   <label for="profile_pic">Profile Picture</label>
+                   <input type="file" class="form-control" id="profile_pic" name="profile_pic">
+                   </div>
                   <div class="form-group mt-2 mb-0">
                       <label for="numtel">Téléphone:</label>
                       <input type="text" class="form-control" id="tele" name="numtel" placeholder="Entrez votre numéro de téléphone " required>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -27,9 +28,26 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request) 
     {
+        
         $user = User::create($request->validated());
+         auth()->login($user);
+        if ($request->hasFile('profile_pic')) {
+           
 
-        auth()->login($user);
+            $file = $request->file('profile_pic');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('profile_pics/',$filename);
+            $user->profilep = $filename;
+        }
+        else{
+            $user->profilep ='default.jpg';
+
+
+        }
+        $user->save();
+        
+       
 
         return redirect('/')->with('success', "Account successfully registered.");
     }
