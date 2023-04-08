@@ -221,7 +221,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-height: 60px;" >
     <a class="navbar-brand" href="homepage.php" >
-        <img src="logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+        <img src="images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
       </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
