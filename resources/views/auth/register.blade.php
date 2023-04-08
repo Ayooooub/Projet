@@ -1,4 +1,4 @@
-@extends('layouts.app-master')
+@extends('layouts.auth-master')
 
 @section('content')
 
@@ -53,7 +53,7 @@
               </style>        
 
   
-       
+     <div class="banner">  
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -114,6 +114,6 @@
       </div>
   </div>
 
-
+     </div>
 
 @endsection

@@ -32,17 +32,30 @@
     <style>
    
 
-      
-      
+   .content {
+  /* Add styling for your content */
+  position: relative;
+  z-index: 1;
+}
+.navbar {
+ 
 
+  
+  align-items: center;
 
+}
 
-   .navbar {
-    height: 70px;
+   @media (max-width: 991.98px) {
+  .navbar-brand {
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .navbar-brand img {
-    max-height: 150px;
-  }
+  
+}
+
+
+      
     </style>
 
     
@@ -53,12 +66,12 @@
     
     
        
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="homepage.php">
-  <img src="images/logo4.png" alt="Kay.com logo">
+<nav class="navbar navbar-expand-lg navbar-light bg-light " style="height: 60px;" >
+      <a class="navbar-brand" href="homepage.php" >
+  <img src="images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
 </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
