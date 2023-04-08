@@ -34,8 +34,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-    Route::get('/home', function () {
-        return view('homee');
+    Route::get('/homee', function () {
+        return view('home.homee');
     });
     
     
