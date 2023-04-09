@@ -134,6 +134,10 @@
                           </div>
                          
                   </div>
+
+
+                  <!-- ********************Part 2******************** -->
+
                   <label >Le bien est-il meublé ? <span class="required">*</span></label>
                   <div class="form-row mb-0">
                           <div class="form-check">
@@ -145,11 +149,23 @@
                          
                   </div>
 
+                 
+
                   <div class="form-row  mt-2 mb-0">
                         <label for="Année de construction">Année de construction :</label>
                         <input type="number" class="form-control" name="annee_const" placeholder="Donnez l'année de construction du bien " >
                   </div>
-                  
+                  <div class="form-row mt-2 mb-0">
+                        <label for="etage">Etage :</label>  <!-- for appartments only -->
+                        <input type="number" class="form-control" name="etage" placeholder="Donnez le numéro d'étage de l'appartement">
+                  </div>
+
+                  <div class="form-row mt-2 mb-0">
+                        <label for="nb_etages">Nombre d'étages dans l'immeuble :</label>  <!-- for appartments only -->
+                        <input type="number" class="form-control" name="nb_etages" placeholder="Donnez le nombre total d'étages dans l'immeuble">
+                  </div>
+
+
                   <div class="form-group mt-2 mb-0">
                         <label > Caractéristiques et installations : </label>
                         <div class="form-check">
@@ -161,8 +177,8 @@
                               <label class="form-check-label" for="garage">Garage</label>
                         </div>
                         <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="interphone" >
-                              <label class="form-check-label" for="interphone">Interphone</label>
+                              <input type="checkbox" class="form-check-input" name="Ascenceur" >
+                              <label class="form-check-label" for="interphone">Ascenceur</label> <!-- for appartments only -->
                         </div>
                        
                         <div class="form-check">

@@ -22,11 +22,12 @@ return new class extends Migration
             $table->integer('salle_bain');
             $table->string('type_annonce');
             $table->integer('surface');
-            $table->integer('annee_construction');
+            $table->integer('annee_construction')->nullable();
+            $table->boolean('meublé')->default(false);
             $table->boolean('balcon')->default(false);
             $table->boolean('garage')->default(false);
+            $table->boolean('ascenceur')->default(false);
             $table->boolean('cuisine_equipee')->default(false);
-            $table->boolean('meublé')->default(false);
             $table->timestamps();
         });
     }

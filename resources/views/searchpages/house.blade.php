@@ -206,7 +206,7 @@ a.text-decoration-none:hover {
             <div class="house-type" style="font-size: 36px; color: #777; margin-bottom: 30px; font-weight: bold; font-style:inherit;">
               <h2>{{ $house->type }} @if ($house->type_annonce == 'Vente') à vendre @else à louer @endif</h2>
 
-              <h2 >{{ $house->nbpiece }} pièces <span>. {{ $house->surface }} m²</span></h2>
+              <h2 >{{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif <span>. {{ $house->surface }} m²</span></h2>
               <div class="location col-5" style="margin-top: 30px;">
                 <i class="glyphicon glyphicon-map-marker" id ="pin" style="margin-right: 10px;"></i>
                 <h3 >{{ $house->adresse }}</h3>
@@ -226,7 +226,7 @@ a.text-decoration-none:hover {
             <h3>L'essentiel</h3>
             <div class="d-flex flex-row">
               <div class="p-2">
-                <i class="lolo fas fa-cube"></i> {{ $house->nbpiece }} pièces
+                <i class="lolo fas fa-cube"></i> {{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif
               </div>
               <div class="p-2" style="margin-left: 10px;">
                 <i class="lolo fas fa-bath"></i> 1 salle de bain/eau
@@ -257,9 +257,11 @@ a.text-decoration-none:hover {
             <hr>
             <h3>Autre</h3>
             <div class="d-flex flex-row">
+              @if(isset($house->annee_construction))
               <div class="p-2">
-                <i class="lolo fas fa-calendar-alt"></i> Construit en 1878
+                <i class="lolo fas fa-calendar-alt"></i> Construit en {{$house->annee_construction}}
               </div>
+              @endif
               <div class="p-2" style="margin-left: 10px;">
                 <i class="lolo fas fa-building"></i> Construction en Pierres
               </div>
