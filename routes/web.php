@@ -52,6 +52,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
     Route::get('/search-rent','HouseController@rentsearch');
     Route::get('/search-buy','HouseController@buysearch');
-    Route::get('/form', function(){ return view('home.home');});
+    Route::get('/home', function(){ return view('home.home');})->name('home');
     Route::get('/houses/{id}', 'HouseController@show');
 });

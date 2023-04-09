@@ -127,21 +127,14 @@
      
         
 
-    <style>
-      .banner{
-        width: 100%;
-        height: 100vh;
-        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.25)),url(background.jpg);
-        background-size: cover;
-        background-position: center;
-      }
-      </style>
+   
+   
    <div class="banner">
 
         @yield('content')
 
   </div>
-  /*  <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+    <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
       
   </body>
 </html>

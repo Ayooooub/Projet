@@ -217,13 +217,36 @@
               <a class="nav-link" href="#">Contact Us</a>
             </li>
           </ul>
+          @auth
           <ul class="navbar-nav ml-auto">
-            <li  class="nav-item"  ><a class="nav-link"><i class="fas fa-heart" >
+    <li class="nav-item">
+    <li  class="nav-item"  ><a class="nav-link"><i class="fas fa-heart" >
             </i>         Mes favoris   </a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </a>
+            <div class="dropdown-menu" style="left: -105px !important;" aria-labelledby="navbarDropdown4">
+                <a class="dropdown-item" href="{{ route('logout.perform') }}">Se Déconnecter</a>
+                
+                <a class="dropdown-item" href="#">Modifier le profil</a>
+            </div>
+        </li>
+    </li>
+</ul>
+
+          @endauth
+          @guest
+          <ul class="navbar-nav ml-auto">
+            
             <li class="nav-item">
-              <a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i> Se connecter</a>
+              <a class="nav-link" href="{{ route('login.show') }}"><i class="fas fa-user"></i> Se connecter</a>
             </li>
           </ul>
+        </div>
+
+          @endguest
+        
         </div>
       </nav>
             

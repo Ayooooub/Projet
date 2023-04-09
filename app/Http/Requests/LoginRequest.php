@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Rules\ValidCredentials;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
@@ -25,13 +25,26 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => ['required', new ValidCredentials],
+        ];
+    }
+     /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.required' => 'Veuillez entrer votre adresse e-mail.',
+            'email.email' => 'Veuillez entrer une adresse e-mail valide.',
+            'password.required' => 'Veuillez entrer votre mot de passe.',
+            'invalid_credentials.exists' => 'Vos informations de connexion sont incorrectes.',
         ];
     }
 
-    /**
-     * Get the needed authorization credentials from the request.
+    /*** Get the needed authorization credentials from the request.
      *
      * @return array
      * @throws \Illuminate\Contracts\Container\BindingResolutionException

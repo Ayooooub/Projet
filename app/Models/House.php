@@ -11,6 +11,6 @@ class House extends Model
     protected $fillable = ['adresse', 'type', 'surface', 'image','nbpiece'];
     public function images()
     {
-        return $this->hasMany(HouseImage::class);
+        return $this->hasMany(Image::class);
     }
 }

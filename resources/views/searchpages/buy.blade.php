@@ -16,7 +16,7 @@ body{
 .card {
   margin-bottom: 30px;
   
-  height: 400px;
+  height: 350px;
 }
 /* Change the color of the title and text to blue */
 
@@ -29,39 +29,47 @@ body{
 
 
 
-
-
-
-/* Style the number of rooms, surface, and price to become bold and underlined on hover */
-.card-text:hover span {
-  font-weight: bold;
-  text-decoration: underline;
+.card-text {
+  margin-bottom: 0.2rem;
 }
 
+.card-title {
+  margin-top: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+.card {
+  margin-bottom: 1rem;
+}
+
+
+
+
 .card-img-top {
-  height: 200px;
+  height: 180px;
   object-fit: cover;
  
 }
 
 .card-body{
   height: 150px;
-
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 
 }
-
-
 
 .badge{
   color: black  ;
   background-color: #C3D6E4;
 }
-.btn-outline-secondary {
 
+.btn-outline-secondary {
+  
   background-color: #C3D6E4;
   border-color: black;
   color: black;
+  margin-bottom: 0.1rem;
  
+
 }
 
 .btn-outline-secondary:hover {
@@ -308,33 +316,35 @@ background-color: #0069d9;
             
           
   </nav>
-  <!-- <div class="container mt-3">
-  <div class="form-group">
-    <label for="filter">Filter:</label>
-    <select class="form-control" id="filter">
-      <option value="all">All</option>
-      <option value="houses">Houses</option>
-      <option value="apartments">Apartments</option>
-    </select>
+  <div class="container mt-3">
+  <div class="row">
+      
+      <div class="form-group col">
+        <label for="filter">Filter:</label>
+        <select class="form-control" id="filter">
+          <option value="all">All</option>
+          <option value="houses">Houses</option>
+          <option value="apartments">Apartments</option>
+        </select>
+      </div>
+      <div class="form-group col ">
+        <label for="filter">Filter:</label>
+        <select class="form-control" id="filter">
+          <option value="all">All</option>
+          <option value="houses">Houses</option>
+          <option value="apartments">Apartments</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="filter">Filter:</label>
+        <select class="form-control" id="filter">
+          <option value="all">All</option>
+          <option value="houses">Houses</option>
+          <option value="apartments">Apartments</option>
+        </select>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="filter">Filter:</label>
-    <select class="form-control" id="filter">
-      <option value="all">All</option>
-      <option value="houses">Houses</option>
-      <option value="apartments">Apartments</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="filter">Filter:</label>
-    <select class="form-control" id="filter">
-      <option value="all">All</option>
-      <option value="houses">Houses</option>
-      <option value="apartments">Apartments</option>
-    </select>
-  </div>
-</div> -->
-
   <div class="container" style="margin-top: 20px;">
     
     
@@ -343,25 +353,26 @@ background-color: #0069d9;
     <div class="col-md-4">
       <div class="card mb-4 box-shadow">
         <a href="/houses/{{ $item->id }}">
-          <img class="card-img-top" src="{{ asset('uploads/houses/'.$item->image ) }}" alt="Maison">
+          @if($item->images->count() > 0)
+            <img class="card-img-top" src="{{ asset('storage/images/'.$item->images->first()->path ) }}" alt="Maison">
+          
+          @endif
         </a>
         <div class="card-body">
-          <h6 class="card-title">{{ $item->type }}</h6>
+          <h6 class="card-title mt-2">{{ $item->type }}</h6>
           <div class="d-flex justify-content-between align-items-start">
             <div>
-              <p class="card-text mb-1">
+              <p class="card-text mb-2">
                 <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-             
-             
                 <span class="badge badge-secondary">{{ $item->nbpiece }} pièces</span>
               </p>
             </div>
-            <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} DH</h6>
+            <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
           </div>
-          <p class="card-text mt-3">
+          <h6 class="card-text adresse ">
             {{ $item->adresse  }}
-          </p>
-          <div class="btn-group d-flex justify-content-center align-items-center mt-3" role="group">
+          </h6>
+          <div class="btn-group d-flex justify-content-center align-items-center mt-3 " role="group">
             <button type="button" class="btn btn-outline-secondary w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
             <button type="button" class="btn btn-outline-secondary w-100"> <i class="far fa-heart"></i> Favoris</button>
           </div>
@@ -370,7 +381,6 @@ background-color: #0069d9;
     </div>
   @endforeach
 </div>
-
 
 
 

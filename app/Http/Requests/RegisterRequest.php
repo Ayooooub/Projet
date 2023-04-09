@@ -33,4 +33,28 @@ class RegisterRequest extends FormRequest
 
         ];
     }
+   /**
+      *   @return array
+    */
+   public function messages()
+   {
+       return [
+           'email.required' => 'L\'adresse email est requise.',
+           'email.email' => 'L\'adresse email est invalide.',
+           'email.unique' => 'Un compte avec cette adresse email est déjà enregistré.',
+
+           'nom.required' => 'Le nom est requis.',
+           'prenom.required' => 'Le prénom est requis.',
+
+           'password.required' => 'Le mot de passe est requis.',
+           'password.min' => 'Le mot de passe doit avoir au moins 8 caractères.',
+
+           'password_confirmation.required' => 'La confirmation du mot de passe est requise.',
+           'password_confirmation.same' => 'Les mots de passe ne correspondent pas.',
+
+           'numtel.required' => 'Le numéro de téléphone est requis.',
+          
+       ];
+   }
+
 }

@@ -81,17 +81,13 @@
 
                 <div class="form-group">
                   <label for="email">Adresse email:</label>
-                  <input type="email" class="form-control" name="email" id="email"  value="{{ old('email') }}" placeholder="Entrez votre email">
-                  @if ($errors->has('email'))
-                    <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-                  @endif
+                  <input type="email" class="form-control" name="email" id="email"  value="{{ old('email') }}" placeholder="Entrez votre email" required>
+                 
                 </div>
                 <div class="form-group">
                   <label for="password">Mot de passe:</label>
-                  <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" placeholder="Entrez votre mot de passe">
-                  @if ($errors->has('password'))
-                  <span class="text-danger text-left">{{ $errors->first('password') }}</span>
-                  @endif
+                  <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" placeholder="Entrez votre mot de passe" required>
+                
                 </div>
                 <button type="submit" class="w-100 btn btn-primary" >Se connecter</button>
                 <div class="create-account">
