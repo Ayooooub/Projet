@@ -192,7 +192,7 @@ a.text-decoration-none:hover {
           <div class="slider" style="margin-top: 3%;">
             @foreach($images as $image)
             <div class="slide @if($loop->first) active @endif">
-                <img src="{{ asset('storage/images/' . $image->path) }}" alt="{{ $image->name }}" width="100%" height="100%" loading="lazy">
+                <img src="{{ asset('storage/house_images/' . $image->path) }}" alt="{{ $image->name }}" width="100%" height="100%" loading="lazy">
             </div>
             @endforeach
         

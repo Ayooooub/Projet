@@ -71,7 +71,7 @@
        
 <nav class="navbar navbar-expand-lg navbar-light bg-light " >
       <a class="navbar-brand" href="homepage.php" >
-  <img src="images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+  <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
 </a>
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +136,7 @@
             <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30">
+                <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30">
 
                 </a>
                 <div class="dropdown-menu" style="left: -105px !important;" aria-labelledby="navbarDropdown4">

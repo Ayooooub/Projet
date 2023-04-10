@@ -141,7 +141,7 @@
   <div class="row">
     <!-- Left Navigation Bar -->
     <div class="col-3 bg-primary left-content">
-      <img src="{{ asset('profile_pics/' . Auth::user()->profilep) }}" class="profile-picture">
+      <img src="{{ asset('storage/profile_pics/' . Auth::user()->profilep) }}" class="profile-picture">
       <h2 class="username">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</h2>
       <ul class="nav flex-column Show">
         <li class="nav-item">

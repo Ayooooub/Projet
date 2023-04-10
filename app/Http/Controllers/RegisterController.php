@@ -35,9 +35,9 @@ class RegisterController extends Controller
            
 
             $file = $request->file('profile_pic');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('profile_pics/',$filename);
+            
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('profile_pics', $filename, 'public');
             $user->profilep = $filename;
         }
         else{
