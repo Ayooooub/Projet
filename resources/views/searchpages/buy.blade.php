@@ -354,7 +354,7 @@ background-color: #0069d9;
       <div class="card mb-4 box-shadow">
         <a href="/houses/{{ $item->id }}">
           @if($item->images->count() > 0)
-            <img class="card-img-top" src="{{ asset('storage/images/'.$item->images->first()->path ) }}" alt="Maison">
+            <img class="card-img-top" src="{{ asset('storage/house_images/'.$item->images->first()->path ) }}" alt="Maison">
           
           @endif
         </a>

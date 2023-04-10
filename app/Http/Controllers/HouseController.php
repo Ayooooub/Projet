@@ -47,7 +47,8 @@ class HouseController extends Controller
     $house->save();
     foreach ($request->file('images') as $image) {
         $filename = time() . '_' . $image->getClientOriginalName();
-        $path = $image->storeAs('public/images', $filename);
+        
+        $path = $image->storeAs('house_images', $filename, 'public');
         $house->images()->create(['path' => $filename]);
     }
     
