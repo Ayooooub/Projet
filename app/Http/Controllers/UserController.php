@@ -71,39 +71,40 @@ class UserController extends Controller
                 return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.']);
             }
         }
-        public function delete(User $user)
-        {
-            $user->delete();
-            return redirect()->route('homee')->with('success', 'Your account has been deleted.');
-        }
+    public function delete(User $user)
+    {
+        $user->delete();
+        return redirect()->route('homee')->with('success', 'Your account has been deleted.');
+    }
 
-        public function updatePicture(Request $request)
-        {
-            $request->validate([
-                'picture' => 'required|image|max:2048',
-            ]);
+    public function updatePicture(Request $request)
+    {
+        $request->validate([
+            'picture' => 'required|image|max:2048',
+        ]);
 
-            $user = auth()->user();
+        $user = auth()->user();
 
-            if ($request->hasFile('picture')) {
-                
-
-                $file = $request->file('profile_pic');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $path = $file->storeAs('profile_pics', $filename, 'public');
-                $user->profilep = $filename;
-            }
-            else{
-                $user->profilep ='default.jpg';
-
-
-            }
-            $user->save();
+        if ($request->hasFile('picture')) {
             
-        
 
-            return redirect('/')->with('success', "Account successfully registered.");
+            $file = $request->file('picture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('storage/profile_pics/',$filename);
+            $user->profilep = $filename;
         }
+        else{
+            $user->profilep ='default.jpg';
+
+
+        }
+        $user->save();
+        
+    
+
+        return redirect('/')->with('success', "Account successfully registered.");
+    }
 }
 
         
