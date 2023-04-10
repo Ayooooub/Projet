@@ -21,7 +21,7 @@
   
   <style>
     .jumbotron {
-      background-image: url("homepics/real.jpg");
+      background-image: url("storage/homepics/real.jpg");
       background-size: cover;
       /* animation: slide 10s ease infinite; */
       height: 90vh;
@@ -175,7 +175,7 @@
 
 
 #ads-section {
-  background-image: url('homepics/smth.jpg'), url('homepics/smth1.jpg'), url('homepics/adsi.jpg');
+  background-image: url('storage/homepics/smth.jpg'), url('storage/homepics/smth1.jpg'), url('storage/homepics/adsi.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -183,10 +183,10 @@
 }
 
 @keyframes slide {
-  0% { background-image: url('homepics/smth.jpg'), url('homepics/smth1.jpg'), url('homepics/adsi.jpg'); }
-  33% { background-image: url('homepics/smth1.jpg'), url('homepics/adsi.jpg'), url('homepics/smth.jpg'); }
-  66% { background-image: url('homepics/adsi.jpg'), url('homepics/smth.jpg'), url('homepics/smth1.jpg'); }
-  100% { background-image: url('homepics/smth.jpg'), url('homepics/smth1.jpg'), url('homepics/adsi.jpg'); }
+  0% { background-image: url('storage/homepics/smth.jpg'), url('storage/homepics/smth1.jpg'), url('storage/homepics/adsi.jpg'); }
+  33% { background-image: url('storage/homepics/smth1.jpg'), url('storage/homepics/adsi.jpg'), url('storage/homepics/smth.jpg'); }
+  66% { background-image: url('storage/homepics/adsi.jpg'), url('storage/homepics/smth.jpg'), url('storage/homepics/smth1.jpg'); }
+  100% { background-image: url('storage/homepics/smth.jpg'), url('storage/homepics/smth1.jpg'), url('storage/homepics/adsi.jpg'); }
 }
 
 .card {
@@ -237,78 +237,107 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
-    <a class="navbar-brand" href="homepage.php" >
-        <img src="images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
-      </a>
-    <button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Acceuil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Conseils & Articles
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="#">Actualités</a>
-            <a class="dropdown-item" href="#">Articles</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Conseils</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Acheter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light " >
+      <a class="navbar-brand" href="homepage.php" >
+  <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+</a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ route('homee') }}">Acceuil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Conseils & Articles
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="#">Actualités</a>
+                <a class="dropdown-item" href="#">Articles</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Conseils</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Acheter
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <a class="dropdown-item" href="#">Maisons</a>
+                <a class="dropdown-item" href="#">Appartements</a>
+                <a class="dropdown-item" href="#">Immeubles</a>
+                
+                <a class="dropdown-item" href="#">Terrains</a>
+                
+                
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Louer
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <a class="dropdown-item" href="#">Maisons</a>
+                <a class="dropdown-item" href="#">Appartements</a>
+                <a class="dropdown-item" href="#">Immeubles</a>
+                
+                <a class="dropdown-item" href="#">Terrains</a>
+                
+               </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Vendre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Estimer</a>
+            </li>
             
-            <a class="dropdown-item" href="#">Terrains</a>
             
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Louer
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
-            
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Agents</a>
+            </li>
+          </ul>
+          @auth
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Vendre</a>
+            <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30">
+
+                </a>
+                <div class="dropdown-menu" style="left: -105px !important;" aria-labelledby="navbarDropdown4">
+                    <a class="dropdown-item" href="#">Modifier le profil</a>
+                    
+                    <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se deconnecter</a>
+       
+                </div>
+            </li>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Estimer</a>
-        </li>
-        
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Agents</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="mailto:info@kay.com">
+    </ul>
+
+
+
+          @endauth
+          @guest
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="mailto:info@kay.com">
           <i class="fas fa-envelope">
           </i> Contactez-nous</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login.show') }}"><i class="fas fa-user"></i> Se connecter</a>
+            </li>
+          </ul>
+        </div>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('login.perform') }}"><i class="fas fa-user"></i>  Se connecter</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+          @endguest
+        </div>
+        
+
+
+      </nav>
+     
   <script>
 $(document).ready(function(){
   $("#rentButton").click(function(){
@@ -436,7 +465,7 @@ $(document).ready(function(){
   <h2 style="text-align: center;">Nos Agents</h2>
   <div class="card-deck">
     <div class="card">
-      <img class="card-img-top" src="homepics/woman2.jpg" alt="Agent 1">
+      <img class="card-img-top" src="storage/homepics/woman2.jpg" alt="Agent 1">
       <div class="card-body">
         <h5 class="card-title">Sarah</h5>
         <p class="card-text">spécialisée dans la vente de propriétés résidentielles. Elle a une expérience de plus de 10 ans dans l'industrie immobilière et est connue pour son professionnalisme et sa détermination à aider ses clients à trouver leur maison de rêve.</p>
@@ -449,7 +478,7 @@ $(document).ready(function(){
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="homepics/man.jpg" alt="Agent 2">
+      <img class="card-img-top" src="storage/homepics/man.jpg" alt="Agent 2">
       <div class="card-body">
         <h5 class="card-title">Ahmed </h5>
         <p class="card-text">un expert en investissement immobilier.de 15 ans d'expérience dans l'industrie,il a aidé de nombreux investisseurs à trouver des opportunités d'investissement rentables. Il aide ses clients à comprendre les subtilités du marché immobilier.</p>
@@ -462,7 +491,7 @@ $(document).ready(function(){
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="homepics/man2.jpg" alt="Agent 3">
+      <img class="card-img-top" src="storage/homepics/man2.jpg" alt="Agent 3">
       <div class="card-body">
         <h5 class="card-title">Salim</h5>
         <p class="card-text">spécialisée dans la gestion immobilière.Il a une grande expérience dans la gestion de propriétés résidentielles et commerciales, ainsi que dans la location de biens. il connue pour sa compétence et son attention aux détails.</p>
@@ -483,14 +512,14 @@ $(document).ready(function(){
     <div class="card-deck">
       <div class="card">
        <a href="https://www.orpi.com/actualites/l-audit-energetique-bientot-obligatoire-pour-la-vente-de-son-logement-classe-f-ou-g/">
-        <img class="card-img-top" src="homepics/ccc.PNG" alt="Article 1"></a> 
+        <img class="card-img-top" src="storage/homepics/ccc.PNG" alt="Article 1"></a> 
         <div class="card-body">
           <h5 class="card-title">L’audit énergétique, obligatoire depuis le 1er avril 2023 pour la vente de son logement classé F ou G.</h5>
         </div>
       </div>
       <div class="card">
         <a href="https://www.orpi.com/actualites/les-logements-classes-g-au-dpe-seront-ils-interdits-a-la-location-des-janvier-2023/">  
-                <img class="card-img-top" src="homepics/three.jpg" alt="Article 2">
+                <img class="card-img-top" src="storage/homepics/three.jpg" alt="Article 2">
 </a>
         <div class="card-body">
           <h5 class="card-title">Les logements classés G au DPE seront-ils interdits à la location dès janvier 2023 ?</h5>
@@ -498,7 +527,7 @@ $(document).ready(function(){
       </div>
       <div class="card">
        <a href="https://www.orpi.com/actualites/dpe-tenez-vous-informe-des-nouvelles-reglementations/">
-       <img class="card-img-top" src="homepics/Article3.jpg" alt="Article 3"></a> 
+       <img class="card-img-top" src="storage/homepics/Article3.jpg" alt="Article 3"></a> 
         <div class="card-body">
           <h5 class="card-title">DPE : tenez-vous informé des nouvelles règlementations</h5>
         </div>

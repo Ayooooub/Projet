@@ -90,11 +90,11 @@ public function updatePicture(Request $request)
         $file = $request->file('picture');
         $extension = $file->getClientOriginalExtension();
         $filename = time().'.'.$extension;
-        $file->move('profile_pics/',$filename);
+        $file->move('storage/profile_pics/',$filename);
         $user->profilep = $filename;
     }
     else{
-        $user->profilep ='default.jpg';
+        $user->profilep ='storage/profile_pics/default.jpg';
 
 
     }
