@@ -14,13 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('houses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigincrements('id');
             $table->string('adresse');
             $table->string('type');
-            $table->float('prix');
+            $table->float('prix', 15, 2);
             $table->integer('nbpiece');
+            $table->integer('salle_bain');
+            $table->string('type_annonce');
             $table->integer('surface');
-            $table->mediumText('image');
+            $table->integer('annee_construction')->nullable();
+            $table->boolean('meublé')->default(false);
+            $table->boolean('balcon')->default(false);
+            $table->boolean('garage')->default(false);
+            $table->boolean('ascenceur')->default(false);
+            $table->boolean('cuisine_equipee')->default(false);
             $table->timestamps();
         });
     }

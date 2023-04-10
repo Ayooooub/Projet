@@ -36,87 +36,262 @@
         }
        
         .left-content {
-    min-height: 800px;
+    max-height: 100%;
     background-color: #f8f9fa !important;
-    margin-left: 20px;
+   
 }
 
         .right-content {
-            border: 1px solid #ccc;
+           
             background-color: #fff;
-            padding: 20px;
+          
         }
         .spacer {
             width: 1%;
         }
-    </style>
+       
+    /* Style pour les éléments de formulaire */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 50%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button[type="submit"] {
+        background-color:#9cbcd3;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* Style pour les éléments de navigation */
+    .left-content {
+        background-color: 
+#a5c2d7!important;
+       
+        padding: 20px;
+        height: 100vh;
+    }
+
+    .username {
+        margin-top: 10px;
+        font-size: 24px;
+    }
+
+    .nav-link {
+       color: #00308F;
+        margin-bottom: 10px;
+    }
+
+    .nav-link:hover {
+        text-decoration: none;
+    }
+
+    /* Style pour les images de profil */
+    .profile-picture {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 10px;
+    }
+    #nv2{
+      background-color:#9cbcd3 !important;
+    }
+    #info-link:visited, #password-link:visited ::after{
+ 
+  text-decoration: none;
+}
+#info-link, #password-link , #picture-link {
+  color: blue ;
+  text-decoration: none;
+}
+.active-link {
+    color: #9cbcd3 !important;
+    text-decoration: none;
+  }
+
+
+</style>
+
+   
 </head>
 <body>
-    <div class="container-fluid" style="margin-top:10px;">
-        <div class="row">
-            <!-- Left Navigation Bar -->
-            <div class="col-3 bg-primary left-content">
-            <img src="{{ asset('profile_pics/' . Auth::user()->profilep)   }}" class="profile-picture">
-
-            
-            <h2 class="username">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</h2>
-
-                <ul class="nav flex-column Show">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#personal-info"><i class="fas fa-id-card"></i> Mes infos personnelles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#favorites"><i class="fas fa-heart"></i> Voir mes favoris</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#annonce"><i class="fas fa-pencil-alt"></i> Déposer une annonce</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#account-settings"><i class="fas fa-cog"></i> Paramaitres</a>
-                    </li>
-                   
-                  
-                   
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#logout"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
-                    </li>
-                </ul>
-            </div>
-            
-            
-            <!-- Spacer Column -->
-            <!-- <div class=" spacer"></div> -->
-            <!-- Right Content Area -->
-            <div class="col-8 right-content">
-    <div class ="info_panel" style="padding-top: 10%;">
-        <h3>information perso</h3>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Nom</th>
-                    <td>{{ auth()->user()->nom }}</td>
-                </tr>
-                <tr>
-                    <th>Prénom</th>
-                    <td>{{ auth()->user()->prenom }}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>{{ auth()->user()->email }}</td>
-                </tr>
-                <tr>
-                    <th>Téléphone</th>
-                    <td>{{ auth()->user()->numtel }}</td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>{{ auth()->user()->adresse }}</td>
-                </tr>
-            </tbody>
-        </table>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id ="nv2" style="background-color: #6CB4EE;">
+  <div class="container-fluid">
+    <a class="navbar-brand  mx-auto"  href="#">Kay & Moi</a>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Left Navigation Bar -->
+    <div class="col-3 bg-primary left-content">
+      <img src="{{ asset('profile_pics/' . Auth::user()->profilep) }}" class="profile-picture">
+      <h2 class="username">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</h2>
+      <ul class="nav flex-column Show">
+        <li class="nav-item">
+          <a class="nav-link" href="#personal-info"><i class="fas fa-id-card"></i> Mes infos personnelles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#favorites"><i class="fas fa-heart"></i> Voir mes favoris</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#annonce"><i class="fas fa-pencil-alt"></i> Déposer une annonce</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#annonces-deposees"><i class="fas fa-bullhorn"></i> Mes annonces</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+        </li>
+      </ul>
     </div>
+
+    <!-- Spacer Column -->
+    <!-- <div class=" spacer"></div> -->
+    <!-- Right Content Area -->
+    <div class="col-8 right-content">
+
+<div class="info_panel" >
+  <div style="display:flex; padding-bottom:30px; margin-top:30px">
+  <a href="#info" class="active-link" style="cursor: pointer;" onclick="showInfoForm()" id="info-link">Informations personnells</a>
+  <a href="#pwd" style="cursor: pointer; margin-left:50px" onclick="showPasswordForm()" id="password-link">Changer le mot de passe</a>
+  <a href="#pic" style="cursor: pointer; margin-left:50px" onclick="showPictureForm()" id="picture-link">Changer la photo de profile</a>
+
+  </div>
+
+  <div id="info-form">
+    <form method="POST" action="{{ route('users.update') }}">
+      @csrf
+      @method('PUT')
+      <label for="nom">Nom:</label>
+      <input id="nom" type="text" name="nom" value="{{ auth()->user()->nom }}"><br><br>
+      <label for="prenom">Prénom:</label>
+      <input id="prenom" type="text" name="prenom" value="{{ auth()->user()->prenom }}"><br><br>
+      <label for="email">Email:</label>
+      <input id="email" type="email" name="email" value="{{ auth()->user()->email }}"><br><br>
+      <label for="numtel">Téléphone:</label>
+      <input id="numtel" type="tel" name="numtel" value="{{ auth()->user()->numtel }}"><br><br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+
+  <div id="password-form" style="display: none;">
+    <form method="POST" action="{{ route('users.update-password') }}">
+      @csrf
+      @method('PUT')
+      <label for="old_password">Votre mot de passe actuel:</label>
+      <input id="old_password" type="password" name="old_password"><br><br>
+      <label for="new_password">Votre nouveau mot de passe:</label>
+      <input id="new_password" type="password" name="new_password"><br><br>
+      <label for="new_password_confirmation">Confirmer le nouveu mot de passe</label>
+      <input id="new_password_confirmation" type="password" name="new_password_confirmation"><br><br>
+      <button type="submit">Enregistrer</button>
+    </form>
+    <form method="POST" action="{{ route('users.delete', ['user' => auth()->user()->id]) }}" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.')">
+      @csrf
+      @method('DELETE')
+      <button type="submit">Suprimmer ce compte </button>
+    </form>
+  </div>
+  <div id="picture-form" style="display: none;">
+  <form method="POST" action="{{ route('users.update-picture') }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    <label for="picture">Choisir une nouvelle photo de profile:</label>
+    <input type="file" id="picture" name="picture" accept="image/*"><br><br>
+    <button type="submit">Enregistrer</button>
+  </form>
+</div>
+
+  <script>
+    function showInfoForm() {
+    var infoLink = document.getElementById("info-link");
+    var passwordLink = document.getElementById("password-link");
+    var infoForm = document.getElementById("info-form");
+    var passwordForm = document.getElementById("password-form");
+    var pictureLink = document.getElementById("picture-link");
+    var pictureForm = document.getElementById("picture-form");
+    // Show the info form and hide the password form
+    infoForm.style.display = "block";
+    passwordForm.style.display = "none";
+    pictureForm.style.display = "none";
+    // Add the active-link class to the info link and remove it from the password link
+    infoLink.classList.add("active-link");
+    passwordLink.classList.remove("active-link");
+    pictureLink.classList.remove("active-link");
+  }
+
+  function showPasswordForm() {
+    var infoLink = document.getElementById("info-link");
+    var passwordLink = document.getElementById("password-link");
+    var infoForm = document.getElementById("info-form");
+    var passwordForm = document.getElementById("password-form");
+    var pictureLink = document.getElementById("picture-link");
+    var pictureForm = document.getElementById("picture-form");
+    // Show the password form and hide the info form
+    passwordForm.style.display = "block";
+    infoForm.style.display = "none";
+    pictureForm.style.display = "none";
+    // Add the active-link class to the password link and remove it from the info link
+    passwordLink.classList.add("active-link");
+    infoLink.classList.remove("active-link");
+    pictureLink.classList.remove("active-link");
+  }
+  function showPictureForm() {
+  var infoLink = document.getElementById("info-link");
+  var passwordLink = document.getElementById("password-link");
+  var pictureLink = document.getElementById("picture-link");
+  var infoForm = document.getElementById("info-form");
+  var passwordForm = document.getElementById("password-form");
+  var pictureForm = document.getElementById("picture-form");
+
+  // Show the picture form and hide the other forms
+  pictureForm.style.display = "block";
+  infoForm.style.display = "none";
+  passwordForm.style.display = "none";
+
+  // Add the active-link class to the picture link and remove it from the other links
+  pictureLink.classList.add("active-link");
+  infoLink.classList.remove("active-link");
+  passwordLink.classList.remove("active-link");
+}
+
+  </script>
+</div>
+
+
+<script>
+  function toggleForm(formId) {
+    var form = document.getElementById(formId + '-form');
+    var title = document.getElementById(formId);
+
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      title.classList.add('selected');
+    } else {
+      form.style.display = "none";
+      title.classList.remove('selected');
+    }
+  }
+</script>
+
+
 
 
             <div class="fav_panel">
