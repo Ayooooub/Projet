@@ -50,6 +50,11 @@
                   background-color: #447598;
           
                 }
+
+                .required {
+                color: red;
+                margin-left: 5px;
+              }
               </style>        
 
   
@@ -59,11 +64,11 @@
             <div class="col-md-6">
                 <form class="form-signup" method="post" action="{{ route('register.perform') }}"  enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                  <h2>Créer un Compte</h2>
+                  <h2>Inscription</h2>
                   <div class="form-group mb-0">
                         <div class="row">
                               <div class="col">
-                                <label for="name">Nom:</label>
+                                <label for="name">Nom : <span class="required">*</span></label>
                                 
                                 <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required>
                               </div>
@@ -74,18 +79,18 @@
                         </div>
                   </div>
                   <div class="form-group mt-2 mb-0">
-                        <label for="email">Adresse email:</label>
+                        <label for="email">Adresse email:<span class="required">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" required>
                         @if ($errors->has('email'))
-                           <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+                          <div class="alert alert-danger mt-2" role="alert">{{ $errors->first('email') }}</div>
                         @endif
                   </div>
                   <div class="form-group mt-2 mb-0">
-                        <label for="password">Mot de passe:</label>
+                        <label for="password">Mot de passe:</label> <span class="required">*</span></label>
                         <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}"
                             placeholder="Entrez votre mot de passe" required>
                             @if ($errors->has('password'))
-                                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+                            <div class="alert alert-danger mt-2" role="alert">{{ $errors->first('password') }}</div>
                             @endif
                   </div>
                   <div class="form-group mt-2 mb-0">
@@ -93,7 +98,7 @@
                       <input type="password" class="form-control" id="password" name="password_confirmation" value="{{ old('password_confirmation') }}"
                           placeholder="Confirmez votre mot de passe" required>
                           @if ($errors->has('password_confirmation'))
-                              <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
+                          <div class="alert alert-danger mt-2" role="alert">{{ $errors->first('password_confirmation') }}</div>
                           @endif
                   </div>
                   <div class="form-group">
@@ -101,7 +106,7 @@
                    <input type="file" class="form-control" id="profile_pic" name="profile_pic">
                    </div>
                   <div class="form-group mt-2 mb-0">
-                      <label for="numtel">Téléphone:</label>
+                      <label for="numtel">Téléphone: <span class="required">*</span></label></label>
                       <input type="text" class="form-control" id="tele" name="numtel" placeholder="Entrez votre numéro de téléphone " required>
                   </div>
                   <button type="submit" class="btn btn-primary mt-3" name="create">Créer un compte</button>

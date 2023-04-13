@@ -212,75 +212,128 @@
   #my-button{
     background-color: #3457D5;
   }
+  .navbar {
+ 
+
+  
+ align-items: center;
+
+}
+
+@media (max-width: 991.98px) {
+ .navbar-brand {
+   position:absolute;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+.navbar{
+   max-height: 500px !important ;
+}}
+.navbar{
+   max-height: 60px;
+}
 </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><b>Kay.com</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Acceuil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Conseils & Articles
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="#">Actualités</a>
-            <a class="dropdown-item" href="#">Articles</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Conseils</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Acheter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light " >
+      <a class="navbar-brand" href="homepage.php" >
+  <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+</a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ route('homee') }}">Acceuil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Conseils & Articles
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="/articles">Actualités & Conseils</a>
+                <a class="dropdown-item" href="">Articles</a>
+               
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Acheter
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <a class="dropdown-item" href="#">Maisons</a>
+                <a class="dropdown-item" href="#">Appartements</a>
+                <a class="dropdown-item" href="#">Immeubles</a>
+                
+                <a class="dropdown-item" href="#">Terrains</a>
+                
+                
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Louer
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <a class="dropdown-item" href="#">Maisons</a>
+                <a class="dropdown-item" href="#">Appartements</a>
+                <a class="dropdown-item" href="#">Immeubles</a>
+                
+                <a class="dropdown-item" href="#">Terrains</a>
+                
+               </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sell">Vendre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/estimer">Estimer</a>
+            </li>
             
-            <a class="dropdown-item" href="#">Terrains</a>
             
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Louer
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
-            
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Agents</a>
+            </li>
+          </ul>
+          @auth
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Vendre</a>
-        </li>
+            <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30">
+
+                </a>
+                <div class="dropdown-menu" style="left: -105px !important;" aria-labelledby="navbarDropdown4">
+                    <a class="dropdown-item" href="#">Modifier le profil</a>
+                    
+                    <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se deconnecter</a>
        
-        
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
+                </div>
+            </li>
         </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li  class="nav-item"  ><a class="nav-link"><i class="fas fa-heart" >
-        </i>         Mes favoris   </a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i>  Se connecter</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    </ul>
+
+
+
+          @endauth
+          @guest
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="mailto:info@kay.com">
+          <i class="fas fa-envelope">
+          </i> Contactez-nous</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login.show') }}"><i class="fas fa-user"></i> Se connecter</a>
+            </li>
+          </ul>
+        </div>
+
+          @endguest
+        </div>
+        
+
+
+      </nav>
+     
 <header class="header">
   <h1 class="header__title"  style="color: blue;">Estimation de votre Bien</h1>
 </header>
@@ -1498,6 +1551,17 @@
     const selectedRegion = regionSelect.value;
     updateMapView1(selectedRegion);
   });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var address = urlParams.get("address");
+  if (address) {
+    document.getElementById("city-select").value = address;
+    document.getElementById("district-select").value = address;
+  }
+});
+
+
   </script>
 
 </body>

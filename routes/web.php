@@ -42,7 +42,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     
     Route::get('/estimer', function () {
         return view('estimer');
-    });
+    })->name('estimer');
    
 
 
@@ -66,6 +66,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::post('/sell','HouseController@store')->name('sell.store');
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
     Route::get('/houses/{id}', 'HouseController@show');
+
+    Route::get('/articles', function () {
+        return view('articles');
+    });
 
 
     Route::get('/search-rent','HouseController@rentsearch');

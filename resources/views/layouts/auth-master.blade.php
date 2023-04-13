@@ -44,19 +44,29 @@
   align-items: center;
 
 }
-
 @media (max-width: 991.98px) {
   .navbar-brand {
-    position:absolute;
+    position: fixed;
+   
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999; /* Add a high z-index value to make sure the logo is displayed above other content */
   }
-.navbar{
-    max-height: 500px !important ;
-}}
-.navbar{
-    max-height: 60px;
+  .navbar {
+    max-height: 500px !important;
+   
+  }
+  .navbar img {
+    max-height: 200px;
+  }
 }
+
+.navbar {
+  max-height: 60px;
+ 
+}
+
+
 
       
     </style>
@@ -70,7 +80,7 @@
     
        
 <nav class="navbar navbar-expand-lg navbar-light bg-light " >
-      <a class="navbar-brand" href="homepage.php" >
+      <a class="navbar-brand" href="{{ route('homee') }}" >
   <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
 </a>
 
@@ -87,11 +97,9 @@
                 Conseils & Articles
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="#">Actualités</a>
+                <a class="dropdown-item" href="/articles">Actualités & Conseils</a>
                 <a class="dropdown-item" href="#">Articles</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Conseils</a>
-              </div>
+                
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,19 +118,18 @@
               Louer
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                <a class="dropdown-item" href="#">Maisons</a>
-                <a class="dropdown-item" href="#">Appartements</a>
-                <a class="dropdown-item" href="#">Immeubles</a>
-                
-                <a class="dropdown-item" href="#">Terrains</a>
-                
-               </div>
+    <a class="dropdown-item" href="/buy?type=maisons">Maisons</a>
+    <a class="dropdown-item" href="/buy?type=appartements">Appartements</a>
+    <a class="dropdown-item" href="/buy?type=immeubles">Immeubles</a>
+    <a class="dropdown-item" href="/buy?type=terrains">Terrains</a>
+</div>
+
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Vendre</a>
+              <a class="nav-link" href="/sell">Vendre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Estimer</a>
+              <a class="nav-link" href="/estimer">Estimer</a>
             </li>
             
             

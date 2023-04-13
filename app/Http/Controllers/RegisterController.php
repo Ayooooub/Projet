@@ -28,27 +28,21 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request) 
     {
-        
         $user = User::create($request->validated());
-         auth()->login($user);
+        auth()->login($user);
+    
         if ($request->hasFile('profile_pic')) {
-           
-
             $file = $request->file('profile_pic');
-            
             $filename = time() . '_' . $file->getClientOriginalName();
             $path = $file->storeAs('profile_pics', $filename, 'public');
             $user->profilep = $filename;
         }
-        else{
-            $user->profilep ='default.jpg';
-
-
+        else {
+            $user->profilep = 'default.jpg';
         }
-        $user->save();
         
-       
-
+        $user->save();
         return redirect('/')->with('success', "Account successfully registered.");
     }
+    
 }
