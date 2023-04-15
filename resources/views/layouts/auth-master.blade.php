@@ -10,6 +10,11 @@
     <meta charset="utf-8">
    
     
+    
+    
+    
+    
+  
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -18,7 +23,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-6asOXdI3HPxSxJzkw0B/Xy+BLIvG2QcXpgH4Ad8aOIWb97+IQz/6ZwUZZFY8U6W5+6d5J6XbN6HRZfLmj1hgw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 
     <!-- Bootstrap core CSS -->
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -70,9 +79,9 @@
     
        
 <nav class="navbar navbar-expand-lg navbar-light bg-light " >
-      <a class="navbar-brand" href="homepage.php" >
-  <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
-</a>
+      <a class="navbar-brand" href="/home" >
+        <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+      </a>
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -80,7 +89,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ route('homee') }}">Acceuil</a>
+              <a class="nav-link" href="{{ route('home') }}">Acceuil</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,7 +123,7 @@
               <a class="nav-link" href="/sell">Vendre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Estimer</a>
+              <a class="nav-link" href="/estimer">Estimer</a>
             </li>
             
             
@@ -126,13 +135,16 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
+            
             <li class="nav-item dropdown">
+              
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30">
+                  {{ Auth::user()->prenom }}  
+                  <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30" style="margin-left:3px">
 
                 </a>
-                <div class="dropdown-menu" style="left: -105px !important;" aria-labelledby="navbarDropdown4">
-                    <a class="dropdown-item" href="#">Modifier le profil</a>
+                <div class="dropdown-menu" style="left: -50px !important;" aria-labelledby="navbarDropdown4">
+                    <a class="dropdown-item" href="">Mon profil</a>
                     
                     <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se deconnecter</a>
        

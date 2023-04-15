@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigincrements('id');
-            $table->string('nom')->nullable();
-            $table->string('prenom')->nullable();
+            $table->string('nom', 255)->collation('utf8_bin');
+            $table->string('prenom', 255)->collation('utf8_bin');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('numtel')->nullable();

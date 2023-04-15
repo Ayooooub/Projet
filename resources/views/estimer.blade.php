@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Bootstrap Multi Step Form</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+@extends('layouts.auth-master')
 
+@section('content')
+<head>
+  
+  <title>Estimation </title>
+  
 
 <style>
     * {
@@ -215,72 +207,7 @@
 </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><b>Kay.com</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Acceuil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Conseils & Articles
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="#">Actualités</a>
-            <a class="dropdown-item" href="#">Articles</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Conseils</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Acheter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
-            
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Louer
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item" href="#">Maisons</a>
-            <a class="dropdown-item" href="#">Appartements</a>
-            <a class="dropdown-item" href="#">Immeubles</a>
-            
-            <a class="dropdown-item" href="#">Terrains</a>
-            
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Vendre</a>
-        </li>
-       
-        
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li  class="nav-item"  ><a class="nav-link"><i class="fas fa-heart" >
-        </i>         Mes favoris   </a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i>  Se connecter</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  
 <header class="header">
   <h1 class="header__title"  style="color: blue;">Estimation de votre Bien</h1>
 </header>
@@ -1501,4 +1428,4 @@
   </script>
 
 </body>
-</html>
+@endsection

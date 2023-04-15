@@ -19,7 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
-      
+    
     Route::group(['middleware' => ['guest']], function() {
         /**
          * Register Routes
@@ -34,9 +34,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-    Route::get('/homee', function () {
-        return view('home.homee');
-    })->name('homee');
+    Route::get('/home', function () {
+        return view('home.home');
+    })->name('home');
     
     
     

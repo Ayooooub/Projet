@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.auth-master')
+
+@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,18 +125,6 @@ a.text-decoration-none:hover {
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><b>Kay.com</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-12">
-        <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
-        <li class="nav-item"><a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i> Se connecter</a></li>
-      </ul>
-    </div>
-  </nav>
   
       <div class="d-sm-block d-md-none fixed-bottom">
         <div class="content">
@@ -380,4 +369,4 @@ a.text-decoration-none:hover {
 </body
 
    
-    
+  @endsection

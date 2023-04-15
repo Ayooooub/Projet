@@ -43,8 +43,8 @@ class UserController extends Controller
         {
             $user = Auth::user();
     
-            $user->nom = $request->input('nom');
-            $user->prenom = $request->input('prenom');
+            $user->nom = ucfirst($request->input('nom'));
+            $user->prenom = ucfirst($request->input('prenom'));
             $user->email = $request->input('email');
             $user->numtel = $request->input('numtel');
     
