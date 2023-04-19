@@ -61,10 +61,20 @@
 .navbar{
     max-height: 500px !important ;
 }}
+
+
 .navbar{
     max-height: 60px;
 }
 
+
+@media screen and (min-width: 1024px) {
+  /* CSS styles to apply when the screen is at least 1024px wide */
+  
+  .logo{
+    margin-left: 250%;
+  }
+}
       
     </style>
 
@@ -80,45 +90,109 @@
         
     <title>User Profile</title>
 
-    <style>
-      
-        /* .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: block;
-        }
-        .username {
-            text-align: center;
-            font-size: 20px;
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-       
-        .left-content {
-    max-height: 100%;
-    background-color: #f8f9fa !important;
-   
+
+<style>
+body {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: #2E383F;
+    background-color: #EFF5F9; /* set the background color of the page */
 }
 
-        .right-content {
-           
-            background-color: #fff;
-          
-        }
-        .spacer {
-            width: 1%;
-        }
-       
-    /* Style pour les éléments de formulaire */
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
+#header {
+   
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+   
+    width:300px !important;
+    background-color: #496B82; /* set the background color of the navigation menu */
+    width: 250px; /* set the width of the navigation menu */
+    box-shadow: 3px 0 3px 0px rgba(0,0,0,0.3);
+}
+
+
+
+#header .profile {
+    text-align: center;
+}
+
+#header .profile img {
+    margin: 15px auto;
+    display: block;
+    width: 100px;
+    border: 3px solid ;
+    border-color:  #EFF5F9;
+}
+
+#header .profile h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    text-align: center;
+ 
+
+    font-weight: bold;
+   
+    color: white !important;
+}
+
+
+header .active-link {
+  font-weight: bold;
+  color: #DBE6EE !important;
+  /* add other styles as desired */
+}
+
+.nav-menu {
+    padding: 30px 0 0 0;
+}
+
+.nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu>ul>li {
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-menu a ,
+.nav-menu a:focus {
+    display: flex;
+    align-items: center;
+    color: #AFC0CC;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.nav-menu a i,
+.nav-menu a:focus i {
+    font-size: 24px;
+    padding-right: 8px;
+    color: #AFC0CC;
+}
+
+
+button[type="submit"] {
+        background-color:#6999BB;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
     }
 
-    input[type="text"],
+
+input[type="text"],
     input[type="email"],
     input[type="tel"],
     input[type="password"] {
@@ -130,96 +204,115 @@
         box-sizing: border-box;
         font-size: 16px;
     }
+.nav-menu a:hover i,
+.nav-menu .active i,
+.nav-menu .active:focus i,
+.nav-menu li:hover>a i {
+    color: #DBE6EE;
+} 
 
-    button[type="submit"] {
-        background-color:#9cbcd3;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
+@media (max-width: 1199px) {
+    #header {
+        left: -300px;
     }
+}
 
-    /* Style pour les éléments de navigation */
-    .left-content {
-        background-color: 
-#a5c2d7!important;
-       
-        padding: 20px;
-        height: 100vh;
-    }
-
-    .username {
-        margin-top: 10px;
-        font-size: 24px;
+@media (max-width: 991px) {
+    #header {
+        width: 100%;
+        height: auto;
+        left: -100%;
+        transition: all 0.3s ease-in;
     }
 
-    .nav-link {
-       color: #00308F;
-        margin-bottom: 10px;
+    #header.active {
+        left: 0;
     }
 
-    .nav-link:hover {
-        text-decoration: none;
+    #header .profile {
+        display: none;
     }
 
-    /* Style pour les images de profil */
-    .profile-picture {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        margin-bottom: 10px;
+    .nav-menu {
+        padding-top: 10px;
     }
-    #nv2{
-      background-color:#9cbcd3 !important;
-    }
-    #info-link:visited, #password-link:visited ::after{
+}
+
+.mobile-nav-toggle {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    background-color: #149ddd;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+} 
+
+.mobile-nav-toggle:hover {
+    background-color: #37b3ed;
+}
+
+
+#info-form, #password-form, #picture-form {
+  margin-left: 50%; /* This will push the forms to the right */
+  margin-right: 10%; /* This will add some space on the right */
+  width: 80%; /* This will make the form 80% of the container width */
+}
+
+#info-form label,
+#info-form input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#info-form label{
+  width: 100px;
+  font-weight : bold;
+}
+#password-form label, 
+#picture-form label 
+ {
+   
+  font-weight : bold;
+}
+
+#info-form input {
+  width: 200px; /* adjust as needed */
+  margin-right: 20px; /* adjust as needed */
+}
+
+
+#info-links{
+  style: none;
+  margin-left: 40%; 
+  width: 90%;
+  font-size: 16px;
+
  
+  
+
+}
+
+#info-links a {
+  color:  #1F2D38 ;
   text-decoration: none;
 }
-#info-link, #password-link , #picture-link {
-  color: blue ;
-  text-decoration: none;
-}
-.active-link {
-    color: #9cbcd3 !important;
+
+#info-links .active-link {
+    color: #547A95!important;
     text-decoration: none;
+    font-weight:bold;
+   
   }
 
+ .fav_panel, .annonce_panel{
+    margin-left: 40%; 
 
-.badge{
-  color: black  ;
-  background-color: #C3D6E4!important;
+    width: 80%;
 }
-
-.btn-outline-secondary {
-  
-  background-color: #C3D6E4;
-  border-color: black;
-  color: black;
-  margin-bottom: 0.1rem;
- 
-
-}
-
-.btn-outline-secondary:hover {
-  color: #fff;
-  background-color:  #6798BB;
-}
-.btn-outline-secondary:active, 
-.btn-outline-secondary.active , 
-.btn-outline-secondary:focus{
-  
-  color: #fff!important;
-  background-color: #6798BB !important;
-  box-shadow: none !important;
-  
-}
-
-
-
-
 .card-img-top {
   height: 150px;
   object-fit: cover;
@@ -253,89 +346,63 @@
  
   
 }
-
-@media screen and (min-width: 1024px) {
-  /* CSS styles to apply when the screen is at least 1024px wide */
-  
-  .logo{
-    margin-left: 250%;
-  }
-}
-
-
-</style>
-
-   
+      </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light " >
-      <a class="navbar-brand" href="/home" >
-        <img src="storage/images/logo7.png"class="logo" alt="Kay.com logo" style="max-height: 200px;" >
-      </a>
+    <header id="header" >
+        <div class=" d-flex flex-column">
+            <div class="profile">
+            <img src="{{ asset('storage/profile_pics/' . Auth::user()->profilep) }}" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light user">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</h1>
+            </div>
 
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          
-        
+            <nav id="navbar" class="nav-menu navbar ">
+            <ul>
+                <li><a class="nav-link " href="#personal-info"><span><i class="fas fa-id-card"></i> Mes infos personnelles</span></a></li>
+                <li><a class="nav-link" href="#favorites"><i class="fas fa-heart"></i> <span>Voir mes favoris</span></a></li>
+                <li><a class="nav-link" href="#annonce"><i class="fas fa-pencil-alt"></i> <span>Déposer une annonce</span></a></li>
+                <li><a class="nav-link" href="#annonces-deposees"><i class="fas fa-bullhorn"></i> <pan>Mes annonces</span></a></li>
+                <li><a class="nav-link " href="/home"><span><i class="fas fa-home"></i> Revenir à l'acceuil</span></a></li>
+                <li><a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
+            </ul>
+            </nav><!-- .nav-menu -->
+        </div>
 
 
-      </nav>
 
-<div class="container-fluid">
+
+    </header><!-- End Header -->
+
+
+
+<div class=" container-fluid">
   <div class="row">
-    <!-- Left Navigation Bar -->
-    <div class="col-3 bg-primary left-content">
-      <img src="{{ asset('storage/profile_pics/' . Auth::user()->profilep) }}" class="profile-picture">
-      <h2 class="username">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</h2>
-      <ul class="nav flex-column Show">
-        <li class="nav-item">
-          <a class="nav-link" href="#personal-info"><i class="fas fa-id-card"></i> Mes infos personnelles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#favorites"><i class="fas fa-heart"></i> Voir mes favoris</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#annonce"><i class="fas fa-pencil-alt"></i> Déposer une annonce</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#annonces-deposees"><i class="fas fa-bullhorn"></i> Mes annonces</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Spacer Column -->
-    <!-- <div class=" spacer"></div> -->
-    <!-- Right Content Area -->
+   
     <div class="col-8 right-content">
+      <div class="info_panel mt-2">
+        <div class="row mt-3 mb-5 p-3 border rounded shadow" id="info-links">
+          <a href="#info" class="active-link col" style="cursor: pointer;" onclick="showInfoForm()" id="info-link">Informations personnelles</a>
+          <a href="#pwd" class="col" style="cursor: pointer;" onclick="showPasswordForm()" id="password-link">Changer le mot de passe</a>
+          <a href="#pic" class="col" style="cursor: pointer;" onclick="showPictureForm()" id="picture-link">Changer la photo de profil</a>
+        </div>
+      
 
-<div class="info_panel" >
-  <div style="display:flex; padding-bottom:30px; margin-top:30px">
-  <a href="#info" class="active-link" style="cursor: pointer;" onclick="showInfoForm()" id="info-link">Informations personnells</a>
-  <a href="#pwd" style="cursor: pointer; margin-left:50px" onclick="showPasswordForm()" id="password-link">Changer le mot de passe</a>
-  <a href="#pic" style="cursor: pointer; margin-left:50px" onclick="showPictureForm()" id="picture-link">Changer la photo de profile</a>
 
-  </div>
-
-  <div id="info-form">
-    <form method="POST" action="{{ route('users.update') }}">
-      @csrf
-      @method('PUT')
-      <label for="nom">Nom:</label>
-      <input id="nom" type="text" name="nom" value="{{ auth()->user()->nom }}"><br><br>
-      <label for="prenom">Prénom:</label>
-      <input id="prenom" type="text" name="prenom" value="{{ auth()->user()->prenom }}"><br><br>
-      <label for="email">Email:</label>
-      <input id="email" type="email" name="email" value="{{ auth()->user()->email }}"><br><br>
-      <label for="numtel">Téléphone:</label>
-      <input id="numtel" type="tel" name="numtel" value="{{ auth()->user()->numtel }}"><br><br>
-      <button type="submit">Enregistrer</button>
-    </form>
-  </div>
+      <div id="info-form">
+        <form method="POST" action="{{ route('users.update') }}">
+          @csrf
+          @method('PUT')
+          <label for="nom">Nom:</label>
+          <input id="nom" type="text" name="nom" value="{{ auth()->user()->nom }}"><br><br>
+          <label for="prenom">Prénom:</label>
+          <input id="prenom" type="text" name="prenom" value="{{ auth()->user()->prenom }}"><br><br>
+          <label for="email">Email:</label>
+          <input id="email" type="email" name="email" value="{{ auth()->user()->email }}"><br><br>
+          <label for="numtel">Téléphone:</label>
+          <input id="numtel" type="tel" name="numtel" value="{{ auth()->user()->numtel }}"><br><br>
+          <button type="submit">Enregistrer</button>
+        </form>
+      </div>
 
   <div id="password-form" style="display: none;">
     <form method="POST" action="{{ route('users.update-password') }}">
@@ -352,7 +419,7 @@
     <form method="POST" action="{{ route('users.delete', ['user' => auth()->user()->id]) }}" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.')">
       @csrf
       @method('DELETE')
-      <button type="submit">Suprimmer ce compte </button>
+      <button type="submit">Supprimer mon compte </button>
     </form>
   </div>
   <div id="picture-form" style="display: none;">
@@ -439,7 +506,11 @@
 
 
 
-
+            <div class="welcome_panel mt-5"> 
+              Bienvenue {{ Auth::user()->prenom }} {{ Auth::user()->nom }} !
+          
+          
+            </div>
             <div class="fav_panel mt-5">
                 <h3 class="mb-5">Mes favoris : </h3>
                 <div class="row ">
@@ -474,8 +545,8 @@
                     
                 </div>
             </div>
-            <div class="annonce_panel">
-                <h3>Déposer une annonce de maison</h3>
+            <div class="annonce_panel mt-5 ">
+                <h3 class="mb-5">Déposer une annonce de maison</h3>
                 <form>
                   <div class="form-group">
                     <label for="title">Titre de l'annonce:</label>
@@ -510,7 +581,7 @@
                     <input type="text" class="form-control" id="location" placeholder="Entrez l'emplacement de votre maison">
                   </div>
 
-                  <button type="submit" class="btn btn-primary">Déposer l'annonce</button>
+                  <button type="submit" class="btn btn-primary mt-3 mb-5">Déposer l'annonce</button>
                 </form>
               </div>
               
@@ -518,49 +589,68 @@
         </div>
     </div>
     <script>
-        // Get the link and the content element
-        const link = document.querySelector('a[href="#personal-info"]');
-        const content = document.querySelector('.info_panel');
-        content.style.display = 'block';
       
-        const flink = document.querySelector('a[href="#favorites"]');
-        const fcontent = document.querySelector('.fav_panel');
-        fcontent.style.display = 'none';
-      
-        const alink = document.querySelector('a[href="#annonce"]');
-        const acontent = document.querySelector('.annonce_panel');
-        acontent.style.display = 'none';
-      
-        // Add event listener to the link
-        link.addEventListener('click', () => {
-          // Toggle the display of the content element
-          if (content.style.display === 'none') {
-            content.style.display = 'block';
-            fcontent.style.display = 'none';
-            acontent.style.display = 'none';
-          }
-        });
-      
-        // Add event listener to the link
-        flink.addEventListener('click', () => {
-          // Toggle the display of the content element
-          if (fcontent.style.display === 'none') {
-            fcontent.style.display = 'block';
-            content.style.display = 'none';
-            acontent.style.display = 'none';
-          }
-        });
-      
-        // Add event listener to the link
-        alink.addEventListener('click', () => {
-          // Toggle the display of the content element
-          if (acontent.style.display === 'none') {
-            acontent.style.display = 'block';
-            content.style.display = 'none';
-            fcontent.style.display = 'none';
-          }
-        });
-      </script>
+  const welcomePanel = document.querySelector('.welcome_panel');
+  welcomePanel.style.display = 'block';
+
+  // Get the link and the content element
+  const link = document.querySelector('a[href="#personal-info"]');
+  const content = document.querySelector('.info_panel');
+  content.style.display = 'block';
+  
+  const flink = document.querySelector('a[href="#favorites"]');
+  const fcontent = document.querySelector('.fav_panel');
+  fcontent.style.display = 'none';
+  
+  const alink = document.querySelector('a[href="#annonce"]');
+  const acontent = document.querySelector('.annonce_panel');
+  acontent.style.display = 'none';
+  
+  // Add event listener to the link
+  link.addEventListener('click', () => {
+    // Toggle the display of the content element
+    if (content.style.display === 'none') {
+      content.style.display = 'block';
+      fcontent.style.display = 'none';
+      acontent.style.display = 'none';
+      welcomePanel.style.display = 'none'; // hide the welcome panel
+      link.classList.add('active-link'); // add the active-link class
+      flink.classList.remove('active-link'); // remove the class from other links
+      alink.classList.remove('active-link');
+    }
+  });
+
+  // Add event listener to the link
+  flink.addEventListener('click', () => {
+    // Toggle the display of the content element
+    if (fcontent.style.display === 'none') {
+      fcontent.style.display = 'block';
+      content.style.display = 'none';
+      acontent.style.display = 'none';
+      welcomePanel.style.display = 'none'; // hide the welcome panel
+      flink.classList.add('active-link'); // add the active-link class
+      link.classList.remove('active-link'); // remove the class from other links
+      alink.classList.remove('active-link');
+    }
+  });
+
+  // Add event listener to the link
+  alink.addEventListener('click', () => {
+    // Toggle the display of the content element
+    if (acontent.style.display === 'none') {
+      acontent.style.display = 'block';
+      content.style.display = 'none';
+      fcontent.style.display = 'none';
+      welcomePanel.style.display = 'none'; // hide the welcome panel
+      alink.classList.add('active-link'); // add the active-link class
+      link.classList.remove('active-link'); // remove the class from other links
+      flink.classList.remove('active-link');
+    }
+  });
+</script>
+
+
+   
 
 
        
@@ -647,3 +737,4 @@
 
     @endadmin
     
+</body>

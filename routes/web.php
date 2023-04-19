@@ -19,6 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/indexx', 'HomeController@indexx')->name('home.index');
     
     Route::group(['middleware' => ['guest']], function() {
         /**
@@ -62,14 +63,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::put('/users/password', 'UserController@updatePassword')->name('users.update-password');
     Route::get('/useracess', 'UserController@index')->name('users.acess');
     Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+   
+   
     Route::get('/sell', function(){ return view('searchpages.sell');})->name('searchpages.sell');
     Route::post('/sell','HouseController@store')->name('sell.store');
+    Route::get('/sellbuilding', function(){ return view('searchpages.sellbuilding');});
+    Route::post('/sellbuilding','BuildingController@store')->name('building.store');
+
+
+
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
     Route::get('/houses/{id}', 'HouseController@show');
 
     //Searchpages functions
-    Route::get('/search-rent','HouseController@rentsearch');
-    Route::get('/search-buy','HouseController@buysearch');
+    Route::get('/search-rent','SearchController@rentsearch');
+    Route::get('/search-buy','SearchController@buysearch');
 
     //Favoris
   // web.php

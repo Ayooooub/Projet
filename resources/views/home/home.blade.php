@@ -309,7 +309,7 @@ document.getElementById("estimerbtn").addEventListener("click", function() {
                 <input class="form-check-input checkbox-no-label" type="checkbox" name="rent_maison" checked> Maisons
               </div>
               <div class="form-check">
-                <input class="form-check-input checkbox-no-label" type="checkbox" value="" id="check2" > Parking
+                <input class="form-check-input checkbox-no-label" type="checkbox" name="rent_immeuble" > Immeubles
               </div> 
             </div>
             <div class="form-row">
@@ -329,6 +329,9 @@ document.getElementById("estimerbtn").addEventListener("click", function() {
               </div>
               <div class="form-check">
                    <input class="form-check-input checkbox-no-label" type="checkbox" name="buy_maison" value="Maison" checked> Maisons
+              </div>
+              <div class="form-check">
+                   <input class="form-check-input checkbox-no-label" type="checkbox" name="buy_immeuble" value="Immeuble" checked> Immeubles
               </div>
                
             </div>

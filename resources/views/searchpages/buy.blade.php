@@ -339,7 +339,7 @@ background-color: #0069d9;
   
       </script>
       
-      <div class="container mt-3">
+      <!-- <div class="container mt-3">
       <div class="row">
             <div class=" col">
               <label for="filter">Type:</label>
@@ -365,73 +365,98 @@ background-color: #0069d9;
                 <option value="apartments">Apartments</option>
               </select>
             </div>
-      </div>
+      </div> -->
+
+      
+
+   <div class="container " style="margin-top: 20px;">
+      <div class="row" style="margin-top: 40px;">
+        @if ($houses->isEmpty() && $buildings->isEmpty())
+          <div class="col text-center mt-5">
+            <i class="fas fa-search fa-2x text-muted"></i>
+            <h6 class="mt-3 ">Aucun résultat trouvé.</h6>
+          </div>
+        @else     
+
+
+    
     
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2 ad-column">
-      <div class="card mb-4 box-shadow">
-          <img class="card-img-top" src="background.jpg" alt="Ad">
+    @foreach ($houses as $item)
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <a href="/houses/{{ $item->id }}">
+            @if($item->images->count() > 0 )
+              <img class="card-img-top" src="{{ asset('storage/house_images/'.$item->images->first()->path ) }}" alt="Maison">
+           
+            @else
+              <img class="card-img-top" src="{{ asset('storage/default_house.jpg') }}" alt="Maison">
+            @endif
+          </a>
           <div class="card-body">
-              <h5 class="card-title">Example Ad</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non tellus ac justo euismod eleifend. Sed auctor faucibus sem et pharetra.</p>
-          </div>
-      </div>
-    </div>
-  
-    <div class="col-md-10">
-        
-          <div class="container" id="houses-container" style="margin-top: 20px;">
-            <div class="row" style="margin-top: 40px;">
-              @foreach ($houses as $item)
-                <div class="col-md-4">
-                  <div class="card mb-4 box-shadow">
-                    <a href="/houses/{{ $item->id }}">
-                      @if($item->images->count() > 0)
-                        <img class="card-img-top" src="{{ asset('storage/house_images/'.$item->images->first()->path ) }}" alt="Maison">
-                      @endif
-                    </a>
-                    <div class="card-body">
-                      <h6 class="card-title mt-2">{{ $item->type }}</h6>
-                      <div class="d-flex justify-content-between align-items-start">
-                        <div>
-                          <p class="card-text mb-2">
-                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                            <span class="badge badge-secondary">{{ $item->nbpiece }} pièces</span>
-                          </p>
-                        </div>
-                        <p class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </p>
-                      </div>
-                      <h6 class="card-text adresse ">
-                        {{ $item->adresse  }}
-                      </h6>
-                      <div class="btn-group d-flex justify-content-center align-items-center mt-3 " role="group">
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
-                        <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
+            <h6 class="card-title mt-2">{{ $item->type }}</h6>
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="card-text mb-2">
+                  <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+                  <span class="badge badge-secondary">{{ $item->nbpiece }} pièces</span>
+                </p>
+              </div>
+              <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
+            </div>
+            <h6 class="card-text adresse ">
+              {{ $item->adresse  }}
+            </h6>
+            <div class="btn-group d-flex justify-content-center align-houses-center mt-3 " role="group">
+              <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
+              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
             </div>
           </div>
         </div>
-    </div>
-    <div class="col-md-1">
-      <!-- Advertisement !-->
+      </div>
+    @endforeach
+     
+    @foreach ($buildings as $item)
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <a href="/houses/{{ $item->id }}">
+           
+            @if($item->images->count() > 0 )
+              <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
+            @else
+              <img class="card-img-top" src="{{ asset('storage/default_house.jpg') }}" alt="Maison">
+            @endif
+          </a>
+          <div class="card-body">
+            <h6 class="card-title mt-2">{{ $item->type }}</h6>
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="card-text mb-2">
+                  <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+                  <span class="badge badge-secondary">{{ $item->nb_etage }} étages</span>
+                </p>
+              </div>
+              <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
+            </div>
+            <h6 class="card-text adresse ">
+              {{ $item->adresse  }}
+            </h6>
+            <div class="btn-group d-flex justify-content-center align-houses-center mt-3 " role="group">
+              <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
+              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
+   
+    @endif
+  </div> 
 
-
-    </div>
-  </div>
-</div>
-  
-
- 
 <script>
 
   //FAVORITE FUNCTION
-$(document).ready(function() {
+  $(document).ready(function() {
     // Add an event listener for the "Add to favorites" button click event
     $('.add-to-favorites').on('click', function(event) {
         // Prevent the default behavior of the button
@@ -439,8 +464,9 @@ $(document).ready(function() {
 
         console.log('Button clicked!'); // Add this line
         
-        // Get the house ID from the data attribute of the button
+        // Get the house ID and type from the data attributes of the button
         var houseId = $(this).data('house-id');
+        var houseType = $(this).data('house-type');
         
         // Make an AJAX request to add the house to the user's favorites
         $.ajax({
@@ -450,7 +476,8 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
-              'house_id': houseId
+              'favorited_id': houseId,
+              'favorited_type': houseType
             },
             success: function(response) {
                 // Handle the success response from the server
@@ -466,33 +493,6 @@ $(document).ready(function() {
             }
         });
     });
-});
-
-
-
-// FILTER FUNCTION
-$(document).ready(function() {
-  // Listen for changes to the select element
-  $('#filter').change(function() {
-    // Get the selected value from the select element
-    var filterValue = $(this).val();
-
-    // Make an AJAX request to get the filtered houses
-    $.ajax({
-      type: 'GET',
-      url: '/houses/filter',
-      data: { filter: filterValue },
-      dataType: 'html',
-      success: function(response) {
-        // Update the content of the houses container with the filtered houses
-        $('#houses-container').html(response);
-      },
-      error: function(xhr, textStatus, errorThrown) {
-        // Handle the error
-        console.log('Error getting filtered houses: ' + errorThrown);
-      }
-    });
-  });
 });
 
 </script>

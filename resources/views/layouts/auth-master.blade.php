@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,7 +78,7 @@
     
     
        
-<nav class="navbar navbar-expand-lg navbar-light bg-light " >
+<nav class="navbar navbar-expand-lg navbar-light bg-light border p-1 shadow" >
       <a class="navbar-brand" href="/home" >
         <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
       </a>
@@ -133,7 +133,7 @@
           </ul>
           @auth
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item ">
             <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
             
             <li class="nav-item dropdown">
@@ -143,8 +143,8 @@
                   <img src="{{ asset('storage/profile_pics/'. Auth::user()->profilep) }}" alt="Profile picture" class="rounded-circle" width="30" height="30" style="margin-left:3px">
 
                 </a>
-                <div class="dropdown-menu" style="left: -50px !important;" aria-labelledby="navbarDropdown4">
-                    <a class="dropdown-item" href="">Mon profil</a>
+                <div class="dropdown-menu" style="left: -40px !important;" aria-labelledby="navbarDropdown4">
+                    <a class="dropdown-item" href="/">Mon profil</a>
                     
                     <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se deconnecter</a>
        

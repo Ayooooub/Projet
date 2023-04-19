@@ -13,6 +13,7 @@ class UserController extends Controller
         
         public function show(){
             $users = User::get();
+            
             return view('admin.users',compact('users'));
 
 
@@ -23,6 +24,7 @@ class UserController extends Controller
         {
             if (Auth::check()) {
                 $user = Auth::user();
+                
                 if ($user->usertype !== 'admin') {
                     abort(403);
                 }

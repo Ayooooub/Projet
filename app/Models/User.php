@@ -62,10 +62,15 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
-
     public function favoriteHouses()
     {
-        return $this->belongsToMany(House::class, 'favorite_houses');
+        return $this->belongsToMany('App\Models\House', 'favorite_houses', 'user_id', 'unit_id')->where('type', 'Maison')->orWhere('type', 'Appartement')->withTimestamps();
     }
-
+    
+    public function favoriteBuildings()
+    {
+        return $this->belongsToMany('App\Models\Building', 'favorite_houses', 'user_id', 'unit_id')
+                    ->where('type', 'Immeuble')
+                    ->withTimestamps();
+    }
 }
