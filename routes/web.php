@@ -67,24 +67,30 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
    
     Route::get('/sell', function(){ return view('searchpages.sell');})->name('searchpages.sell');
     Route::post('/sell','HouseController@store')->name('sell.store');
+
     Route::get('/sellbuilding', function(){ return view('searchpages.sellbuilding');});
     Route::post('/sellbuilding','BuildingController@store')->name('building.store');
 
-
+    Route::get('/sell_land', function(){ return view('searchpages.sell_land');});
+    Route::post('/sell_land','LandController@store')->name('land.store');
 
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
     Route::get('/houses/{id}', 'HouseController@show');
+    Route::get('/buildings/{id}', 'BuildingController@show');
+
+    Route::get('/lands/{id}', 'LandController@show');
 
     //Searchpages functions
     Route::get('/search-rent','SearchController@rentsearch');
     Route::get('/search-buy','SearchController@buysearch');
 
     //Favoris
-  // web.php
-  Route::post('/houses/add-to-favorites', 'HouseController@toggleFavorite')->middleware('auth')->name('add-to-favorites');
+ 
+    Route::post('/houses/add-to-favorites', 'HouseController@toggleFavorite')->middleware('auth')->name('add-to-favorites');
+    Route::post('/buildings/add-to-favorites', 'BuildingController@toggleFavorite')->middleware('auth')->name('add-building-to-favorites');
+    Route::post('/lands/add-land-to-favorites', 'LandController@toggleFavorite')->middleware('auth')->name('add-land-to-favorites');
 
-
-Route::get('/houses/filter', 'HouseController@filter')->name('houses.filter');
+    //Route::get('/houses/filter', 'HouseController@filter')->name('houses.filter'); //(in progress)
 
    
     

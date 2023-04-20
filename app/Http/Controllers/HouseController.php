@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\House;
 use App\Models\Building;
+use App\Models\Land;
 use App\Models\Image;
 
 class HouseController extends Controller
@@ -14,8 +15,9 @@ class HouseController extends Controller
     public function index(){
         $houses = House::all();
         $buildings = Building::all();
+        $lands = Land::all();
         
-        return view('searchpages.buy',compact('houses','buildings'));
+        return view('searchpages.buy',compact('houses','buildings','lands'));
    }
 
    public function store(Request $request){  //save function
@@ -38,6 +40,8 @@ class HouseController extends Controller
     $house->nbpiece = $request ->input('nbpiece');
     $house->salle_bain = $request->input('bain');
     $house->annee_construction = $request->input('annee_const');
+    $house->nb_etage = $request->input('nb_etage');
+    $house->num_etage= $request->input('num_etage');
     
     //checkboxes :
 
@@ -90,32 +94,19 @@ class HouseController extends Controller
         return view('houses.index', compact('houses'))->render();
     }
     public function toggleFavorite(Request $request)
-{
-    $favorited_id = $request->input('unit_id');
-    $favorited_type = $request->input('unit_type');
-    $user = Auth::user();
-
-    // Check the favorited type and use the corresponding relationship method
-    if ($favorited_type == 'Maison' || $favorited_type == 'Appartement') {
-        $favorites = $user->favoriteHouses();
-    } else {
-        $favorites = $user->favoriteBuildings();
+    {
+        $house_id = $request->input('house_id');
+        $user = Auth::user();
+        
+        if ($user->favoriteHouses->contains($house_id)) {
+            // House already favorited, remove it
+            $user->favoriteHouses()->detach($house_id);
+            return response()->json(['status' => 'success', 'message' => 'House removed from favorites.']);
+        } else {
+            // House not favorited, add it
+            $user->favoriteHouses()->attach($house_id);
+            return response()->json(['status' => 'success', 'message' => 'House added to favorites.']);
+        }
     }
-
-    if ($favorites->where('favorite_houses.id', $favorited_id)->exists()) {
-        // Item already favorited, remove it
-        $favorites->detach($favorited_id);
-
-        return response()->json(['status' => 'success', 'message' => 'Item removed from favorites.']);
-    } else {
-        // Item not favorited, add it
-        $favorites->attach($favorited_id);
-
-        return response()->json(['status' => 'success', 'message' => 'Item added to favorites.']);
-    }
-}
-
-    
-
 
 }

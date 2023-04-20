@@ -371,7 +371,7 @@ background-color: #0069d9;
 
    <div class="container " style="margin-top: 20px;">
       <div class="row" style="margin-top: 40px;">
-        @if ($houses->isEmpty() && $buildings->isEmpty())
+        @if ($houses->isEmpty() && $buildings->isEmpty() && $lands->isEmpty()) 
           <div class="col text-center mt-5">
             <i class="fas fa-search fa-2x text-muted"></i>
             <h6 class="mt-3 ">Aucun résultat trouvé.</h6>
@@ -399,7 +399,7 @@ background-color: #0069d9;
               <div>
                 <p class="card-text mb-2">
                   <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                  <span class="badge badge-secondary">{{ $item->nbpiece }} pièces</span>
+                  <span class="badge badge-secondary"> {{ $item->nbpiece }} @if($item->nbpiece > 1)pièces @else pièce @endif </span>
                 </p>
               </div>
               <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
@@ -409,7 +409,10 @@ background-color: #0069d9;
             </h6>
             <div class="btn-group d-flex justify-content-center align-houses-center mt-3 " role="group">
               <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
-              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
+              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}" data-favorited="true">
+                  <i class="far fa-heart"></i> Favoris
+              </button>
+
             </div>
           </div>
         </div>
@@ -419,7 +422,7 @@ background-color: #0069d9;
     @foreach ($buildings as $item)
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
-          <a href="/houses/{{ $item->id }}">
+          <a href="/buildings/{{ $item->id }}">
            
             @if($item->images->count() > 0 )
               <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
@@ -433,7 +436,7 @@ background-color: #0069d9;
               <div>
                 <p class="card-text mb-2">
                   <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                  <span class="badge badge-secondary">{{ $item->nb_etage }} étages</span>
+                  <span class="badge badge-secondary">{{ $item->nb_etage }} @if($item->nb_etage > 1)étages @else étage @endif étages</span>
                 </p>
               </div>
               <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
@@ -443,56 +446,278 @@ background-color: #0069d9;
             </h6>
             <div class="btn-group d-flex justify-content-center align-houses-center mt-3 " role="group">
               <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
-              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-to-favorites" data-house-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
+              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-building-to-favorites" data-building-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
             </div>
           </div>
         </div>
       </div>
     @endforeach
-   
+
+     
+    @foreach ($lands as $item)
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <a href="/houses/{{ $item->id }}">
+           
+            @if($item->images->count() > 0 )
+              <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">
+            @else
+              <img class="card-img-top" src="{{ asset('storage/default_house.jpg') }}" alt="Maison">
+            @endif
+          </a>
+          <div class="card-body">
+            <h6 class="card-title mt-2">{{ $item->type }}</h6>
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="card-text mb-2">
+                  <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+                 
+                </p>
+              </div>
+              <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
+            </div>
+            <h6 class="card-text adresse ">
+              {{ $item->adresse  }}
+            </h6>
+            <div class="btn-group d-flex justify-content-center align-houses-center mt-3 " role="group">
+              <button type="button" class="btn btn-outline-secondary btn-sm w-100"> <i class="far fa-envelope"></i> Contactez-nous</button>
+              <button type="submit" class="btn btn-outline-secondary btn-sm w-100 add-land-to-favorites" data-land-id="{{ $item->id }}"> <i class="far fa-heart"></i> Favoris</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
+
     @endif
   </div> 
 
 <script>
 
-  //FAVORITE FUNCTION
-  $(document).ready(function() {
-    // Add an event listener for the "Add to favorites" button click event
-    $('.add-to-favorites').on('click', function(event) {
-        // Prevent the default behavior of the button
-        event.preventDefault();
+//*************************** House favorite Function ************************************************
+//****************************************************************************************************
 
-        console.log('Button clicked!'); // Add this line
-        
-        // Get the house ID and type from the data attributes of the button
-        var houseId = $(this).data('house-id');
-        var houseType = $(this).data('house-type');
-        
-        // Make an AJAX request to add the house to the user's favorites
-        $.ajax({
-            url:  '{{ route("add-to-favorites") }}',
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-              'favorited_id': houseId,
-              'favorited_type': houseType
-            },
-            success: function(response) {
-                // Handle the success response from the server
-                alert(response.message);
-            },
-            error: function(xhr) {
-                // Handle the error response from the server
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    alert(xhr.responseJSON.message);
-                } else {
-                    alert('An error occurred while adding the house to your favorites.');
-                }
+$(document).ready(function() {
+    // Get the favorite house IDs from localStorage, or an empty array if none are found
+var favoriteHouseIds = JSON.parse(localStorage.getItem('favoriteHouseIds')) || [];
+
+// Add an event listener for the "Add to favorites" button click event
+$('.add-to-favorites').on('click', function(event) {
+    // Prevent the default behavior of the button
+    event.preventDefault();
+
+    // Get the house ID from the data attribute of the button
+    var houseId = $(this).data('house-id');
+
+    // Check if the house is already in the user's favorites
+    var houseIndex = favoriteHouseIds.indexOf(houseId);
+    if (houseIndex !== -1) {
+        // The house is already in the user's favorites, so remove it
+        favoriteHouseIds.splice(houseIndex, 1);
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    } else {
+        // The house is not yet in the user's favorites, so add it
+        favoriteHouseIds.push(houseId);
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    }
+
+    // Store the updated favorite house IDs in localStorage
+    localStorage.setItem('favoriteHouseIds', JSON.stringify(favoriteHouseIds));
+
+    // Make an AJAX request to add/remove the house to/from the user's favorites on the server
+    $.ajax({
+        url: '{{ route("add-to-favorites") }}',
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            'house_id': houseId
+        },
+        success: function(response) {
+            // Handle the success response from the server
+            alert(response.message);
+        },
+        error: function(xhr) {
+            // Handle the error response from the server
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                alert(xhr.responseJSON.message);
+            } else {
+                alert('An error occurred while adding/removing the house to/from your favorites.');
             }
-        });
+        }
     });
+});
+
+// Set the text of the "Add to favorites" button based on whether the house is already in the user's favorites
+$('.add-to-favorites').each(function() {
+    var houseId = $(this).data('house-id');
+    if (favoriteHouseIds.includes(houseId)) {
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    } else {
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    }
+});
+
+});
+
+
+//*************************** Building favorite Function ************************************************
+//****************************************************************************************************
+
+$(document).ready(function() {
+    // Get the favorite building IDs from localStorage, or an empty array if none are found
+var favoriteBuildingIds = JSON.parse(localStorage.getItem('favoriteBuildingIds')) || [];
+
+// Add an event listener for the "Add to favorites" button click event
+$('.add-building-to-favorites').on('click', function(event) {
+    // Prevent the default behavior of the button
+    event.preventDefault();
+
+    // Get the building ID from the data attribute of the button
+    var buildingId = $(this).data('building-id');
+
+    // Check if the building is already in the user's favorites
+    var buildingIndex = favoriteBuildingIds.indexOf(buildingId);
+    if (buildingIndex !== -1) {
+        // The building is already in the user's favorites, so remove it
+        favoriteBuildingIds.splice(buildingIndex, 1);
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    } else {
+        // The building is not yet in the user's favorites, so add it
+        favoriteBuildingIds.push(buildingId);
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    }
+
+    // Store the updated favorite building IDs in localStorage
+    localStorage.setItem('favoriteBuildingIds', JSON.stringify(favoriteBuildingIds));
+
+    // Make an AJAX request to add/remove the building to/from the user's favorites on the server
+    $.ajax({
+        url: '{{ route("add-building-to-favorites") }}',
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            'building_id': buildingId
+        },
+        success: function(response) {
+            // Handle the success response from the server
+            alert(response.message);
+        },
+        error: function(xhr) {
+            // Handle the error response from the server
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                alert(xhr.responseJSON.message);
+            } else {
+                alert('An error occurred while adding/removing the building to/from your favorites.');
+            }
+        }
+    });
+});
+
+// Set the text of the "Add to favorites" button based on whether the building is already in the user's favorites
+$('.add-building-to-favorites').each(function() {
+    var buildingId = $(this).data('building-id');
+    if (favoriteBuildingIds.includes(buildingId)) {
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    } else {
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    }
+});
+
+});
+
+//*************************** Land favorite Function ************************************************
+//****************************************************************************************************
+
+
+$(document).ready(function() {
+    // Get the favorite land IDs from localStorage, or an empty array if none are found
+var favoriteLandIds = JSON.parse(localStorage.getItem('favoriteLandIds')) || [];
+
+// Add an event listener for the "Add to favorites" button click event
+$('.add-land-to-favorites').on('click', function(event) {
+    // Prevent the default behavior of the button
+    event.preventDefault();
+
+    // Get the land ID from the data attribute of the button
+    var landId = $(this).data('land-id');
+
+    // Check if the land is already in the user's favorites
+    var landIndex = favoriteLandIds.indexOf(landId);
+    if (landIndex !== -1) {
+        // The land is already in the user's favorites, so remove it
+        favoriteLandIds.splice(landIndex, 1);
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    } else {
+        // The land is not yet in the user's favorites, so add it
+        favoriteLandIds.push(landId);
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    }
+
+    // Store the updated favorite land IDs in localStorage
+    localStorage.setItem('favoriteLandIds', JSON.stringify(favoriteLandIds));
+
+    // Make an AJAX request to add/remove the Land to/from the user's favorites on the server
+    $.ajax({
+        url: '{{ route("add-land-to-favorites") }}',
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            'land_id': landId
+        },
+        success: function(response) {
+            // Handle the success response from the server
+            alert(response.message);
+        },
+        error: function(xhr) {
+            // Handle the error response from the server
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                alert(xhr.responseJSON.message);
+            } else {
+                alert('An error occurred while adding/removing the land to/from your favorites.');
+            }
+        }
+    });
+});
+
+// Set the text of the "Add to favorites" button based on whether the land is already in the user's favorites
+$('.add-land-to-favorites').each(function() {
+    var landId = $(this).data('land-id');
+    if (favoriteLandIds.includes(landId)) {
+        $(this).html('<i class="fas fa-heart"></i> Favoris');
+    } else {
+        $(this).html('<i class="far fa-heart"></i> Favoris');
+    }
+});
+
+});
+
+
+$(document).ready(function() {
+  $('#sort-select').change(function() {
+    var sortType = $(this).val();
+    var url = '/search-rent';
+    
+    if (sortType === 'date_asc') {
+      url += '?sort=date_asc';
+    } else if (sortType === 'date_desc') {
+      url += '?sort=date_desc';
+    } else if (sortType === 'price_asc') {
+      url += '?sort=price_asc';
+    } else if (sortType === 'price_desc') {
+      url += '?sort=price_desc';
+    } else if (sortType === 'type_asc') {
+      url += '?sort=type_asc';
+    } else if (sortType === 'type_desc') {
+      url += '?sort=type_desc';
+    }
+    
+    window.location.href = url;
+  });
 });
 
 </script>

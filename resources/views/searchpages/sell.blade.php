@@ -156,13 +156,13 @@
                         <input type="number" class="form-control" name="annee_const" placeholder="Donnez l'année de construction du bien " >
                   </div>
                   <div class="form-row mt-2 mb-0">
-                        <label for="etage">Etage :</label>  <!-- for appartments only -->
-                        <input type="number" class="form-control" name="etage" placeholder="Donnez le numéro d'étage de l'appartement">
+                        <label for="etage">Etage numéro :</label>  <!-- for appartments only -->
+                        <input type="number" class="form-control" name="num_etage" placeholder="Donnez le numéro d'étage de l'appartement">
                   </div>
 
                   <div class="form-row mt-2 mb-0">
                         <label for="nb_etages">Nombre d'étages dans l'immeuble :</label>  <!-- for appartments only -->
-                        <input type="number" class="form-control" name="nb_etages" placeholder="Donnez le nombre total d'étages dans l'immeuble">
+                        <input type="number" class="form-control" name="nb_etage" placeholder="Donnez le nombre total d'étages dans l'immeuble">
                   </div>
 
 

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('type_annonce');
             $table->integer('surface');
             $table->integer('annee_construction')->nullable();
+            $table->integer('nb_etage')->nullable();
+            $table->integer('num_etage')->nullable();
             $table->boolean('meublé')->default(false);
             $table->boolean('balcon')->default(false);
             $table->boolean('garage')->default(false);

@@ -18,9 +18,8 @@ class House extends Model
 
     public function favoritedBy()
     {
-        return $this->morphToMany(User::class, 'favorite', 'favorite_houses', 'unit_id')
-                    ->withPivot('type')
-                    ->wherePivot('type', 'house');
+        return $this->belongsToMany(User::class, 'favorite_houses');
     }
+    
     
 }

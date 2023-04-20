@@ -311,8 +311,16 @@ input[type="text"],
  .fav_panel, .annonce_panel{
     margin-left: 40%; 
 
-    width: 80%;
+    width: 100%;
 }
+
+.welcome_panel{
+  margin-left: 40%; 
+  margin-top: 15%;
+  width: 80%;
+
+}
+
 .card-img-top {
   height: 150px;
   object-fit: cover;
@@ -322,7 +330,7 @@ input[type="text"],
 .card-body{
   font-size: 16px;
   padding: 15px;
-  height: 150px;
+  height: 140px;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
 
@@ -331,12 +339,14 @@ input[type="text"],
 .card-subtitle {
   font-size: 16px;
   line-height: 1.1;
+  font-weight: bold ;
   
 }
 
 .card-text {
   font-size: 14px;
   line-height: 1.3;
+  font-weight: bold;
 }
 
 .price{
@@ -346,6 +356,14 @@ input[type="text"],
  
   
 }
+
+
+.badge{
+  color: black  ;
+  background-color: #C3D6E4!important;
+}
+
+
       </style>
 </head>
 <body>
@@ -380,7 +398,7 @@ input[type="text"],
    
     <div class="col-8 right-content">
       <div class="info_panel mt-2">
-        <div class="row mt-3 mb-5 p-3 border rounded shadow" id="info-links">
+        <div class="row mt-4 mb-5 p-3 border rounded shadow" id="info-links">
           <a href="#info" class="active-link col" style="cursor: pointer;" onclick="showInfoForm()" id="info-link">Informations personnelles</a>
           <a href="#pwd" class="col" style="cursor: pointer;" onclick="showPasswordForm()" id="password-link">Changer le mot de passe</a>
           <a href="#pic" class="col" style="cursor: pointer;" onclick="showPictureForm()" id="picture-link">Changer la photo de profil</a>
@@ -506,13 +524,18 @@ input[type="text"],
 
 
 
-            <div class="welcome_panel mt-5"> 
-              Bienvenue {{ Auth::user()->prenom }} {{ Auth::user()->nom }} !
+            <div class="welcome_panel "> 
+             <h3> Bienvenue {{ Auth::user()->prenom }}  !</h3>
           
           
             </div>
+            
+    
             <div class="fav_panel mt-5">
-                <h3 class="mb-5">Mes favoris : </h3>
+                <div class=" mt-3 mb-3 p-3 border rounded shadow" > 
+                    <h3 >Mes favoris : </h3>
+                </div>  
+                
                 <div class="row ">
                   @foreach ($favorite_houses as $house)
                     <div class="col-md-4">
@@ -541,12 +564,70 @@ input[type="text"],
                         </div>
                     </div>
                   @endforeach
+                  @foreach ($favorite_buildings as $item)
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <a href="/buldings/{{ $item->id }}">
+                                @if ($item->images->count() > 0)
+                                    <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
+                                @endif
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="card-text mb-2">
+                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+                                            <span class="badge badge-secondary">{{ $item->nb_etage }} étages</span>
+                                        </p>
+                                    </div>
+                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
+                                </div>
+                                <h6 class="card-text adresse ">
+                                    {{ $item->adresse  }}
+                                </h6>
+                              
+                            </div>
+                        </div>
+                    </div>
+                  @endforeach
+                  @foreach ($favorite_lands as $item)
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <a href="/buldings/{{ $item->id }}">
+                                @if ($item->images->count() > 0)
+                                    <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">
+                                @endif
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="card-text mb-2">
+                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
+                                          
+                                        </p>
+                                    </div>
+                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh </h6>
+                                </div>
+                                <h6 class="card-text adresse ">
+                                    {{ $item->adresse  }}
+                                </h6>
+                              
+                            </div>
+                        </div>
+                    </div>
+                  @endforeach
+
+
 
                     
                 </div>
             </div>
             <div class="annonce_panel mt-5 ">
-                <h3 class="mb-5">Déposer une annonce de maison</h3>
+                <div class=" mt-3 mb-3 p-3 border rounded shadow" > 
+                    <h3 class>Déposer une annonce de maison :</h3>
+                </div>
                 <form>
                   <div class="form-group">
                     <label for="title">Titre de l'annonce:</label>
@@ -590,13 +671,14 @@ input[type="text"],
     </div>
     <script>
       
-  const welcomePanel = document.querySelector('.welcome_panel');
-  welcomePanel.style.display = 'block';
+      const wcontent = document.querySelector('.welcome_panel');
+      wcontent.style.display = 'block';
+
 
   // Get the link and the content element
   const link = document.querySelector('a[href="#personal-info"]');
   const content = document.querySelector('.info_panel');
-  content.style.display = 'block';
+  content.style.display = 'none';
   
   const flink = document.querySelector('a[href="#favorites"]');
   const fcontent = document.querySelector('.fav_panel');
@@ -613,7 +695,7 @@ input[type="text"],
       content.style.display = 'block';
       fcontent.style.display = 'none';
       acontent.style.display = 'none';
-      welcomePanel.style.display = 'none'; // hide the welcome panel
+      wcontent.style.display = 'none'; // hide the welcome panel
       link.classList.add('active-link'); // add the active-link class
       flink.classList.remove('active-link'); // remove the class from other links
       alink.classList.remove('active-link');
@@ -627,7 +709,7 @@ input[type="text"],
       fcontent.style.display = 'block';
       content.style.display = 'none';
       acontent.style.display = 'none';
-      welcomePanel.style.display = 'none'; // hide the welcome panel
+      wcontent.style.display = 'none'; // hide the welcome panel
       flink.classList.add('active-link'); // add the active-link class
       link.classList.remove('active-link'); // remove the class from other links
       alink.classList.remove('active-link');
@@ -641,7 +723,7 @@ input[type="text"],
       acontent.style.display = 'block';
       content.style.display = 'none';
       fcontent.style.display = 'none';
-      welcomePanel.style.display = 'none'; // hide the welcome panel
+      wcontent.style.display = 'none'; // hide the welcome panel
       alink.classList.add('active-link'); // add the active-link class
       link.classList.remove('active-link'); // remove the class from other links
       flink.classList.remove('active-link');

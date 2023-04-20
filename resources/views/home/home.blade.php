@@ -67,12 +67,14 @@
         border-color: black;
         color: black;
         
-        padding:15px 20px;
-        border-radius: 15px; /* Updated */
+        padding: 30px;
+        border-radius: 13px!important; /* Updated */
         background-color: transparent;
         border: none;
 
       }
+
+      
 
       .btn:hover {
         color: #fff;
@@ -85,6 +87,7 @@
         color: #fff!important;
         background-color: #6798BB !important;
         box-shadow: none !important;
+        
         
       }
 
@@ -134,6 +137,7 @@
         border:none;
         border-radius:12px;
         font-size:15px;
+        
         }  
       .btn-group {
         position: absolute;
@@ -158,12 +162,15 @@
         margin:0 5px; /* Updated */
       }
       #searchbtn:before {
-  content: "\f002";
-  font-family: FontAwesome;
-  margin-right: 5px;
-  color: white;
- 
-}
+          
+          content: "\f002";
+          font-family: FontAwesome;
+          margin-right: 5px;
+          color: black;
+          font-weight: bold;
+          
+        
+       }
 #estimerbtn:before {
   content: "\f002";
   font-family: FontAwesome;
@@ -201,7 +208,7 @@
 }
 
 .card {
-  border-radius: 10px;
+  border-radius: 20px;
   transition: transform 0.2s;
 }
 
@@ -284,7 +291,7 @@ document.getElementById("estimerbtn").addEventListener("click", function() {
   <!-- Background Image/Video -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container" id="content">
-      <h2 class="display-4" style="color: #fff; text-align: center;"><b>Welcome to Real Estate!</b></h2>
+      <h2 class="display-4" style="color: #fff; text-align: center;"><b>Trouvez votre maison idéale !</b></h2>
       
 		<div class="row justify-content-center ">
 			<div class="col-lg-6 col-md-8 col-sm-10" >
@@ -332,6 +339,9 @@ document.getElementById("estimerbtn").addEventListener("click", function() {
               </div>
               <div class="form-check">
                    <input class="form-check-input checkbox-no-label" type="checkbox" name="buy_immeuble" value="Immeuble" checked> Immeubles
+              </div>
+              <div class="form-check">
+                   <input class="form-check-input checkbox-no-label" type="checkbox" name="buy_terrain" value="Immeuble" checked> Terrains
               </div>
                
             </div>

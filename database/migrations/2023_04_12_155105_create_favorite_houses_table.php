@@ -12,21 +12,17 @@ return new class extends Migration
      * @return void
      */
     public function up()
-        { 
-           
+    {
+        Schema::create('favorite_houses', function (Blueprint $table) {
           
-                    Schema::create('favorite_houses', function (Blueprint $table) {
-                        $table->id();
-                        $table->unsignedBigInteger('user_id');
-                        $table->unsignedBigInteger('unit_id');
-                        $table->string('unit_type');
-                        $table->timestamps();
-                    
-                        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-                        $table->index(['unit_id', 'unit_type']);
-                    });
-         
-                
+        $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('house_id');
+        $table->timestamps();
+
+        $table->primary(['user_id', 'house_id']);
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
+        });
     }
 
     /**

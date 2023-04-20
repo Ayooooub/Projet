@@ -10,11 +10,14 @@ class HomeController extends Controller
     public function index() 
     {   $user = auth()->user();
         $favorite_houses = $user->favoriteHouses()->with('images')->get();
+        
         return view('home.index',compact('favorite_houses'));
     }
     public function indexx() 
     {   $user = auth()->user();
+        $favorite_buildings = $user->favoriteBuildings()->with('images')->get();
+        $favorite_lands = $user->favoriteLands()->with('images')->get();
         $favorite_houses = $user->favoriteHouses()->with('images')->get();
-        return view('home.indexx',compact('favorite_houses'));
+        return view('home.indexx',compact('favorite_houses','favorite_buildings','favorite_lands'));
     }
 }

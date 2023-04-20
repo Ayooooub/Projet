@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('ascenceur')->default(false);
             $table->boolean('balcon')->default(false);
             $table->boolean('garage')->default(false);
+            $table->boolean('cave')->default(false);
             $table->timestamps();
 
         });

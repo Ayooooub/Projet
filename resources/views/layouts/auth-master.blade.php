@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.87.0">
+   
     <meta charset="utf-8">
    
     
@@ -35,9 +33,7 @@
     
 
     
-    <!-- Custom styles for this template -->
-    <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
-    
+   
     <style>
    
 
@@ -80,7 +76,7 @@
        
 <nav class="navbar navbar-expand-lg navbar-light bg-light border p-1 shadow" >
       <a class="navbar-brand" href="/home" >
-        <img src="storage/images/logo7.png" alt="Kay.com logo" style="max-height: 200px;" >
+        <img src="{{ asset('storage/images/logo7.png') }}" alt="Kay.com logo" style="max-height: 200px;" >
       </a>
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +130,7 @@
           @auth
     <ul class="navbar-nav ml-auto">
         <li class="nav-item ">
-            <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/indexx#favorites"><i class="fas fa-heart"></i> Mes favoris</a></li>
             
             <li class="nav-item dropdown">
               
@@ -146,7 +142,7 @@
                 <div class="dropdown-menu" style="left: -40px !important;" aria-labelledby="navbarDropdown4">
                     <a class="dropdown-item" href="/">Mon profil</a>
                     
-                    <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se deconnecter</a>
+                    <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se déconnecter</a>
        
                 </div>
             </li>

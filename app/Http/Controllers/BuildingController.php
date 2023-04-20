@@ -56,5 +56,33 @@ class BuildingController extends Controller
            
            return redirect()->route('searchpages.buy');
         }
+
+
+        public function show($id)  //detailed building info
+        {   
+            $building = Building::findOrFail($id);
+            
+            $images = $building->images;
+            return view('searchpages.building', compact('building', 'images'));
     
+        }
+    
+    
+        public function toggleFavorite(Request $request)
+        {
+            $building_id = $request->input('building_id');
+            $user = Auth::user();
+            
+            if ($user->favoriteBuildings->contains($building_id)) {
+                // building already favorited, remove it
+                $user->favoriteBuildings()->detach($building_id);
+                return response()->json(['status' => 'success', 'message' => 'building removed from favorites.']);
+            } else {
+                // building not favorited, add it
+                $user->favoriteBuildings()->attach($building_id);
+                return response()->json(['status' => 'success', 'message' => 'building added to favorites.']);
+            }
+        }
+
+
     }

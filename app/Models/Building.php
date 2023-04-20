@@ -9,7 +9,7 @@ class Building extends Model
 {
     
     protected $table ='buildings';
-    protected $fillable = ['adresse', 'type', 'surface','nbpiece'];
+    protected $fillable = ['adresse', 'type', 'surface','nb_etage'];
     public function images()
     {
         return $this->hasMany(Building_Image::class);
@@ -17,10 +17,7 @@ class Building extends Model
 
     public function favoritedBy()
     {
-        return $this->morphToMany('App\Models\User', 'residential_unit', 'favorite_houses');
+        return $this->belongsToMany(User::class, 'favorite_buildings');
     }
-
-
-   
 
 }
