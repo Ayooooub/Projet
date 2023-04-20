@@ -18,8 +18,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
-    Route::get('/indexx', 'HomeController@indexx')->name('home.index');
+    Route::get('/', function () {   return view('home.home');});
+    
+    Route::get('/index', 'HomeController@index')->name('home.index');
+    
     
     Route::group(['middleware' => ['guest']], function() {
         /**

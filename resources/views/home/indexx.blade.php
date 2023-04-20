@@ -525,18 +525,24 @@ input[type="text"],
 
 
             <div class="welcome_panel "> 
-             <h3> Bienvenue {{ Auth::user()->prenom }}  !</h3>
+             <h3 class="font-weight-bold"> Bienvenue  dans votre espace utilisateur {{ Auth::user()->prenom }}  !</h3>
           
           
             </div>
             
     
-            <div class="fav_panel mt-5">
-                <div class=" mt-3 mb-3 p-3 border rounded shadow" > 
+            <div class="fav_panel mt-4">
+                <div class=" mt-2 mb-3 p-3 border rounded shadow" > 
                     <h3 >Mes favoris : </h3>
                 </div>  
                 
                 <div class="row ">
+                @if ($favorite_houses->isEmpty() && $favorite_buildings->isEmpty() && $favorite_lands->isEmpty() )
+                <div class="mt-4" style="margin-left: 3%;">
+                Votre sélection de biens favoris est vide. Faites votre recherche et sauvegardez vos annonces en favoris pour les retrouver ici plus facilement.
+                </div>
+
+                @else
                   @foreach ($favorite_houses as $house)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
@@ -620,12 +626,12 @@ input[type="text"],
                   @endforeach
 
 
-
+                @endif
                     
                 </div>
             </div>
-            <div class="annonce_panel mt-5 ">
-                <div class=" mt-3 mb-3 p-3 border rounded shadow" > 
+            <div class="annonce_panel mt-4 ">
+                <div class=" mt-2 mb-4 p-3 border rounded shadow" > 
                     <h3 class>Déposer une annonce de maison :</h3>
                 </div>
                 <form>

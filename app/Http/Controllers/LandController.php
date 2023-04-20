@@ -63,11 +63,11 @@ class LandController extends Controller
             if ($user->favoriteLands->contains($land_id)) {
                 // land already favorited, remove it
                 $user->favoriteLands()->detach($land_id);
-                return response()->json(['status' => 'success', 'message' => 'land removed from favorites.']);
+                return response()->json(['status' => 'success', 'message' => 'Terrain supprimé des favoris.']);
             } else {
                 // land not favorited, add it
                 $user->favoriteLands()->attach($land_id);
-                return response()->json(['status' => 'success', 'message' => 'land added to favorites.']);
+                return response()->json(['status' => 'success', 'message' => 'Terrain ajouté aux favoris.']);
             }
         }
 }

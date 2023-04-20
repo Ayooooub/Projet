@@ -73,9 +73,53 @@
        font-size: 24px;
    }
    /* CSS */
-button.btn-light:hover {
-  background-color: #7dbad8;
+   
+   .back-button{
+      background-color: transparent ;
+      color: black;
+      border:  none;
+
+   }
+   .back-button:active, 
+   .back-button.active , 
+   .back-button:focus{
+    background-color: #6999BB !important;
+    color: #fff!important;
+    border: none !important;
+    box-shadow: none !important;
+   }
+
+    .back-button:hover{
+      background-color: #6999BB;
+      color: #fff;
+      border: none;
+    }
+    button.btn-light:hover {
+      background-color: #6999BB;
+      border: none!important;
+      color: #fff;
 }
+
+    .send-button{
+      background-color:  #6999BB ;
+      color:    #fff;
+      border: none;
+
+   }
+
+   .send-button:hover{
+    background-color: #5E89A8;
+    color: #fff;
+    border: none;
+  }
+   .send-button:active, 
+   .send-button.active , 
+   .send-button:focus{
+    background-color: #6999BB !important;
+    color: #fff!important;
+    border: none !important;
+    box-shadow: none !important;
+   }
 a.text-decoration-none {
   text-decoration: none;
 }
@@ -120,18 +164,20 @@ a.text-decoration-none:hover {
 
       <div class="row align-items-center mt-2">
         <div class="col">
-          <a href="{{ url()->previous() }}" class="text-decoration-none">
-            <i class="bi bi-chevron-left"></i>Retour aux résultats
-          </a>
+        <form action="{{ url()->previous() }}" method="get">
+          <button type="submit" class="btn btn-primary back-button" >
+            <i class="bi bi-chevron-left"></i>  Retour aux résultats
+          </button>
+        </form>
 
         </div>
         <div class="col-auto">
-          <button class="btn btn-light mt-2 write" style="border: 1px solid blue; padding: 6px 12px; font-size: 16px;" onclick="scrollToForm()">
+          <button class="btn btn-light mt-2 write" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;" onclick="scrollToForm()">
             <span class="d-none d-md-inline"><i class="bi bi-envelope-fill"></i> Ecrire à l'agence</span>
             <span class="d-md-none"><i class="bi bi-envelope-fill"></i></span>
           </button>
           
-            <button class="btn btn-light mt-2" style="border: 1px solid blue; padding: 6px 12px; font-size: 16px;">
+            <button class="btn btn-light mt-2" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
               <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
               
             </button>
@@ -159,7 +205,7 @@ a.text-decoration-none:hover {
             <div class="house-type" style="font-size: 36px; color: #777; margin-bottom: 30px; font-weight: bold; font-style:inherit;">
               <h2>{{ $house->type }} @if ($house->type_annonce == 'Vente') à vendre @else à louer @endif</h2>
 
-              <h2 >{{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif <span>. {{ $house->surface }} m²</span></h2>
+              <h2 >{{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif <span>, {{ $house->surface }} m²</span></h2>
               <div class="location col-5" style="margin-top: 30px;">
                 <i class="bi bi-geo-alt-fill" id="pin" style="margin-right: 10px;"></i>
 
@@ -249,26 +295,26 @@ a.text-decoration-none:hover {
             @endif
 
           </div>
-          <div class="col-md-4 bg-light" style="margin-bottom: 30px; "  >
+          <div class="col-md-4 bg-light " style="margin-bottom: 30px; "  >
             <form id="contact-form"  onsubmit="alert('Votre demande a bien été envoyée à l\'agence Urban Success.');" >
-              <h3>Ce bien vous intéresse ?</h3>
+              <h3 class="mt-3">Ce bien vous intéresse ?</h3>
               Contactez vite l'agence pour le visiter !
               <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom:</label>
-                <input type="text" class="form-control" id="pre">
+                <input type="text" class="form-control" id="pre" required>
               </div>
               <div class="mb-3">
                 <label for="nom" class="form-label">Nom:</label>
-                <input type="text" class="form-control" id="nom">
+                <input type="text" class="form-control" id="nom" required>
               </div>
               
               <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email1">
+                <input type="email" class="form-control" id="email1" required>
               </div>
               <div class="mb-3">
-                <label for="Téléphone" class="form-label">Téléphone:</label>
-                <input type="tel" class="form-control" id="tel1">
+                <label for="Téléphone" class="form-label" >Téléphone:</label>
+                <input type="tel" class="form-control" id="tel1" required>
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Message:</label>
@@ -287,7 +333,7 @@ a.text-decoration-none:hover {
               
   
               <div class="d-flex justify-content-center mt-3">
-                <button type="submit" class="btn btn-primary " >Ecrire à l'agence</button>
+                <button type="submit" class="btn btn-primary send-button mb-3" >Ecrire à l'agence</button>
               </div>
             </form>
           </div>

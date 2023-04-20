@@ -140,7 +140,7 @@
 
                 </a>
                 <div class="dropdown-menu" style="left: -40px !important;" aria-labelledby="navbarDropdown4">
-                    <a class="dropdown-item" href="/">Mon profil</a>
+                    <a class="dropdown-item" href="/index">Mon profil</a>
                     
                     <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se déconnecter</a>
        

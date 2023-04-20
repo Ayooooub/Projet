@@ -457,7 +457,7 @@ background-color: #0069d9;
     @foreach ($lands as $item)
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
-          <a href="/houses/{{ $item->id }}">
+          <a href="/lands/{{ $item->id }}">
            
             @if($item->images->count() > 0 )
               <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">

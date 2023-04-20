@@ -101,11 +101,11 @@ class HouseController extends Controller
         if ($user->favoriteHouses->contains($house_id)) {
             // House already favorited, remove it
             $user->favoriteHouses()->detach($house_id);
-            return response()->json(['status' => 'success', 'message' => 'House removed from favorites.']);
+            return response()->json(['status' => 'success', 'message' => 'Maison supprimée des favoris.']);
         } else {
             // House not favorited, add it
             $user->favoriteHouses()->attach($house_id);
-            return response()->json(['status' => 'success', 'message' => 'House added to favorites.']);
+            return response()->json(['status' => 'success', 'message' => 'Maison ajoutée aux favoris.']);
         }
     }
 

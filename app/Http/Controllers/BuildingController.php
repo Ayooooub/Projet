@@ -76,11 +76,11 @@ class BuildingController extends Controller
             if ($user->favoriteBuildings->contains($building_id)) {
                 // building already favorited, remove it
                 $user->favoriteBuildings()->detach($building_id);
-                return response()->json(['status' => 'success', 'message' => 'building removed from favorites.']);
+                return response()->json(['status' => 'success', 'message' => 'Immeuble supprimé des favoris.']);
             } else {
                 // building not favorited, add it
                 $user->favoriteBuildings()->attach($building_id);
-                return response()->json(['status' => 'success', 'message' => 'building added to favorites.']);
+                return response()->json(['status' => 'success', 'message' => 'Immeuble ajouté aux favoris. ']);
             }
         }
 
