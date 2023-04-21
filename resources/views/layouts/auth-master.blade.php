@@ -106,26 +106,35 @@
                 <a class="dropdown-item" href="#">Conseils</a>
               </div>
             </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="{{ route('searchpages.buy')  }}">Acheter</a>
-                
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acheter</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                  <a class="dropdown-item" href="/house-buy">Maisons</a>
+                  <a class="dropdown-item" href="/appartement-buy">Appartements</a>
+                  <a class="dropdown-item" href="/building-buy">Immeubles</a>
+                  <a class="dropdown-item" href="/land-buy">Terrains</a>
+                  
+                  
+               </div>
+            </li>
+
                 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Louer
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_maison=on">Maisons</a>
-                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_appartement=on">Appartements</a>
-                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_immeuble=on">Immeubles</a>
+                <a class="dropdown-item" href="/house-rent">Maisons</a>
+                <a class="dropdown-item" href="/appartement-rent">Appartements</a>
+                <a class="dropdown-item" href="/building-rent">Immeubles</a>
                 
-                <a class="dropdown-item" href="#">Terrains</a>
+                
                 
                </div>
             </li>
             <li class="nav-item">
               @auth <a class="nav-link" href="/sell">Vendre</a> @endauth
-              @guest <a class="nav-link" href="/login">Vendre</a> @endguest
+              @guest <a class="nav-link" href="/please-login">Vendre</a> @endguest
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/estimer">Estimer</a>
@@ -139,7 +148,7 @@
           @auth
     <ul class="navbar-nav ml-auto">
         <li class="nav-item ">
-            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/indexx#favorites"><i class="fas fa-heart"></i> Mes favoris</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/index#favorites"><i class="fas fa-heart"></i> Mes favoris</a></li>
             
             <li class="nav-item dropdown">
               

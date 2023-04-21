@@ -21,6 +21,10 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showw()
+    {
+        return view('auth.please_login');
+    }
     /**
      * Handle account login request
      * 

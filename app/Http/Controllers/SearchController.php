@@ -154,4 +154,158 @@ class SearchController extends Controller
         return view('searchpages.buy', compact('houses','buildings','lands'));  
 
 }
+
+    public function house_buy(Request $request){ //specific link route function from navbar 
+
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+        $query->where('type_annonce', 'LIKE','Vente');
+        $query->select('*', DB::raw('(SELECT path FROM images WHERE house_id = houses.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        $query->where('type', 'Maison');
+
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $buildingQuery->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+
+    }
+
+    public function house_rent(Request $request){
+        
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+        $query->where('type_annonce', 'LIKE','Location');
+        $query->select('*', DB::raw('(SELECT path FROM images WHERE house_id = houses.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        $query->where('type', 'Maison');
+
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $buildingQuery->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    }
+
+    
+    public function appartement_buy(Request $request){ //specific link route function from navbar 
+
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+        $query->where('type_annonce', 'LIKE','Vente');
+        $query->select('*', DB::raw('(SELECT path FROM images WHERE house_id = houses.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        $query->where('type', 'Appartement');
+    
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $buildingQuery->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    
+    
+    }
+
+    public function appartement_rent(Request $request){ //specific link route function from navbar 
+
+       
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+        $query->where('type_annonce', 'LIKE','Location');
+        $query->select('*', DB::raw('(SELECT path FROM images WHERE house_id = houses.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        $query->where('type', 'Appartement');
+
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $buildingQuery->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    }
+
+    public function building_buy(Request $request){ //specific link route function from navbar 
+        
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+
+
+        $buildingQuery->where('type_annonce', 'LIKE','Vente');
+        $buildingQuery->select('*', DB::raw('(SELECT path FROM building_images WHERE building_id = buildings.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        
+        
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $query->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    }
+
+
+    public function building_rent(Request $request){ //specific link route function from navbar 
+        
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+
+
+        $buildingQuery->where('type_annonce', 'LIKE','Location');
+        $buildingQuery->select('*', DB::raw('(SELECT path FROM building_images WHERE building_id = buildings.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        
+        
+        $landQuery->getQuery()->whereRaw('1 = 0');
+        $query->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    }
+
+    public function land_buy(Request $request){ //specific link route function from navbar 
+        
+        $query = House::query();
+        $buildingQuery = Building::query();
+        $landQuery = Land::query();
+
+
+
+       
+        $landQuery->select('*', DB::raw('(SELECT path FROM land_images WHERE land_id = land.id ORDER BY id ASC LIMIT 1) as image_url'))->orderBy('created_at', 'desc'); // add orderBy clause;
+        
+        
+        $buildingQuery->getQuery()->whereRaw('1 = 0');
+        $query->getQuery()->whereRaw('1 = 0');
+
+        $buildings = $buildingQuery->get();
+        $houses = $query->get();
+        $lands = $landQuery->get();
+
+        return view('searchpages.buy', compact('houses','buildings','lands'));  
+    }
+
+
 }

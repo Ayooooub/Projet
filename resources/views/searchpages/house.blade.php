@@ -205,7 +205,7 @@ a.text-decoration-none:hover {
             @endif
           @endauth
           @guest
-            <a class="btn btn-light mt-2 add-to-favorites"  href="/login" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+            <a class="btn btn-light mt-2 add-to-favorites"  href="/please-login" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
                 <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
                 
             </a>

@@ -418,7 +418,7 @@ background-color: #0069d9;
           @endif
         @endauth
         @guest
-            <a  class="btn btn-outline-secondary btn-sm w-100" href="/login" >    <i class="far fa-heart"></i> Favoris </a>
+            <a  class="btn btn-outline-secondary btn-sm w-100" href="/please-login" >    <i class="far fa-heart"></i> Favoris </a>
         @endguest
         </div>
       </div>
@@ -464,7 +464,7 @@ background-color: #0069d9;
               @endif
             @endauth
             @guest
-               <a  class="btn btn-outline-secondary btn-sm w-100" href="/login" >    <i class="far fa-heart"></i> Favoris </a>
+               <a  class="btn btn-outline-secondary btn-sm w-100" href="/please-login" >    <i class="far fa-heart"></i> Favoris </a>
             @endguest
 
             </div>
@@ -511,7 +511,7 @@ background-color: #0069d9;
               @endif
             @endauth
             @guest
-              <a  class="btn btn-outline-secondary btn-sm w-100" href="/login" >    <i class="far fa-heart"></i> Favoris </a>
+              <a  class="btn btn-outline-secondary btn-sm w-100" href="/please-login" >    <i class="far fa-heart"></i> Favoris </a>
             @endguest
             
             </div>

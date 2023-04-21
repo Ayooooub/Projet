@@ -35,6 +35,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
+        
+        Route::get('/please-login', 'LoginController@showw');
+        
 
     });
     Route::get('/home', function () {
@@ -93,6 +96,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     //Searchpages functions
     Route::get('/search-rent','SearchController@rentsearch');
     Route::get('/search-buy','SearchController@buysearch');
+    
+    Route::get('/house-buy','SearchController@house_buy');
+    Route::get('/house-rent','SearchController@house_rent');
+    Route::get('/appartement-buy','SearchController@appartement_buy');
+    Route::get('/appartement-rent','SearchController@appartement_rent');
+    Route::get('/building-buy','SearchController@building_buy');
+    Route::get('/building-rent','SearchController@building_rent');
+    Route::get('/land-buy','SearchController@land_buy');
 
     //Favoris
  
