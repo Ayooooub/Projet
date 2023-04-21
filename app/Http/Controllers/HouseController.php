@@ -13,12 +13,15 @@ use App\Models\Image;
 class HouseController extends Controller
 {
     public function index(){
+       
+           
         $houses = House::all();
         $buildings = Building::all();
         $lands = Land::all();
-        
-        return view('searchpages.buy',compact('houses','buildings','lands'));
-   }
+            
+        return view('searchpages.buy',compact('houses','buildings','lands', ));
+    }
+    
 
    public function store(Request $request){  //save function
         

@@ -42,7 +42,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     })->name('home');
     
     
-    
+    Route::get('/search-rent-immeuble', function () {
+       
+        $rent_immeuble = 'on'; // Fixed value for rental type
+        
+       return view('searchpages.buy',compact('houses','buildings','lands'));
+    });
     Route::get('/estimer', function () {
         return view('estimer');
     })->name('estimer');
@@ -75,6 +80,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::get('/sell_land', function(){ return view('searchpages.sell_land');});
     Route::post('/sell_land','LandController@store')->name('land.store');
+
+
+    Route::get('/buyy', function(){ return view('searchpages.buyy');});
 
     Route::get('/buy','HouseController@index')->name('searchpages.buy');
     Route::get('/houses/{id}', 'HouseController@show');

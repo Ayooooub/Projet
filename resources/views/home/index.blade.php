@@ -573,7 +573,7 @@ input[type="text"],
                   @foreach ($favorite_buildings as $item)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <a href="/buldings/{{ $item->id }}">
+                            <a href="/buildings/{{ $item->id }}">
                                 @if ($item->images->count() > 0)
                                     <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
                                 @endif
@@ -600,7 +600,7 @@ input[type="text"],
                   @foreach ($favorite_lands as $item)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <a href="/buldings/{{ $item->id }}">
+                            <a href="/lands/{{ $item->id }}">
                                 @if ($item->images->count() > 0)
                                     <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">
                                 @endif

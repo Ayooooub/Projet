@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
    
     
     
@@ -24,6 +25,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 
@@ -67,7 +70,12 @@
     </style>
 
     
-   
+   <script>
+    $('#logout-button').on('click', function() {
+        // Clear the favorite house IDs from localStorage
+        localStorage.clear();
+    });
+    </script>
 </head>
 <body>
 
@@ -107,16 +115,17 @@
               Louer
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                <a class="dropdown-item" href="#">Maisons</a>
-                <a class="dropdown-item" href="#">Appartements</a>
-                <a class="dropdown-item" href="#">Immeubles</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_maison=on">Maisons</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_appartement=on">Appartements</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/search-rent?adresse=&price=&surface=&rent_immeuble=on">Immeubles</a>
                 
                 <a class="dropdown-item" href="#">Terrains</a>
                 
                </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sell">Vendre</a>
+              @auth <a class="nav-link" href="/sell">Vendre</a> @endauth
+              @guest <a class="nav-link" href="/login">Vendre</a> @endguest
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/estimer">Estimer</a>
@@ -142,7 +151,7 @@
                 <div class="dropdown-menu" style="left: -40px !important;" aria-labelledby="navbarDropdown4">
                     <a class="dropdown-item" href="/index">Mon profil</a>
                     
-                    <a class="dropdown-item" href="{{ route('logout.perform') }}"></i>  Se déconnecter</a>
+                    <a class="dropdown-item" href="{{ route('logout.perform') }}" id="logout-button"></i>  Se déconnecter</a>
        
                 </div>
             </li>
