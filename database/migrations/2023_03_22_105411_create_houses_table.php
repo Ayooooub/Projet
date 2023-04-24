@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('houses', function (Blueprint $table) {
-            $table->bigincrements('id');
+            $table->bigIncrements('id');
             $table->string('adresse');
             $table->string('type');
             $table->float('prix', 15, 2);
@@ -28,6 +28,9 @@ return new class extends Migration
             $table->boolean('garage')->default(false);
             $table->boolean('ascenceur')->default(false);
             $table->boolean('cuisine_equipee')->default(false);
+            $table->boolean('accepted')->default(false);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

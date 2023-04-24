@@ -1,7 +1,7 @@
 @extends('layouts.auth-master')
 
 @section('content')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style>
       
                 body{
@@ -61,68 +61,20 @@
 </style>
 
 
-<script>
-       window.addEventListener('DOMContentLoaded', function() {
-            var myButton = document.getElementById('nextBtn')});
-            myButton.addEventListener('click', function() {
-               
-function onNextButtonClick()  {
-    var selectedType = document.querySelector('input[name="type_immobilier"]:checked').value;
 
-//  Hide all forms
-    document.getElementById("step1").style.display = "none";
-    document.getElementById("step2maison").style.display = "none";
-    document.getElementById("step2apa").style.display = "none";
-    document.getElementById("step2immeuble").style.display = "none";
-    document.getElementById("step2terrain").style.display = "none";
-
-    // Show form based on selected type
-    if (selectedType === "Maison") {
-        document.getElementById("step2maison").style.display = "block";
-    } else if (selectedType === "Appartement") {
-        document.getElementById("step2apa").style.display = "block";
-    } else if (selectedType === "Immeuble") {
-        document.getElementById("step2immeuble").style.display = "block";
-    } else if (selectedType === "Terrain") {
-        document.getElementById("step2terrain").style.display = "block";
-    }
-};
-});
-</script>
 
 
  <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form class="form-signup" id="sellForm" method="post" action="{{  route('sell.store')  }}" enctype="multipart/form-data">
+                <form class="form-signup" method="post" action="{{  route('sell.store')  }}" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                  <h1>vendre</h1>
-                  <form  id="step1">
+                  
                   <div class="form-group mt-2 mb-0">
                         <label for="Adresse"> Adresse : <span class="required">*</span></label>
                         <input type="text" class="form-control" name="adresse" placeholder="Entrez l'adresse du bien " >
                        
                   </div>
-                  <div class=" mt-2 mb-0">
-                          <label for="type_immobilier" >Type du bien : <span class="required">*</span></label> 
-                         <div class="form-row">
-                              <div class="form-check">
-                                    <input class="form-check-input checkbox-no-label" type="radio" value="Appartement" id="check2" name="type_immobilier"> Appartement
-                              </div>
-                              <div class="form-check">
-                                    <input class="form-check-input checkbox-no-label" type="radio" value="Maison" id="check3" name="type_immobilier" required> Maison
-                              </div>
-                              <div class="form-check">
-                                    <input class="form-check-input checkbox-no-label" type="radio" value="Immeuble" id="check4" name="type_immobilier" required> Immeuble
-                              </div>
-                              <div class="form-check">
-                                    <input class="form-check-input checkbox-no-label" type="radio" value="Terrain" id="check5" name="type_immobilier" required> Terrain
-                              </div>
-                        </div>    
-                 </div>
-                
-                  
-
                   <div class="form-group mt-2 mb-0">
                         <div class="row">
                               <div class="col">
@@ -136,18 +88,24 @@ function onNextButtonClick()  {
                               </div>
                         </div>
                   </div>
-                 
+                  <div class=" mt-2 mb-0">
+                          <label for="type_immobilier">Type du bien : <span class="required">*</span></label> 
+                         <div class="form-row">
+                              <div class="form-check">
+                                    <input class="form-check-input checkbox-no-label" type="radio" value="Appartement" id="check2" name="type_immobilier"> Appartement
+                              </div>
+                              <div class="form-check">
+                                    <input class="form-check-input checkbox-no-label" type="radio" value="Maison" id="check3" name="type_immobilier" required> Maison
+                              </div>
+                        </div>    
+                 </div>
                   
                   <div class="form-group mt-2 mb-0">
                         <label for="image">Images : <span class="required">*</span></label>
                         <input  type="file" class="form-control"  name="images[]" multiple >
                             
                   </div>
-                 
-            <button  onclick= onNextButtonClick() type="button" class="btn btn-primary" id="nextBtn">Suivant</button>
-            </form>
-               <!-- Étape 2 : Formulaire pour le type de bien "Maison" -->
-               <form id="step2maison" style="display:none;">
+
                   <div class="form-group mt-2 mb-0">
                         <div class="row">
                               <div class="col">
@@ -177,13 +135,35 @@ function onNextButtonClick()  {
                          
                   </div>
 
+
+                  <!-- ********************Part 2******************** -->
+
+                  <label >Le bien est-il meublé ? <span class="required">*</span></label>
+                  <div class="form-row mb-0">
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="radio" value="1" id="check2" name="meuble"> Oui
+                          </div>
+                          <div class="form-check">
+                                <input class="form-check-input checkbox-no-label" type="radio" value="0" id="check3" name="meuble"> Non
+                          </div>
+                         
+                  </div>
+
                  
 
                   <div class="form-row  mt-2 mb-0">
                         <label for="Année de construction">Année de construction :</label>
                         <input type="number" class="form-control" name="annee_const" placeholder="Donnez l'année de construction du bien " >
                   </div>
-                 
+                  <div class="form-row mt-2 mb-0">
+                        <label for="etage">Etage :</label>  <!-- for appartments only -->
+                        <input type="number" class="form-control" name="etage" placeholder="Donnez le numéro d'étage de l'appartement">
+                  </div>
+
+                  <div class="form-row mt-2 mb-0">
+                        <label for="nb_etages">Nombre d'étages dans l'immeuble :</label>  <!-- for appartments only -->
+                        <input type="number" class="form-control" name="nb_etages" placeholder="Donnez le nombre total d'étages dans l'immeuble">
+                  </div>
 
 
                   <div class="form-group mt-2 mb-0">
@@ -196,91 +176,26 @@ function onNextButtonClick()  {
                               <input type="checkbox" class="form-check-input" name="garage" >
                               <label class="form-check-label" for="garage">Garage</label>
                         </div>
-                       
-                        <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="cuisine" >
-                              <label class="form-check-label" for="cuisine">Cuisine équipée</label>
-                        </div>
-                      
-                      
-                  </div>
-                  <button type="button" class="btn btn-primary" >Précédent</button>
-                  <button type="button" class="btn btn-primary" >Suivant</button>
-            </form>
-            <form id="step2apa" style="display:none;">
-                  
-            <div class="form-group mt-2 mb-0">
-            <div class="row">
-                              <div class="col">
-                                <label for="nbpiece">Nombre de pièces :  <span class="required">*</span></label>
-                                
-                                <input type="number" class="form-control" name="nbpiece" placeholder="0" >
-                              </div>
-                              <div class="col">
-                                <label for="bain">Salle de bain  : <span class="required">*</span></label>
-                                <input type="number" class="form-control" name="bain" placeholder="Nombre de salle de bain " >
-                              </div>
-                        </div>
-            <label >Type annonce : <span class="required">*</span></label>
-                  <div class="form-row mb-2">
-                          <div class="form-check">
-                                <input class="form-check-input checkbox-no-label" type="radio" value="Vente" id="check2" name="type_annonce"> A vendre
-                          </div>
-                          <div class="form-check">
-                                <input class="form-check-input checkbox-no-label" type="radio" value="Location" id="check3" name="type_annonce"> A louer
-                          </div>
-                         
-                  </div>
-                        <label > Caractéristiques et installations : </label>
-                        <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="balcon" >
-                              <label class="form-check-label" for="balcon">Balcon </label>
-                        </div>
-                        <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="garage" >
-                              <label class="form-check-label" for="garage">Garage</label>
-                        </div>
                         <div class="form-check">
                               <input type="checkbox" class="form-check-input" name="Ascenceur" >
-                        <label class="form-check-label" for="interphone">Ascenceur</label>
-                        </div> 
+                              <label class="form-check-label" for="interphone">Ascenceur</label> <!-- for appartments only -->
+                        </div>
                        
                         <div class="form-check">
                               <input type="checkbox" class="form-check-input" name="cuisine" >
                               <label class="form-check-label" for="cuisine">Cuisine équipée</label>
                         </div>
-                        <label >Le bien est-il meublé ? <span class="required">*</span></label>
-                  <div class="form-row mb-0">
-                          <div class="form-check">
-                                <input class="form-check-input checkbox-no-label" type="radio" value="1" id="check2" name="meuble"> Oui
-                          </div>
-                          <div class="form-check">
-                                <input class="form-check-input checkbox-no-label" type="radio" value="0" id="check3" name="meuble"> Non
-                          </div>
-                         
-                  </div> 
-                 <div class="form-row mt-2 mb-0">
-                        <label for="etage">Etage :</label>  
-                     <input type="number" class="form-control" name="etage" placeholder="Donnez le numéro d'étage de l'appartement">
-                  </div> 
-                  <div class="form-row mt-2 mb-0">
-                        <label for="nb_etages">Nombre d'étages dans l'immeuble :</label>  <!-- for appartments only -->
-                        <input type="number" class="form-control" name="nb_etages" placeholder="Donnez le nombre total d'étages dans l'immeuble">
-                  </div>
-                  <button type="button" class="btn btn-primary" id="prevBtn">Précédent</button>
-                  <button type="submit" class="btn btn-primary " name="save">Soumettre</button>
+                      
                       
                   </div>
-                </form>
 
+
+                  <button type="submit" class="btn btn-primary mt-3" name="save">Soumettre</button>
+                  
                     @include('auth.partials.copy')
-              
-              
-              </form> 
+              </form>
           </div>
-      </form>
       </div>
-      
   </div>
  
 

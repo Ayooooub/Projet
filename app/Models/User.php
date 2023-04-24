@@ -62,4 +62,25 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+    public function houses()
+{
+    return $this->hasMany(House::class);
+}
+public function buildings()
+{
+    return $this->hasMany(Building::class);
+}
+public function favoriteHouses()
+{
+    return $this->belongsToMany(House::class, 'favorite_houses');
+}
+
+public function favoriteBuildings()
+{
+    return $this->belongsToMany(Building::class, 'favorite_buildings');
+}
+public function favoriteLands()
+{
+    return $this->belongsToMany(Land::class, 'favorite_lands');
+}
 }

@@ -21,6 +21,10 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showw()
+    {
+        return view('auth.please_login');
+    }
     /**
      * Handle account login request
      * 
@@ -58,7 +62,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user) 
     {  
-        return redirect()->intended();
+        return redirect('/index');
         
     }
 }

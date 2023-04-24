@@ -6,7 +6,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB; 
 class UserController extends Controller
 {
     
@@ -73,7 +73,7 @@ class UserController extends Controller
 public function delete(User $user)
 {
     $user->delete();
-    return redirect()->route('homee')->with('success', 'Your account has been deleted.');
+    return redirect()->route('clients')->with('success', 'Your account has been deleted.');
 }
 
 public function updatePicture(Request $request)
@@ -104,6 +104,25 @@ public function updatePicture(Request $request)
 
     return redirect('/')->with('success', "Account successfully registered.");
 }
+public function showClients()
+{
+    $clients = DB::table('users')->where('usertype', 'client')->get();
+    return view('clients', ['clients' => $clients]);
+}
+public function remove($id)
+{
+    // Logic to delete user from the database
+    DB::table('users')->where('id', $id)->delete();
+    return redirect('/clients')->with('success', 'User has been deleted successfully.');
+}
+public function myControllerMethod()
+{
+    $users = User::select('email', 'nom', 'created_at')->get();
+    return view('home.index', ['users' => $users]);
+}
+
+
+
 }
 
         

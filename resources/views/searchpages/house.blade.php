@@ -110,8 +110,7 @@ a.text-decoration-none {
 a.text-decoration-none:hover {
   color: your-desired-color;
 }
-
-   @media (max-width: 768px) {
+@media (max-width: 768px) {
           .house-type {
             position: relative;
             top: 20px;
