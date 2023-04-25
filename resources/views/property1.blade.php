@@ -402,7 +402,7 @@ td, th {
             <a class="dropdown-item" href="/annonce">House Annonces</a>
             <a class="dropdown-item" href="#">Lands Annonces</a>
         </div>
-    </div>      <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+    </div>      <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Retour à l'Accueil</a>
 </div>
 	<div id="main">
 
@@ -426,42 +426,41 @@ td, th {
 		<br/>
         <div class="col-div-3">
         <div class="box">
-         <p>
-            <?php
-          $houseCount = \Illuminate\Support\Facades\DB::table('houses')->where('type', 'maison')->count();
-            echo $houseCount;
-            ?><br/>
+        <p>
+    {{ $houseCount = DB::table('houses')->where('type', 'maison')->count() }}
+    <br>
     <span>Maisons</span>
-  </p>
+</p>
   <i class="fas fa-home box-icon"></i>
 </div>
 </div>
 <div class="col-div-3">
   <div class="box">
-    <p> <?php
-          $houseCount = \Illuminate\Support\Facades\DB::table('houses')->where('type', 'appartement')->count();
-            echo $houseCount;
-            ?><br/><span>Appartements</span></p>
+  <p>
+    {{ $houseCount = DB::table('houses')->where('type', 'appartement')->count() }}
+    <br>
+    <span>Appartements</span>
+</p>
     <i class="fas fa-warehouse box-icon" ></i>
   </div>
 </div>
 <div class="col-div-3">
   <div class="box">
-    <p> <?php
-          $houseCount = \Illuminate\Support\Facades\DB::table('houses')->where('type', 'terrain')->count();
-            echo $houseCount;
-            ?><br/><span>Terrains</span></p>
+  <p>
+    {{ $houseCount = DB::table('land')->count() }}
+    <br>
+    <span>Terrains</span>
+</p>
     <i class="fas fa-leaf box-icon"></i>
   </div>
 </div>
 <div class="col-div-3">
   <div class="box">
-    <p> <?php
-          $houseCount = \Illuminate\Support\Facades\DB::table('houses')->where('type', 'immeuble')->count();
-            echo $houseCount;
-            ?><br/>
-      <span>Immeubles</span>
-    </p>
+  <p>
+    {{ $houseCount = DB::table('buildings')->count() }}
+    <br>
+    <span>Immeubles</span>
+</p>
      <i class="fas fa-building box-icon"></i>
   </div>
 </div>
@@ -474,26 +473,32 @@ td, th {
 		<div class="col-div-8">
         <div class="box-8">
     <div class="content-box">
-        <p>Houses<a href="/property1"><span> Voir tout</span></a></p>
+        <p>Maisons & Appartements<a href="/properties"><span> Voir tout</span></a></p>
         <br>
         <table>
-            @foreach($houses as $house)
-                <!-- Table rows here -->
-                <tr>
-                    <td>{{ $house->id }}</td>
-                    <td>{{ $house->type }}</td>
-                    <td>{{ $house->prix }}</td>
-                    <td>{{ $house->type_annonce }}</td>
-                    <td>{{ $house->annes_de_construction }}</td>
-                    <td>
-                        <form action="/property1/{{ $house->id }}" method="POST" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette maison ?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+        @php
+    $latestHouses = array_slice($houses->sortByDesc('id')->toArray(), 0, 3);
+@endphp
+
+@foreach($latestHouses as $house)
+    @if($house['accepted'] == 1)
+        <tr>
+            <td>{{ $house['id'] }}</td>
+            <td>{{ $house['type'] }}</td>
+            <td>{{ $house['prix'] }}</td>
+            <td>{{ $house['type_annonce'] }}</td>
+            <td>{{ $house['annee_construction'] }}</td>
+            <td>
+                <form action="/property1/{{ $house['id'] }}" method="POST" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette maison ?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    @endif
+@endforeach
+
             <!-- Add more rows as needed -->
         </table>
     </div>

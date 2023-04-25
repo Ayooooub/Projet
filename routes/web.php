@@ -20,7 +20,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
      */
    
 
-    Route::get('/', 'HomeController@index')->name('home.index');
+     Route::get('/', function () {   return view('home.home');});
+    
       
     Route::group(['middleware' => ['guest']], function() {
         /**
@@ -36,9 +37,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-    Route::get('/homee', function () {
-        return view('home.homee');
-    })->name('homee');
+    Route::get('/home', function () {
+        return view('home.home');
+    })->name('home');
     Route::get('/index', function () {
         return view('home.index');
     })->name('index');
@@ -87,11 +88,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/Bannonce', function () {
         return view('Bannonce');
     })->name('Bannonce');
+    Route::get('/properties', function () {
+        return view('admin.properties');
+    })->name('properties');
+    Route::get('/all', function () {
+        return view('all');
+    })->name('all');
     Route::put('/users/update-picture', 'UserController@updatePicture')->name('users.update-picture');
 
     Route::delete('/users{user}', 'UserController@delete')->name('users.delete');
     // Route::delete('/users/{id}', 'UserController@remove')->name('users.delete');
-   
+    Route::get('/properties', 'HouseController@properties')->name('buildingss.show');
+    Route::get('/all', 'HouseController@all')->name('all.show');
+    Route::get('/index', 'HouseController@index')->name('ann.show');
     Route::get('/users', 'UserController@show')->name('users.show');
     Route::put('/users', 'UserController@update')->name('users.update');
     Route::put('/users/password', 'UserController@updatePassword')->name('users.update-password');
@@ -115,6 +124,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/search-buy','HouseController@buysearch');
     Route::get('/clients', 'UserController@showClients');
     Route::post('/houses/{id}/', 'HouseController@Accepter')->name('houses.accept');
+    Route::post('/lands/{id}/', 'LandController@AccepterL')->name('lands.accept');
     Route::post('/building/{id}/', 'BuildingController@AccepterB')->name('buildings.accept');
     //lands
     Route::get('/sell_land', function(){ return view('searchpages.sell_land');});
@@ -123,14 +133,26 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/annonce', 'HouseController@houseslist')->name('houses.list');
     Route::get('/Bannonce', 'BuildingController@buildinglist')->name('building.list');
     Route::delete('/houses/{id}', 'HouseController@destroy')->name('houses.destroy');
+    
     Route::delete('/building/{id}', 'BuildingController@destroy')->name('buildings.destroy');
     Route::get('/index', 'UserController@myControllerMethod');
 
-    
-    Route::post('/houses/add-to-favorites', 'HouseController@toggleFavorite')->middleware('auth')->name('add-to-favorites');
-    Route::post('/buildings/add-to-favorites', 'BuildingController@toggleFavorite')->middleware('auth')->name('add-building-to-favorites');
-    Route::post('/lands/add-land-to-favorites', 'LandController@toggleFavorite')->middleware('auth')->name('add-land-to-favorites');
-
+    Route::get('/index', 'HomeController@index')->name('home.index');
+      //Searchpages functions
+      Route::get('/search-rent','SearchController@rentsearch');
+      Route::get('/search-buy','SearchController@buysearch');
+      
+      Route::get('/house-buy','SearchController@house_buy');
+      Route::get('/house-rent','SearchController@house_rent');
+      Route::get('/appartement-buy','SearchController@appartement_buy');
+      Route::get('/appartement-rent','SearchController@appartement_rent');
+      Route::get('/building-buy','SearchController@building_buy');
+      Route::get('/building-rent','SearchController@building_rent');
+      Route::get('/land-buy','SearchController@land_buy');
+  
+      Route::post('/houses/add-to-favorites', 'HouseController@toggleFavorite')->middleware('auth')->name('add-to-favorites');
+      Route::post('/buildings/add-to-favorites', 'BuildingController@toggleFavorite')->middleware('auth')->name('add-building-to-favorites');
+      Route::post('/lands/add-land-to-favorites', 'LandController@toggleFavorite')->middleware('auth')->name('add-land-to-favorites');
     //Route::get('/houses/filter', 'HouseController@filter')->name('houses.filter'); //(in progress)
    
 

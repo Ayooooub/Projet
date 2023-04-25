@@ -1,14 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Models\House;
-use App\Models\Image;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use App\Models\House;
 use App\Models\Building;
 use App\Models\Land;
+use App\Models\Image;
+
 class HouseController extends Controller
 {
     public function index(){
@@ -17,7 +17,20 @@ class HouseController extends Controller
         $lands = Land::all();
         return view('searchpages.buy',compact('houses','buildings','lands'));
    }
- 
+   public function properties(){
+    $houses = House::all();
+    $buildings = Building::all();
+    $lands = Land::all();
+    return view('admin.properties',compact('houses','buildings','lands'));
+}
+
+public function all(){
+    $houses = House::all();
+    $buildings = Building::all();
+    $lands = Land::all();
+    return view('all',compact('houses','buildings','lands'));
+}
+
    
 
    public function store(Request $request){
@@ -105,63 +118,9 @@ class HouseController extends Controller
        return redirect()->route('searchpages.buy');
     }
 
-    public function rentsearch(Request $request)
-    {
-        $query = House::query();
-        $query->where('type_annonce', 'LIKE','Location');
 
-        $adresse = $request->input('adresse');
-        if ($request->filled('adresse')) {
-            $query->where('adresse', 'LIKE', '%' . $adresse . '%');
-        }
-    
-        $surf = $request->input('surface');
-        if ($request->filled('surface')) {
-            $query->where('surface', '>=', $surf);
-        }
- 
-        $maxPrice = $request->input('price');
-        if ($request->filled('price')) {
-            $query->where('prix', '<=', $maxPrice);
-        }
-
-        if ($request->filled('building_types')) {
-            $buildingTypes = $request->input('building_types');
-            $query->whereIn('building_type', [$buildingType]);
-
-        }
-        
-        
-        $houses = $query->get();
-        
-        return view('searchpages.buy', compact('houses'));
-    }
   
-    public function buysearch(Request $request)
-    {
-        $query = House::query();
-        $query->where('type_annonce', 'LIKE','Vente');
-        $query->select('*', DB::raw('(SELECT path FROM images WHERE house_id = houses.id ORDER BY id ASC LIMIT 1) as image_url'));
-        
-        $adresse = $request->input('adresse');
-        if ($request->filled('adresse')) {
-            $query->where('adresse', 'LIKE', '%' . $adresse . '%');
-        }
-    
-        $surf = $request->input('surface');
-        if ($request->filled('surface')) {
-            $query->where('surface', '>=', $surf);
-        }
-    
-        $maxPrice = $request->input('price');
-        if ($request->filled('price')) {
-            $query->where('prix', '<=', $maxPrice);
-        }
-    
-        $houses = $query->get();
-    
-        return view('searchpages.buy', compact('houses'));
-    } 
+  
     
     public function show($id)
     {
@@ -209,8 +168,23 @@ class HouseController extends Controller
     return redirect()->route('houses.list');
 
 }
+public function toggleFavorite(Request $request)
+{
+    $house_id = $request->input('house_id');
+    $user = Auth::user();
+    
+    if ($user->favoriteHouses->contains($house_id)) {
+        // House already favorited, remove it
+        $user->favoriteHouses()->detach($house_id);
+        return response()->json(['status' => 'success', 'message' => 'Maison supprimée des favoris.']);
+    } else {
+        // House not favorited, add it
+        $user->favoriteHouses()->attach($house_id);
+        return response()->json(['status' => 'success', 'message' => 'Maison ajoutée aux favoris.']);
+    }
+}
 
-public function showed($id)
+    public function showed($id)
     {
         $house = House::findOrFail($id);
         $images = $house->images;
@@ -223,22 +197,7 @@ public function showed($id)
         $house->delete(); // Delete the house from the database
         return redirect()->back()->with('success', 'La maison a été supprimée avec succès.'); // Redirect back to the previous page with a success message
     }
-    public function toggleFavorite(Request $request)
-    {
-        $house_id = $request->input('house_id');
-        $user = Auth::user();
-        
-        if ($user->favoriteHouses->contains($house_id)) {
-            // House already favorited, remove it
-            $user->favoriteHouses()->detach($house_id);
-            return response()->json(['status' => 'success', 'message' => 'Maison supprimée des favoris.']);
-        } else {
-            // House not favorited, add it
-            $user->favoriteHouses()->attach($house_id);
-            return response()->json(['status' => 'success', 'message' => 'Maison ajoutée aux favoris.']);
-        }
-    }
-
+   
     
     
    

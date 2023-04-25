@@ -9,7 +9,8 @@
     <title>Image Slider</title>
     <style>
 
-        .slider {
+        
+.slider {
             width: 90%;
             height: 400px;
             position: relative;
@@ -73,7 +74,23 @@
        font-size: 24px;
    }
    /* CSS */
-   
+   .slide.active {
+            opacity: 1;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+        .arrow.back {
+            left: 20px;
+        }
+        .arrow.next {
+            right: 20px;
+        }
    .back-button{
       background-color: transparent ;
       color: black;
@@ -137,7 +154,7 @@ a.text-decoration-none:hover {
             width: 110%;
           }
         }
-        
+
     </style>
 </head>
 <body>
@@ -176,11 +193,27 @@ a.text-decoration-none:hover {
             <span class="d-none d-md-inline"><i class="bi bi-envelope-fill"></i> Ecrire à l'agence</span>
             <span class="d-md-none"><i class="bi bi-envelope-fill"></i></span>
           </button>
+          @auth
+            @if(auth()->check() && auth()->user()->favoriteLands->contains($land->id))
+              <button class="btn btn-light mt-2 add-land-to-favorites" data-land-id="{{ $land->id }}" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
+                
+              </button>
+
+              @else
+              <button class="btn btn-light mt-2 add-land-to-favorites" data-land-id="{{ $land->id }}" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                  <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
           
-            <button class="btn btn-light mt-2" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
-              <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
-              
-            </button>
+            @endif
+          @endauth
+          @guest
+            <a class="btn btn-light mt-2 "  href="/please-login" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
+                
+            </a>
+
+          @endguest
+            
             
         </div>
         
@@ -194,10 +227,11 @@ a.text-decoration-none:hover {
                 <img src="{{ asset('storage/land_images/' . $image->path) }}" alt="{{ $image->name }}" width="100%" height="100%" loading="lazy" class="slider-img">
             </div>
             @endforeach
-        
+              @if($images->count()>1)
               <!-- The arrows to control the slide transition -->
               <span class="arrow back" onclick="prevSlide()">&#10094;</span>
               <span class="arrow next" onclick="nextSlide()">&#10095;</span>
+              @endif
               </div>
          
           </div>
@@ -221,6 +255,23 @@ a.text-decoration-none:hover {
         </div>
       
       
+            </div>
+
+            <div class="row mt-3" style="margin-top: 20px; margin-left: 50px;">
+              <div class="col-md-8 mt-3">
+                <h3>L'essentiel</h3>
+                <div class="d-flex flex-row">
+                  <div class="p-2">
+                    <i class="bi bi-geo-alt-fill symbol"></i> {{ $land->type }} 
+                  </div>
+                
+                 
+                  <div class="p-2" style="margin-left: 10px;">
+                    <i class="lolo fas fa-square "></i> {{$land->surface}} m²
+                  </div>
+                </div>
+           
+            </div>
             </div>
             
           
@@ -313,8 +364,58 @@ a.text-decoration-none:hover {
             }
             showSlide(slideIndex);
         }
+
+
+</script>
+@auth
+<script>        
+    
+    $(document).ready(function() {
+    // Add an event listener for the "Add to favorites" button click event
+    $('.add-land-to-favorites').on('click', function(event) {
+        // Prevent the default behavior of the button
+        event.preventDefault();
+
+        // Get the land ID from the data attribute of the button
+        var landId = $(this).data('land-id');
+
+        // Save a reference to the heart icon inside the button
+        var heartIcon = $(this).find('i');
+
+        // Make an AJAX request to add the land to the user's favorites
+        $.ajax({
+            url: '{{ route("add-land-to-favorites") }}',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                'land_id': landId
+            },
+            success: function(response) {
+                // Handle the success response from the server
+                alert(response.message);
+
+                // Toggle the class of the heart icon
+                heartIcon.toggleClass('fas far');
+            },
+            error: function(xhr) {
+                // Handle the error response from the server
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert(xhr.responseJSON.message);
+                } else {
+                    alert('An error occurred while adding the land to your favorites.');
+                }
+            }
+        });
+    });
+});
+
+    
     </script>
-</body
+
+    @endauth
+</body>
 
    
   @endsection

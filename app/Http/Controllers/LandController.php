@@ -80,4 +80,18 @@ class LandController extends Controller
         
             return view('annonce', compact('houses', 'lands', 'buildings'));
         }
+        public function showland1(){
+            $lands = Land::get();
+            return view('admin.properties',compact('lands'));
+        }
+        public function AccepterL(Request $request)
+        {
+            $land = Land::find($request->id);
+            if ($request->has('accept')) {
+                $land->accepted = 1;
+                $land->save();
+            }
+            return redirect()->route('houses.list');
+        
+        }
 }

@@ -13,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
+    #aa{
+      float: right;
+    /* background-color: #ddd; */
+    padding: 3px 10px;
+    font-size: 15px;
+    }
     body{
 	margin:0px;
 	padding: 0px;
@@ -418,7 +424,7 @@ td, th {
             <a class="dropdown-item" href="#">Lands Annonces</a>
         </div>
     </div>
-    <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+    <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
     </div>
 	<div id="main">
 
@@ -438,6 +444,7 @@ td, th {
 		<div class="clearfix"></div>
 	</div>
   <div class="row">
+   <span> <a href="/all" id=aa>voir tout</a></span>
   @if($houses->isEmpty())
         <div class="col-md-12 text-center" style="margin-top: 10%;">
             <p class="font-weight-bold">Aucun annonces</p>

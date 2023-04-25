@@ -1,33 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.auth-master')
+
+@section('content')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-      <!-- Font library CSS files -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-<!-- Bootstrap 4 CSS and JS files -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
-<!-- Bootstrap 3 CSS and JS files -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- Bootstrap Icons CSS file -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-      
     <title>Image Slider</title>
     <style>
+
         .slider {
             width: 90%;
-            height: 500px;
+            height: 400px;
             position: relative;
             overflow: hidden;
             
@@ -50,22 +34,6 @@
             opacity: 1;
         }
 
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .arrow.back {
-            left: 20px;
-        }
-
-        .arrow.next {
-            right: 20px;
-        }
         
         /* Add this style for the house type */
         .house-type {
@@ -85,6 +53,11 @@
   border-top: 1px solid #ccc;
   background-color: #fff;
 }
+.symbol{
+  color: #7dbad8;
+
+
+}
 .lolo{
   color: #7dbad8;
 }
@@ -100,9 +73,69 @@
        font-size: 24px;
    }
    /* CSS */
-button.btn-light:hover {
-  background-color: #7dbad8;
+   .slide.active {
+            opacity: 1;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+        .arrow.back {
+            left: 20px;
+        }
+        .arrow.next {
+            right: 20px;
+        }
+   .back-button{
+      background-color: transparent ;
+      color: black;
+      border:  none;
+
+   }
+   .back-button:active, 
+   .back-button.active , 
+   .back-button:focus{
+    background-color: #6999BB !important;
+    color: #fff!important;
+    border: none !important;
+    box-shadow: none !important;
+   }
+
+    .back-button:hover{
+      background-color: #6999BB;
+      color: #fff;
+      border: none;
+    }
+    button.btn-light:hover {
+      background-color: #6999BB;
+      border: none!important;
+      color: #fff;
 }
+
+    .send-button{
+      background-color:  #6999BB ;
+      color:    #fff;
+      border: none;
+
+   }
+
+   .send-button:hover{
+    background-color: #5E89A8;
+    color: #fff;
+    border: none;
+  }
+   .send-button:active, 
+   .send-button.active , 
+   .send-button:focus{
+    background-color: #6999BB !important;
+    color: #fff!important;
+    border: none !important;
+    box-shadow: none !important;
+   }
 a.text-decoration-none {
   text-decoration: none;
 }
@@ -110,7 +143,8 @@ a.text-decoration-none {
 a.text-decoration-none:hover {
   color: your-desired-color;
 }
-@media (max-width: 768px) {
+
+   @media (max-width: 768px) {
           .house-type {
             position: relative;
             top: 20px;
@@ -123,18 +157,6 @@ a.text-decoration-none:hover {
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><b>Kay.com</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-12">
-        <li class="nav-item"><a class="nav-link"><i class="fas fa-heart"></i> Mes favoris</a></li>
-        <li class="nav-item"><a class="nav-link" href="seconnecter.php"><i class="fas fa-user"></i> Se connecter</a></li>
-      </ul>
-    </div>
-  </nav>
   
       <div class="d-sm-block d-md-none fixed-bottom">
         <div class="content">
@@ -156,34 +178,41 @@ a.text-decoration-none:hover {
     <!-- Add the house type div -->
     <div class="container">
 
-      <div class="row align-items-center">
+      <div class="row align-items-center mt-2">
         <div class="col">
-            <a href="#" class="text-decoration-none">
-                <i class="glyphicon glyphicon-chevron-left"></i>Retour aux résultats
-            </a>
+        <form action="{{ url()->previous() }}" method="get">
+          <button type="submit" class="btn btn-primary back-button" >
+            <i class="bi bi-chevron-left"></i>  Retour aux résultats
+          </button>
+        </form>
+
         </div>
         <div class="col-auto">
-          <button class="btn btn-light me-3" style="border: 1px solid blue; padding: 6px 12px; font-size: 16px;" onclick="scrollToForm()">
+          <button class="btn btn-light mt-2 write" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;" onclick="scrollToForm()">
             <span class="d-none d-md-inline"><i class="bi bi-envelope-fill"></i> Ecrire à l'agence</span>
             <span class="d-md-none"><i class="bi bi-envelope-fill"></i></span>
           </button>
-          
-            <button class="btn btn-light" style="border: 1px solid blue; padding: 6px 12px; font-size: 16px;">
-              <span class="d-none d-md-inline"><i class="glyphicon glyphicon-heart-empty"></i> </span>
-              <span class="d-md-none"><i class="glyphicon glyphicon-heart-empty"></i></span>
-            </button>
-            
-        </div>
-        <div class="col-auto ms-auto">
-            <a href="#" class="text-decoration-none" style="margin-right: 20px;">
-                <span class="d-none d-md-inline"><i class="glyphicon glyphicon-chevron-left"></i>Précédent</span>
-                <span class="d-md-none"><i class="glyphicon glyphicon-chevron-left"></i></span>
+          @auth
+            @if(auth()->check() && auth()->user()->favoriteHouses->contains($house->id))
+              <button class="btn btn-light mt-2 add-to-favorites" data-house-id="{{ $house->id }}" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                <span class="d-none d-md-inline"><i class="fas fa-heart"> </i></span>
+                
+              </button>
+              @else
+              <button class="btn btn-light mt-2 add-to-favorites" data-house-id="{{ $house->id }}" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
+         
+            @endif
+          @endauth
+          @guest
+            <a class="btn btn-light mt-2 add-to-favorites"  href="/please-login" style="border: 1px solid black; padding: 6px 12px; font-size: 16px;">
+                <span class="d-none d-md-inline"><i class="far fa-heart"> </i></span>
+                
             </a>
-            <a href="#" class="text-decoration-none">
-                <span class="d-none d-md-inline">Suivant<i class="glyphicon glyphicon-chevron-right"></i></span>
-                <span class="d-md-none"><i class="glyphicon glyphicon-chevron-right"></i></span>
-            </a>
+
+          @endguest
         </div>
+        
     </div>
     
         <div class="row">
@@ -191,27 +220,29 @@ a.text-decoration-none:hover {
           <div class="slider" style="margin-top: 3%;">
             @foreach($images as $image)
             <div class="slide @if($loop->first) active @endif">
-                <img src="{{ asset('storage/house_images/' . $image->path) }}" alt="{{ $image->name }}" width="100%" height="100%" loading="lazy">
+                <img src="{{ asset('storage/house_images/' . $image->path) }}" alt="{{ $image->name }}" width="100%" height="100%" loading="lazy" class="slider-img">
             </div>
             @endforeach
-        
+            @if($images->count()>1)
               <!-- The arrows to control the slide transition -->
               <span class="arrow back" onclick="prevSlide()">&#10094;</span>
               <span class="arrow next" onclick="nextSlide()">&#10095;</span>
-              </div>
-         
+            @endif
+            </div>
+          
           </div>
           <div class="col-md-4">
             <div class="house-type" style="font-size: 36px; color: #777; margin-bottom: 30px; font-weight: bold; font-style:inherit;">
               <h2>{{ $house->type }} @if ($house->type_annonce == 'Vente') à vendre @else à louer @endif</h2>
 
-              <h2 >{{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif <span>. {{ $house->surface }} m²</span></h2>
+              <h2 >{{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif <span>, {{ $house->surface }} m²</span></h2>
               <div class="location col-5" style="margin-top: 30px;">
-                <i class="glyphicon glyphicon-map-marker" id ="pin" style="margin-right: 10px;"></i>
+                <i class="bi bi-geo-alt-fill" id="pin" style="margin-right: 10px;"></i>
+
                 <h3 >{{ $house->adresse }}</h3>
               </div>
               <div class="price " style="color: #7dbad8; margin-top: 20px;" >
-                <h2 >{{ $house->prix }} <i class="glyphicon glyphicon-euro"></i></h2>
+                <h2 >{{ $house->prix }} DH @if($house->type_annonce=='Location') /cmois @endif</h2>
               </div>
             </div>
           </div>
@@ -220,83 +251,103 @@ a.text-decoration-none:hover {
         </div>
       
     
-        <div class="row" style="margin-top: 20px;">
-          <div class="col-md-8">
+        <div class="row mt-3" style="margin-top: 20px;">
+          <div class="col-md-8 mt-3">
             <h3>L'essentiel</h3>
             <div class="d-flex flex-row">
+              <div class="p-2">
+              @if($house->type=='Maison') <i class="bi bi-house-door-fill symbol"></i>@else <i class="lolo fas fa-building"></i>     @endif {{ $house->type }} 
+              </div>
               <div class="p-2">
                 <i class="lolo fas fa-cube"></i> {{ $house->nbpiece }} @if($house->nbpiece > 1)pièces @else pièce @endif
               </div>
               <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-bath"></i> 1 salle de bain/eau
+                <i class="lolo fas fa-bath"></i> {{ $house->salle_bain }}  @if($house->nbpiece > 1)salles @else salle @endif de bain/eau
               </div>
+
+              @if($house->garage)
               <div class="p-2" style="margin-left: 10px;">
                 <i class="lolo fas fa-car"></i> Garage
               </div>
+              @endif
               <div class="p-2" style="margin-left: 10px;">
                 <i class="lolo fas fa-square"></i> {{$house->surface}} m²
               </div>
             </div>
             <hr>
             <h3>Intérieur</h3>
+            
             <div class="d-flex flex-row">
+             
+              <div class="p-2">
+              @if($house->meublé)
+              <i class="bi bi-lamp-fill symbol"></i> Meublé
+              </div>
+              @else <i class="bi bi-lamp-fill symbol"></i> Non meublé
+              </div>
+              @endif
+              @if($house->cuisine_equipee)
               <div class="p-2">
                 <i class=" lolo fas fa-utensils"></i> Cuisine équipée
               </div>
+              @endif
+              @if($house->ascenceur)
               <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-user"></i> Gardien
-              </div>
-              <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-door-open"></i> Interphone
-              </div>
-              <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-lock"></i> Digicode
-              </div>
-            </div>
-            <hr>
-            <h3>Autre</h3>
-            <div class="d-flex flex-row">
-              @if(isset($house->annee_construction))
-              <div class="p-2">
-                <i class="lolo fas fa-calendar-alt"></i> Construit en {{$house->annee_construction}}
+              <i class="bi bi-caret-up-square-fill symbol"></i> Ascenceur
               </div>
               @endif
+              @if($house->balcon)
               <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-building"></i> Construction en Pierres
+                <i class="lolo fas fa-door-open"></i> Balcon
               </div>
-              <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-sort-numeric-up"></i> Étage 5
-              </div>
-              <div class="p-2" style="margin-left: 10px;">
-                <i class="lolo fas fa-building"></i> Immeuble de 5 étages
-              </div>
+              @endif
+              
             </div>
             <hr>
-            <h3>L'avis de l'agent</h3>
-            <div class="d-flex flex-row">
-              <p> l'agence Orpi vous propose, au 5ème étage, ce grand studio traversant (18.82 m2 Carrez, 48.16m2 au sol, pondéré 29m2) ,étant composé comme il suit : une entrée, un séjour, une cuisine ouverte, d'un coin chambre et d'une salle de bain avec baignoire et WC . </p>
-            </div>
+            @if(isset($house->annee_construction) || isset($house->num_etage) || isset($house->nb_etage))
+                <h3>Autre</h3>
+                <div class="d-flex flex-row">
+                  @if(isset($house->annee_construction))
+                  <div class="p-2">
+                    <i class="lolo fas fa-calendar-alt"></i> Construit en {{$house->annee_construction}}
+                  </div>
+                  @endif
+
+                  @if(isset($house->num_etage))
+                  <div class="p-2" style="margin-left: 10px;">
+                      <i class="lolo fas fa-sort-numeric-up"></i> Étage numéro {{$house->num_etage}}
+                  </div>
+                  @endif
+                  @if(isset($house->nb_etage))
+                  <div class="p-2" style="margin-left: 10px;">
+                    <i class="bi bi-building symbol"></i>  Immeuble de {{$house->nb_etage}} étages
+                  </div>
+                  @endif
+                </div>
+            
+            @endif
+
           </div>
-          <div class="col-md-4 bg-light" style="margin-bottom: 30px; "  >
+          <div class="col-md-4 bg-light " style="margin-bottom: 30px; "  >
             <form id="contact-form"  onsubmit="alert('Votre demande a bien été envoyée à l\'agence Urban Success.');" >
-              <h3>Ce bien vous intéresse ?</h3>
+              <h3 class="mt-3">Ce bien vous intéresse ?</h3>
               Contactez vite l'agence pour le visiter !
               <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom:</label>
-                <input type="text" class="form-control" id="pre">
+                <input type="text" class="form-control" id="pre" required>
               </div>
               <div class="mb-3">
                 <label for="nom" class="form-label">Nom:</label>
-                <input type="text" class="form-control" id="nom">
+                <input type="text" class="form-control" id="nom" required>
               </div>
               
               <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email1">
+                <input type="email" class="form-control" id="email1" required>
               </div>
               <div class="mb-3">
-                <label for="Téléphone" class="form-label">Téléphone:</label>
-                <input type="tel" class="form-control" id="tel1">
+                <label for="Téléphone" class="form-label" >Téléphone:</label>
+                <input type="tel" class="form-control" id="tel1" required>
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Message:</label>
@@ -315,7 +366,7 @@ a.text-decoration-none:hover {
               
   
               <div class="d-flex justify-content-center mt-3">
-                <button type="submit" class="btn btn-primary " >Ecrire à l'agence</button>
+                <button type="submit" class="btn btn-primary send-button mb-3" >Ecrire à l'agence</button>
               </div>
             </form>
           </div>
@@ -366,8 +417,56 @@ a.text-decoration-none:hover {
             }
             showSlide(slideIndex);
         }
+</script>
+@auth
+<script>      
+
+
+$(document).ready(function() {
+    // Add an event listener for the "Add to favorites" button click event
+    $('.add-to-favorites').on('click', function(event) {
+        // Prevent the default behavior of the button
+        event.preventDefault();
+
+        // Get the house ID from the data attribute of the button
+        var houseId = $(this).data('house-id');
+
+        // Save a reference to the heart icon inside the button
+        var heartIcon = $(this).find('i');
+
+        // Make an AJAX request to add the house to the user's favorites
+        $.ajax({
+            url: '{{ route("add-to-favorites") }}',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                'house_id': houseId
+            },
+            success: function(response) {
+                // Handle the success response from the server
+                alert(response.message);
+
+                // Toggle the class of the heart icon
+                heartIcon.toggleClass('fas far');
+            },
+            error: function(xhr) {
+                // Handle the error response from the server
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert(xhr.responseJSON.message);
+                } else {
+                    alert('An error occurred while adding the house to your favorites.');
+                }
+            }
+        });
+    });
+});
+
     </script>
-</body
+
+    @endauth
+</body>
 
    
-    
+  @endsection

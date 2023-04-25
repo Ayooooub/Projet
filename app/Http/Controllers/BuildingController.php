@@ -122,8 +122,6 @@ class BuildingController extends Controller
         return view('d_buildings', ['building' => $building, 'images' => $images]);
 
     }
-    
-
         public function showed($id)
         {
             $building = Building::findOrFail($id);
