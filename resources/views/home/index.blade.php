@@ -518,7 +518,7 @@ td, th {
 	</script>
    @endif
 
-@if(Auth::user()->usertype =='client')
+@if(Auth::user()->usertype =='agent')
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -638,7 +638,7 @@ body {
    
     color: white !important;
 }
-header .active-link {
+header .active1-link {
   font-weight: bold;
   color: #DBE6EE !important;
   /* add other styles as desired */
@@ -744,31 +744,31 @@ input[type="text"],
  
 
 }
-#info-form, #password-form, #picture-form {
+#info1-form, #password1-form, #picture1-form {
   margin-left: 50%; /* This will push the forms to the right */
   margin-right: 10%; /* This will add some space on the right */
   width: 80%; /* This will make the form 80% of the container width */
 }
-#info-form label,
-#info-form input {
+#info1-form label,
+#info1-form input {
   display: inline-block;
   vertical-align: middle;
 }
-#info-form label{
+#info1-form label{
   width: 100px;
   font-weight : bold;
 }
 #password-form label, 
-#picture-form label 
+#picture1-form label 
  {
    
   font-weight : bold;
 }
-#info-form input {
+#info1-form input {
   width: 200px; /* adjust as needed */
   margin-right: 20px; /* adjust as needed */
 }
-#info-links{
+#info1-links{
   style: none;
   margin-left: 40%; 
   width: 90%;
@@ -776,11 +776,11 @@ input[type="text"],
  
   
 }
-#info-links a {
+#info1-links a {
   color:  #1F2D38 ;
   text-decoration: none;
 }
-#info-links .active-link {
+#info1-links .active1-link {
     color: #547A95!important;
     text-decoration: none;
     font-weight:bold;
@@ -790,7 +790,7 @@ input[type="text"],
     margin-left: 40%; 
     width: 100%;
 }
-.welcome_panel{
+.welcome1_panel{
   margin-left: 40%; 
   margin-top: 15%;
   width: 80%;
@@ -842,10 +842,10 @@ input[type="text"],
 
             <nav id="navbar" class="nav-menu navbar ">
             <ul>
-                <li><a class="nav-link " href="#personal-info"><span><i class="fas fa-id-card"></i> Mes infos personnelles</span></a></li>
-                <li><a class="nav-link" href="#favorites"><i class="fas fa-heart"></i> <span>Voir mes favoris</span></a></li>
-                <li><a class="nav-link" href="#annonce"><i class="fas fa-pencil-alt"></i> <span>Déposer une annonce</span></a></li>
-                <li><a class="nav-link" href="#annonces-deposees"><i class="fas fa-bullhorn"></i> <pan>Mes annonces</span></a></li>
+                <li><a class="nav-link " href="#personal-info1"><span><i class="fas fa-id-card"></i> Mes infos personnelles</span></a></li>
+                <li><a class="nav-link" href="#propriete-info"><i class="fas fa-home"></i> <span>View Properties</span></a></li>
+                <li><a class="nav-link" href="#messages"><i class="fas fa-envelope"></i> <span>View Messages</span></a></li>
+                <li><a class="nav-link" href="#rendez-vous"><i class="far fa-calendar-alt"></i> <span>Rendez-vous</span></a></li>
                 <li><a class="nav-link " href="/home"><span><i class="fas fa-home"></i> Revenir à l'acceuil</span></a></li>
                 <li><a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
             </ul>
@@ -863,41 +863,41 @@ input[type="text"],
   <div class="row">
    
     <div class="col-8 right-content">
-      <div class="info_panel mt-2">
-        <div class="row mt-4 mb-5 p-3 border rounded shadow" id="info-links">
-          <a href="#info" class="active-link col" style="cursor: pointer;" onclick="showInfoForm()" id="info-link">Informations personnelles</a>
-          <a href="#pwd" class="col" style="cursor: pointer;" onclick="showPasswordForm()" id="password-link">Changer le mot de passe</a>
-          <a href="#pic" class="col" style="cursor: pointer;" onclick="showPictureForm()" id="picture-link">Changer la photo de profil</a>
+      <div class="info1_panel mt-2">
+        <div class="row mt-4 mb-5 p-3 border rounded shadow" id="info1-links">
+          <a href="#info1" class="active1-link col" style="cursor: pointer;" onclick="showInfoForm1()" id="info1-link">Informations personnelles</a>
+          <a href="#pwd1" class="col" style="cursor: pointer;" onclick="showPasswordForm1()" id="password1-link">Changer le mot de passe</a>
+          <a href="#pic1" class="col" style="cursor: pointer;" onclick="showPictureForm1()" id="picture1-link">Changer la photo de profil</a>
         </div>
       
 
 
-      <div id="info-form">
+      <div id="info1-form">
         <form method="POST" action="{{ route('users.update') }}">
           @csrf
           @method('PUT')
-          <label for="nom">Nom:</label>
-          <input id="nom" type="text" name="nom" value="{{ auth()->user()->nom }}"><br><br>
-          <label for="prenom">Prénom:</label>
-          <input id="prenom" type="text" name="prenom" value="{{ auth()->user()->prenom }}"><br><br>
-          <label for="email">Email:</label>
-          <input id="email" type="email" name="email" value="{{ auth()->user()->email }}"><br><br>
-          <label for="numtel">Téléphone:</label>
-          <input id="numtel" type="tel" name="numtel" value="{{ auth()->user()->numtel }}"><br><br>
+          <label for="nom1">Nom:</label>
+          <input id="nom1" type="text" name="nom" value="{{ auth()->user()->nom }}"><br><br>
+          <label for="prenom1">Prénom:</label>
+          <input id="prenom1" type="text" name="prenom" value="{{ auth()->user()->prenom }}"><br><br>
+          <label for="email1">Email:</label>
+          <input id="email1" type="email" name="email" value="{{ auth()->user()->email }}"><br><br>
+          <label for="numtel1">Téléphone:</label>
+          <input id="numtel1" type="tel" name="numtel" value="{{ auth()->user()->numtel }}"><br><br>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
 
-  <div id="password-form" style="display: none;">
+  <div id="password1-form" style="display: none;">
     <form method="POST" action="{{ route('users.update-password') }}">
       @csrf
       @method('PUT')
-      <label for="old_password">Votre mot de passe actuel:</label>
-      <input id="old_password" type="password" name="old_password"><br><br>
-      <label for="new_password">Votre nouveau mot de passe:</label>
-      <input id="new_password" type="password" name="new_password"><br><br>
-      <label for="new_password_confirmation">Confirmer le nouveu mot de passe</label>
-      <input id="new_password_confirmation" type="password" name="new_password_confirmation"><br><br>
+      <label for="old_password1">Votre mot de passe actuel:</label>
+      <input id="old_password1" type="password" name="old_password"><br><br>
+      <label for="new_password1">Votre nouveau mot de passe:</label>
+      <input id="new_password1" type="password" name="new_password"><br><br>
+      <label for="new_password1_confirmation">Confirmer le nouveu mot de passe</label>
+      <input id="new_password1_confirmation" type="password" name="new_password1_confirmation"><br><br>
       <button type="submit">Enregistrer</button>
     </form>
     <form method="POST" action="{{ route('users.delete', ['user' => auth()->user()->id]) }}" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.')">
@@ -906,393 +906,107 @@ input[type="text"],
       <button type="submit">Supprimer mon compte </button>
     </form>
   </div>
-  <div id="picture-form" style="display: none;">
+  <div id="picture1-form" style="display: none;">
   <form method="POST" action="{{ route('users.update-picture') }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <label for="picture">Choisir une nouvelle photo de profile:</label>
-    <input type="file" id="picture" name="picture" accept="image/*"><br><br>
+    <label for="picture1">Choisir une nouvelle photo de profile:</label>
+    <input type="file" id="picture1" name="picture1" accept="image/*"><br><br>
     <button type="submit">Enregistrer</button>
   </form>
 </div>
 
   <script>
-    function showInfoForm() {
-    var infoLink = document.getElementById("info-link");
-    var passwordLink = document.getElementById("password-link");
-    var infoForm = document.getElementById("info-form");
-    var passwordForm = document.getElementById("password-form");
-    var pictureLink = document.getElementById("picture-link");
-    var pictureForm = document.getElementById("picture-form");
+    function showInfoForm1() {
+    var info1Link = document.getElementById("info1-link");
+    var password1Link = document.getElementById("password1-link");
+    var info1Form = document.getElementById("info1-form");
+    var password1Form = document.getElementById("password1-form");
+    var picture1Link = document.getElementById("picture1-link");
+    var picture1Form = document.getElementById("picture1-form");
     // Show the info form and hide the password form
-    infoForm.style.display = "block";
-    passwordForm.style.display = "none";
-    pictureForm.style.display = "none";
+    info1Form.style.display = "block";
+    password1Form.style.display = "none";
+    picture1Form.style.display = "none";
     // Add the active-link class to the info link and remove it from the password link
-    infoLink.classList.add("active-link");
-    passwordLink.classList.remove("active-link");
-    pictureLink.classList.remove("active-link");
+    info1Link.classList.add("active1-link");
+    password1Link.classList.remove("active1-link");
+    picture1Link.classList.remove("active1-link");
   }
-  function showPasswordForm() {
-    var infoLink = document.getElementById("info-link");
-    var passwordLink = document.getElementById("password-link");
-    var infoForm = document.getElementById("info-form");
-    var passwordForm = document.getElementById("password-form");
-    var pictureLink = document.getElementById("picture-link");
-    var pictureForm = document.getElementById("picture-form");
+  function showPasswordForm1() {
+    var info1Link = document.getElementById("info1-link");
+    var passwordLin1k = document.getElementById("password1-link");
+    var info1Form = document.getElementById("info1-form");
+    var password1Form = document.getElementById("password1-form");
+    var picture1Link = document.getElementById("picture1-link");
+    var picture1Form = document.getElementById("picture1-form");
     // Show the password form and hide the info form
-    passwordForm.style.display = "block";
-    infoForm.style.display = "none";
-    pictureForm.style.display = "none";
+    password1Form.style.display = "block";
+    info1Form.style.display = "none";
+    picture1Form.style.display = "none";
     // Add the active-link class to the password link and remove it from the info link
-    passwordLink.classList.add("active-link");
-    infoLink.classList.remove("active-link");
-    pictureLink.classList.remove("active-link");
+    password1Link.classList.add("active1-link");
+    info1Link.classList.remove("active1-link");
+    picture1Link.classList.remove("active1-link");
   }
-  function showPictureForm() {
-  var infoLink = document.getElementById("info-link");
-  var passwordLink = document.getElementById("password-link");
-  var pictureLink = document.getElementById("picture-link");
-  var infoForm = document.getElementById("info-form");
-  var passwordForm = document.getElementById("password-form");
-  var pictureForm = document.getElementById("picture-form");
+  function showPictureForm1() {
+  var info1Link = document.getElementById("info1-link");
+  var password1Link = document.getElementById("password1-link");
+  var picture1Link = document.getElementById("picture1-link");
+  var info1Form = document.getElementById("info1-form");
+  var password1Form = document.getElementById("password1-form");
+  var picture1Form = document.getElementById("picture1-form");
   // Show the picture form and hide the other forms
-  pictureForm.style.display = "block";
-  infoForm.style.display = "none";
-  passwordForm.style.display = "none";
+  picture1Form.style.display = "block";
+  info1Form.style.display = "none";
+  password1Form.style.display = "none";
   // Add the active-link class to the picture link and remove it from the other links
-  pictureLink.classList.add("active-link");
-  infoLink.classList.remove("active-link");
-  passwordLink.classList.remove("active-link");
+  picture1Link.classList.add("active1-link");
+  info1Link.classList.remove("active1-link");
+  password1Link.classList.remove("active1-link");
 }
   </script>
 </div>
 
 
 <script>
-  function toggleForm(formId) {
-    var form = document.getElementById(formId + '-form');
-    var title = document.getElementById(formId);
-    if (form.style.display === "none") {
-      form.style.display = "block";
-      title.classList.add('selected');
+  function toggleForm1(formId) {
+    var doll = document.getElementById(formId + '-form');
+    var dtitle = document.getElementById(formId);
+    if (doll.style.display === "none") {
+      doll.style.display = "block";
+      dtitle.classList.add('selected');
     } else {
-      form.style.display = "none";
-      title.classList.remove('selected');
+      doll.style.display = "none";
+      dtitle.classList.remove('selected');
     }
   }
 </script>
 
 
 
-            <div class="welcome_panel "> 
+            <div class="welcome1_panel "> 
              <h3 class="font-weight-bold"> Bienvenue  dans votre espace, {{ Auth::user()->prenom }}  !</h3>
           
           
             </div>
             
     
-            <div class="fav_panel mt-4">
-                <div class=" mt-2 mb-3 p-3 border rounded shadow" > 
-                    <h3 >Mes favoris : </h3>
-                </div>  
-                
-                <div class="row ">
-                @if ($favorite_houses->isEmpty() && $favorite_buildings->isEmpty() && $favorite_lands->isEmpty() )
-                <div class="mt-4" style="margin-left: 3%;">
-                Votre sélection de biens favoris est vide. Faites votre recherche et sauvegardez vos annonces en favoris pour les retrouver ici plus facilement.
-                </div>
-
-                @else
-                  @foreach ($favorite_houses as $house)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/houses/{{ $house->id }}">
-                                @if ($house->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/house_images/'.$house->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $house->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $house->surface }}m²</span>
-                                            <span class="badge badge-secondary">{{ $house->nbpiece }} pièces</span>
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $house->prix }} dh @if($house->type_annonce==='Location')/mois @endif </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $house->adresse  }}
-                                </h6>
-                              
-                            </div>
-                        </div>
-                    </div>
-                  @endforeach
-                  @foreach ($favorite_buildings as $item)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/buildings/{{ $item->id }}">
-                                @if ($item->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                                            <span class="badge badge-secondary">{{ $item->nb_etage }} étages</span>
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $item->adresse  }}
-                                </h6>
-                              
-                            </div>
-                        </div>
-                    </div>
-                  @endforeach
-                  @foreach ($favorite_lands as $item)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/lands/{{ $item->id }}">
-                                @if ($item->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                                          
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $item->adresse  }}
-                                </h6>
-                              
-                            </div>
-                        </div>
-                    </div>
-                  @endforeach
-
-
-                @endif
-                    
-                </div>
-            </div>
-            <div class="annonce_panel mt-4 ">
-                <div class=" mt-2 mb-4 p-3 border rounded shadow" > 
-                    <h3 class>Déposer une annonce de maison :</h3>
-                </div>
-                <form>
-                  <div class="form-group">
-                    <label for="title">Titre de l'annonce:</label>
-                    <input type="text" class="form-control" id="title" placeholder="Entrez un titre pour votre annonce">
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" rows="5" placeholder="Entrez une description pour votre annonce"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="photos">Images:</label>
-                    <input type="file" accept="image/*" multiple>
-                  </div>
-                  <div class="form-group">
-                    <label for="price">Prix:</label>
-                    <input type="number" class="form-control" id="price" placeholder="Entrez le prix pour votre annonce">
-                  </div>
-                  <div class="form-group">
-                    <label for="bedrooms">Nombre de chambres:</label>
-                    <input type="number" class="form-control" id="bedrooms" placeholder="Entrez le nombre de chambres de votre maison">
-                  </div>
-                  <div class="form-group">
-                    <label for="bathrooms">Nombre de salles de bain:</label>
-                    <input type="number" class="form-control" id="bathrooms" placeholder="Entrez le nombre de salles de bain de votre maison">
-                  </div>
-                  <div class="form-group">
-                    <label for="size">Surface :</label>
-                    <input type="number" class="form-control" id="size" placeholder="Entrez la taille de votre maison en mètres carrés">
-                  </div>
-                  <div class="form-group">
-                    <label for="location">Emplacement:</label>
-                    <input type="text" class="form-control" id="location" placeholder="Entrez l'emplacement de votre maison">
-                  </div>
-
-                  <button type="submit" class="btn btn-primary mt-3 mb-5">Déposer l'annonce</button>
-                </form>
-              </div>
-              <div  class="ann_panel mt-4">
-              <div class="mt-2 mb-4 p-3 border rounded shadow" style="right: 0;">
-                <h3>Déposer une annonce de maison :</h3>
-              </div>
-                 
-              <div class="row ">
-                @if ($houses->isEmpty() && $buildings->isEmpty() && $lands->isEmpty() )
-                <div class="mt-4" style="margin-left: 3%;">
-                Votre sélection de biens favoris est vide. Faites votre recherche et sauvegardez vos annonces en favoris pour les retrouver ici plus facilement.
-                </div>
-
-                @else
-                  @foreach ($houses as $house)
-                  @if (auth()->user()->id == $house->user_id )
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/houses/{{ $house->id }}">
-                                @if ($house->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/house_images/'.$house->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $house->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $house->surface }}m²</span>
-                                            <span class="badge badge-secondary">{{ $house->nbpiece }} pièces</span>
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $house->prix }} dh @if($house->type_annonce==='Location')/mois @endif </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $house->adresse  }}
-                                </h6>
-                              @if($house->accepted==0)
-                             <form method="post" action="{{ route('houses.destroy', ['id' => $house->id]) }}">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="id" value="{{  $house->id }}">
-                                    <button type="submit" class="btn btn-danger mr-5" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette maison ?')">Annuler cette annonce</button>
-                                </form>
-                              
-                                @else
-                                <form>
-                                <span style="color: #149ddd;"> votre annonce acceptée  </span>
-
-                                </form>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-                  @endforeach
-                  @foreach ($buildings as $item)
-                  @if (auth()->user()->id == $item->user_id )
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/buildings/{{ $item->id }}">
-                                @if ($item->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/building_images/'.$item->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                                            <span class="badge badge-secondary">{{ $item->nb_etage }} étages</span>
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh @if($item->type_annonce==='Location')/mois @endif </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $item->adresse  }}
-                                </h6>
-                                @if($item->accepted==0)
-                             <form method="post" action="{{ route('buildings.destroy', ['id' => $item->id]) }}">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="id" value="{{  $item->id }}">
-                                    <button type="submit" class="btn btn-danger mr-5" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette maison ?')">Annuler</button>
-                                </form>
-                               
-                                @else
-                                <form>
-                                <span style="color: #149ddd;"> votre annonce acceptée  </span>
-
-                                </form>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-                  @endforeach
-                  @foreach ($lands as $item)
-                  @if(auth()->user()->id==$item->user_id)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="/lands/{{ $item->id }}">
-                                @if ($item->images->count() > 0)
-                                    <img class="card-img-top" src="{{ asset('storage/land_images/'.$item->images->first()->path ) }}" alt="Maison">
-                                @endif
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">{{ $item->type }}</h6>
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <p class="card-text mb-2">
-                                            <span class="badge badge-secondary">{{ $item->surface }}m²</span>
-                                          
-                                        </p>
-                                    </div>
-                                    <h6 class="card-subtitle mb-2 text-muted price align-self-end">{{ $item->prix }} dh </h6>
-                                </div>
-                                <h6 class="card-text adresse ">
-                                    {{ $item->adresse  }}
-                                </h6>
-                                @if($item->accepted==0)
-                             <form method="post" action="{{ route('lands.destroy', ['id' => $item->id]) }}">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="id" value="{{  $item->id }}">
-                                    <button type="submit" class="btn btn-danger mr-5" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette maison ?')">Annuler</button>
-                                </form>
-                               
-                                @else
-                                <form>
-                                <span style="color: #149ddd;"> votre annonce acceptée  </span>
-
-                                </form>
-                              @endif
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-                  @endforeach
-
-
-                @endif
-                    
-                </div>
-            </div>
-
-                
-              </div>
-            </div>
+           
         </div>
     </div>
+</div>
     <script>
       
-      const wcontent = document.querySelector('.welcome_panel');
-      wcontent.style.display = 'block';
+      const wcontent1 = document.querySelector('.welcome1_panel');
+      wcontent1.style.display = 'block';
   // Get the link and the content element
-  const link = document.querySelector('a[href="#personal-info"]');
-  const content = document.querySelector('.info_panel');
-  content.style.display = 'none';
+  const link1 = document.querySelector('a[href="#personal-info1"]');
+  const content1 = document.querySelector('.info1_panel');
+  content1.style.display = 'none';
   
-  const flink = document.querySelector('a[href="#favorites"]');
-  const fcontent = document.querySelector('.fav_panel');
+  const flink1 = document.querySelector('a[href="#favorites"]');
+  const fcontent11 = document.querySelector('.fav_panel');
   fcontent.style.display = 'none';
   
   const alink = document.querySelector('a[href="#annonce"]');
@@ -1306,71 +1020,20 @@ input[type="text"],
   // Add event listener to the link
   link.addEventListener('click', () => {
     // Toggle the display of the content element
-    if (content.style.display === 'none') {
-      content.style.display = 'block';
-      fcontent.style.display = 'none';
-      acontent.style.display = 'none';
-      wcontent.style.display = 'none'; // hide the welcome panel
-      pcontent.style.display = 'none';
-      link.classList.add('active-link'); // add the active-link class
-      flink.classList.remove('active-link'); // remove the class from other links
-      alink.classList.remove('active-link');
-      plink.classList.remove('active-link');
+    if (content1.style.display === 'none') {
+      content1.style.display = 'block';
+     
+      wcontent1.style.display = 'none'; // hide the welcome panel
+     
+      link1.classList.add('active1-link'); // add the active-link class
+     
     }
   });
   // Add event listener to the link
-  flink.addEventListener('click', () => {
-    // Toggle the display of the content element
-    if (fcontent.style.display === 'none') {
-      fcontent.style.display = 'block';
-      content.style.display = 'none';
-      acontent.style.display = 'none';
-      wcontent.style.display = 'none'; // hide the welcome panel
-      pcontent.style.display = 'none';
-      flink.classList.add('active-link'); // add the active-link class
-      link.classList.remove('active-link'); // remove the class from other links
-      alink.classList.remove('active-link');
-      plink.classList.remove('active-link');
-    }
-  });
+
   // Add event listener to the link
-  alink.addEventListener('click', () => {
-    // Toggle the display of the content element
-    if (acontent.style.display === 'none') {
-      acontent.style.display = 'block';
-      content.style.display = 'none';
-      fcontent.style.display = 'none';
-      wcontent.style.display = 'none'; // hide the welcome panel
-      pcontent.style.display = 'none';
-      alink.classList.add('active-link'); // add the active-link class
-      link.classList.remove('active-link'); // remove the class from other links
-      flink.classList.remove('active-link');
-      plink.classList.remove('active-link');
-    }
-  });
-  plink.addEventListener('click', () => {
-    // Toggle the display of the content element
-    if (acontent.style.display === 'none') {
-      acontent.style.display = 'none';
-      content.style.display = 'none';
-      fcontent.style.display = 'none';
-      wcontent.style.display = 'none'; // hide the welcome panel
-      pcontent.style.display='block';
-      plink.classList.add('active-link');
-      alink.classList.remove('active-link'); // add the active-link class
-      link.classList.remove('active-link'); // remove the class from other links
-      flink.classList.remove('active-link');
-    }
-  });
-</script>
 
-
-   
-
-
-       
-
-      
  
+</script>
 @endif
 
