@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('numtel')->nullable();
+            $table->string('adresse')->nullable();
             $table->mediumText('profilep')->nullable();
             $table->string('usertype')->default('client');
             $table->rememberToken();

@@ -29,6 +29,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request) 
     {
         $user = User::create($request->validated());
+        $user->adresse = $request->input('adresse');
         auth()->login($user);
     
         if ($request->hasFile('profile_pic')) {

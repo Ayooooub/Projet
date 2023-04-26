@@ -109,6 +109,10 @@
                       <label for="numtel">Téléphone: <span class="required">*</span></label></label>
                       <input type="text" class="form-control" id="tele" name="numtel" placeholder="Entrez votre numéro de téléphone " required>
                   </div>
+                  <div class="form-group mt-2 mb-0">
+                      <label for="adresse">Adresse: <span class="required">*</span></label></label>
+                      <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Entrez votre adresse " required>
+                  </div>
                   <button type="submit" class="btn btn-primary mt-3" name="create">Créer un compte</button>
                   <div class="create-account">
                        <p style="text-align: center; margin-top: 20px;"> Déjà inscrit ? <a href="{{ route('login.show')}}">se connecter</a> </p> 

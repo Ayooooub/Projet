@@ -30,6 +30,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'numtel' => 'required|min:10',
+            'adresse' =>'required',
 
         ];
     }
@@ -45,7 +46,7 @@ class RegisterRequest extends FormRequest
 
            'nom.required' => 'Le nom est requis.',
            'prenom.required' => 'Le prénom est requis.',
-
+           'adresse.required' => 'Le prénom est requis.',
            'password.required' => 'Le mot de passe est requis.',
            'password.min' => 'Le mot de passe doit avoir au moins 8 caractères.',
 
