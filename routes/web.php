@@ -155,8 +155,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
   
       //Route::get('/houses/filter', 'HouseController@filter')->name('houses.filter'); //(in progress)
     //messages
-    Route::post('/send-message', 'MessageController@sendMessage')->name('send-message');
-    Route::get('/index', 'MessageController@index')->name('messages.index');
+    // Route::post('/send-message', 'MessageController@sendMessage')->name('send-message');
+    // Route::get('/index', 'MessageController@index')->name('messages.index');
 
 
 
