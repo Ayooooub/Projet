@@ -329,7 +329,7 @@ a.text-decoration-none:hover {
 
           </div>
           <div class="col-md-4 bg-light " style="margin-bottom: 30px; "  >
-            <form id="contact-form"  onsubmit="alert('Votre demande a bien été envoyée à l\'agence Urban Success.');" >
+            <form id="contact-form" method="post" action="{{ route('send-message') }}" onsubmit="alert('Votre demande a bien été envoyée à l\'agence Urban Success.');" >
               <h3 class="mt-3">Ce bien vous intéresse ?</h3>
               Contactez vite l'agence pour le visiter !
               <div class="mb-3">
