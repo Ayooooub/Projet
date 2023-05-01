@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Land;
 use App\Models\House;
 use App\Models\Building;
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index() 
@@ -21,7 +24,14 @@ class HomeController extends Controller
         $houses = House::all();
         $buildings = Building::all();
         $lands = Land::all();
-        return view('home.index',compact('favorite_houses','favorite_buildings','favorite_lands','houses','buildings','lands'));
+ 
+
+        // $user_id = Auth::id();
+        $messages = Message::where('recipient_id', 'sender_id')->orderBy('created_at', 'desc')->get();
+
+    
+
+        return view('home.index',compact('favorite_houses','favorite_buildings','favorite_lands','houses','buildings','lands','messages'));
     }
     
 }

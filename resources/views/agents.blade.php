@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Side Navigation Bar</title>
+	<title>Agents</title>
+   
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
     body{
 	margin:0px;
@@ -33,7 +41,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #272c4a;
+  background-color: #496B82;
   overflow: hidden;
   transition: 0.5s;
   padding-top: 30px;
@@ -42,17 +50,17 @@
   padding: 15px 8px 15px 32px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 .sidenav a:hover {
-  color: #f1f1f1;
-  background-color:#1b203d;
+  color: #495f82;
+  background-color:#91a6b4;
 }
-#agent {
-    color: #f1f1f1;
-    background-color:#1b203d;
+#clients {
+  color: #495f82;
+  background-color:#91a6b4;
 }
 .sidenav{
   position: absolute;
@@ -102,7 +110,7 @@
 .box{
 	width: 85%;
 	height: 100px;
-	background-color: #272c4a;
+	background-color: #496B82;
 	margin-left: 10px;
 	padding:10px;
 }
@@ -118,7 +126,7 @@
 .box p span{
 	font-size: 20px;
 	font-weight: 400;
-	color: #818181;
+	color: white;
 }
 .box-icon{
 	font-size: 40px!important;
@@ -145,13 +153,20 @@
 }
 .content-box p span{
 	float: right;
-    /* background-color: #ddd; */
+    background-color: #ddd;
     padding: 3px 10px;
     font-size: 15px;
 }
+#spin{
+	  float: right;
+    background-color: #ddd;
+    padding: 3px 10px;
+    font-size: 15px;
+    margin-right: 10px;
+}
 .box-8, .box-4{
 	width: 130%;
-	background-color: #272c4a;
+	background-color: #496B82;
 	height: 330px;
 	
 }
@@ -363,43 +378,57 @@ td, th {
     font-weight: bold;
 }
 
-
+.dropdown-menu a{
+  color: #495f82;
+  background-color:#91a6b4;
+}
+.dropdown-menu a:hover{
+  color:white;
+}
+.btn{ background-color: #9cd3d0;
+color: #1b203d;
+border-color: #00416A;
+}
+.btn:hover{
+  background-color: #1b203d;
+  border-color:#00416A;
+}
 
     </style>
-</head>
-<body>
-
-  <!Doctype HTML>
-	<html>
-	<head>
-		<title></title>
-		<link rel="stylesheet" href="css/style.css" type="text/css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 	</head>
 
 
 	<body>
 		
-    <div id="mySidenav" class="sidenav">
-      <p class="logo"><span>K</span>ay-Admin</p>
-      <a href="/index" class="icon-a"><i class="fas fa-tachometer-alt icons"></i> Tableau bord</a>
-      <a href="/clients" class="icon-a" ><i class="fas fa-users icons"></i> Clients</a>
-      <a href="/agents" class="icon-a"  ID="agent"><i class="fas fa-user-tie icons"></i> Agents</a>
-      <a href="/properties" class="icon-a"><i class="fas fa-building icons"></i> Propriétés</a>
-      <a href="/annonces" class="icon-a"><i class="fas fa-bullhorn icons"></i> Annonces</a>
-      <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
-    </div>
-    
-    
-    
+  <div id="mySidenav" class="sidenav">
+    <p class="logo"><span>K</span>ay-Admin</p>
+    <a href="/index" class="icon-a"><i class="fas fa-tachometer-alt icons"></i> Tableau bord</a>
+    <a href="/clients"  class="icon-a" ><i class="fas fa-users icons"></i> Clients</a>
+    <a href="/agents" id="clients" class="icon-a"><i class="fas fa-user-tie icons"></i> Agents</a>
+    <a href="/property1" id="pro" class="icon-a"><i class="fas fa-building icons"></i> Propriétés </a>
+    <div class="dropdown">
+        <a class="icon-a dropdown-toggle"href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bullhorn icons"></i> Annonces
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/Bannonce">Immeubles </a>
+            <a class="dropdown-item" href="/annonce">Maisons </a>
+            <a class="dropdown-item" href="#"> Terrains</a>
+        </div>
+    </div>  
+   <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+   <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+
+</div>
     
     
 	<div id="main">
 
 		<div class="head">
 			<div class="col-div-6">
-	<span style="font-size:30px;cursor:pointer; color: black;" class="nav" >☰ Agents</span>
-	<span style="font-size:30px;cursor:pointer; color: black;" class="nav2">☰ Agents</span>
+	<span style="font-size:30px;cursor:pointer; color: #91a6b4;" class="nav" >☰ Agents</span>
+	<span style="font-size:30px;cursor:pointer; color: #91a6b4;" class="nav2">☰ Agents</span>
 	</div>
 		
 		<div class="col-div-6">
@@ -416,56 +445,68 @@ td, th {
 		<br/>
 		
         <div class="col-div-3">
-            <div class="box">
-              <p>88<br/><span>Agents</span></p>
-              <i class="fas fa-user-tie box-icon"></i>
-            </div>
-          </div>
+    <div class="box">
+        <p>
+            <?php
+            $clientCount =\Illuminate\Support\Facades\DB::table('users')->where('usertype', 'Agent')->count();
+            echo $clientCount;
+            ?><br/>
+            <span>Agents</span>
+        </p>
+        <i class="fas fa-user-tie box-icon"></i>
+    </div>
+</div>
+
    
     
 		<div class="clearfix"></div>
-		<br/><br/>
+		<br/>
 		<div class="col-div-8">
-			<div class="box-8">
-                <div class="content-box">
-                    <p>Clients <span>Voir tout</span></p>
-                    <br>
-                    <table>
-                      <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Ville</th>
-                        <th>Numéro de téléphone</th>
-                        <th></th> <!-- Empty header for the "Supprimer" button -->
-                      </tr>
-                      <tr>
-                        <td>Doe</td>
-                        <td>John</td>
-                        <td>john.doe@example.com</td>
-                        <td>Casablanca</td>
-                        <td>+1 123 456 7890</td>
-                        <td>
-                          <button class="btn btn-danger">Supprimer</button>
-                        </td>
-                      </tr>
-                      <tr>
-                       
-                        <td>Smith</td>
-                        <td>Jane</td>
-                        <td>jane.smith@example.com</td>
-                         <td>Rabat</td>
-                         <td>+1 987 654 3210</td>
-                        <td>
-                          <button class="btn btn-danger">Supprimer</button>
-                        </td>
-                      </tr>
-                      <!-- Add more rows as needed -->
-                    </table>
-                  </div>
-                  
-       </div>
-       </div> 
+        <div class="box-8">
+    <div class="content-box">
+        <p>Agents<a href="/users"><span> Voir tout</span></a>
+        <a href="/ajoutagent"><span id="spin"> ajouter un agent</span></a>
+      </p>
+       
+        
+        <table>
+          @if($agents->isEmpty())
+          <p style="text-align:center; color:white;">Aucuns agent </p>@endif 
+          <!-- Table headers here -->
+<tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+    <th>Numéro de téléphone</th>
+    <th>Action</th>
+</tr>
+
+<!-- Table rows here -->
+@foreach($agents->slice(-3) as $client)
+    <tr>
+        <td>{{ $client->id }}</td>
+        <td>{{ $client->nom }}</td>
+        <td>{{ $client->prenom }}</td>
+        <td>{{ $client->email }}</td>
+        <td>{{ $client->numtel }}</td>
+        <td>
+            <form action="/agents/{{ $client->id }}" method="POST" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </td>
+    </tr>
+@endforeach
+
+         
+        </table>
+       
+    </div>
+</div>
+
+
 		<!-- <div class="col-div-4">
 			<div class="box-4">
 			<div class="content-box">
@@ -515,9 +556,19 @@ td, th {
 	     $(".nav").css('display','block');
 	      $(".nav2").css('display','none');
 	 });
+   
+    function confirmDelete(userId) {
+        if (confirm("Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?")) {
+            // If user confirms deletion, submit the form
+            document.getElementById('deleteForm_' + userId).submit();
+        }
+    }
 
+ $(document).ready(function() {
+        $('.dropdown-toggle').dropdown();
+    });
 	</script>
-
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	</body>
 
 

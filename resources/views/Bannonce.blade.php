@@ -393,6 +393,13 @@ td, th {
 			margin-bottom: 10px;
 		}
 		
+    .dropdown-menu a{
+  color: #495f82;
+  background-color:#91a6b4;
+}
+.dropdown-menu a:hover{
+  color:white;
+}
 
 
     </style>
@@ -413,12 +420,15 @@ td, th {
             <i class="fas fa-bullhorn icons"></i> Annonces
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/Bannonce">Building Annonces</a>
-            <a class="dropdown-item" href="/annonce">House Annonces</a>
-            <a class="dropdown-item" href="#">Lands Annonces</a>
+            <a class="dropdown-item" href="/Bannonce">Immeubles</a>
+            <a class="dropdown-item" href="/annonce">Maisons</a>
+            <a class="dropdown-item" href="#">Terrains</a>
         </div>
     </div>  
-       <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+       <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+       <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+
+
     </div>
 	<div id="main">
 

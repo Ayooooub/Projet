@@ -3,14 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Client</title>
-    <title>Clients</title>
+    
   
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
     body{
 	margin:0px;
@@ -369,6 +371,21 @@ td, th {
     font-weight: bold;
 }
 
+.dropdown-menu a{
+  color: #495f82;
+  background-color:#91a6b4;
+}
+.dropdown-menu a:hover{
+  color:white;
+}
+.btn{ background-color: #9cd3d0;
+color: #1b203d;
+border-color: #00416A;
+}
+.btn:hover{
+  background-color: #1b203d;
+  border-color:#00416A;
+}
 
 
     </style>
@@ -389,11 +406,13 @@ td, th {
             <i class="fas fa-bullhorn icons"></i> Annonces
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/Bannonce">Building Annonces</a>
-            <a class="dropdown-item" href="/annonce">House Annonces</a>
-            <a class="dropdown-item" href="#">Lands Annonces</a>
+            <a class="dropdown-item" href="/Bannonce">Immeubles</a>
+            <a class="dropdown-item" href="/annonce">Maisons</a>
+            <a class="dropdown-item" href="#">Terrains</a>
         </div>
     </div>    <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+  <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+
 </div>
     
     
@@ -434,7 +453,7 @@ td, th {
    
     
 		<div class="clearfix"></div>
-		<br/><br/>
+		<br/>
 		<div class="col-div-8">
         <div class="box-8">
     <div class="content-box">

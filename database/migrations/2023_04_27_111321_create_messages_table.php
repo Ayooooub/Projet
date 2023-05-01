@@ -17,12 +17,13 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('sender_id');
         $table->unsignedBigInteger('recipient_id');
+        $table->unsignedBigInteger('house_id');
         $table->string('subject');
         $table->text('body');
         $table->timestamps();
-    
         $table->foreign('sender_id')->references('id')->on('users');
         $table->foreign('recipient_id')->references('id')->on('users');
+        $table->foreign('house_id')->references('id')->on('houses');
     });
     
 }

@@ -22,4 +22,8 @@ public function favoritedBy()
 {
     return $this->belongsToMany(User::class, 'favorite_houses');
 }
+public function messages()
+{
+    return $this->hasMany(Message::class);
+}
 }

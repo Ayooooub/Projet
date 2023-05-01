@@ -60,7 +60,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/agent', function () {
         return view('agent');
     })->name('agent');
-    
+    Route::get('/ajoutagent', function () {
+        return view('ajoutagent');
+    })->name('ajoutagent');
     
     
     Route::get('/d_buildings', function () {
@@ -92,7 +94,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::put('/users/update-picture', 'UserController@updatePicture')->name('users.update-picture');
 
     Route::delete('/users{user}', 'UserController@delete')->name('users.delete');
-    // Route::delete('/users/{id}', 'UserController@remove')->name('users.delete');
+    Route::delete('/agents/{id}', 'UserController@remove1')->name('users.delete');
     Route::get('/properties', 'HouseController@properties')->name('buildingss.show');
     Route::get('/all', 'HouseController@all')->name('all.show');
     Route::get('/index', 'HouseController@index')->name('ann.show');
@@ -118,6 +120,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/search-rent','HouseController@rentsearch');
     Route::get('/search-buy','HouseController@buysearch');
     Route::get('/clients', 'UserController@showClients');
+    Route::get('/agents', 'UserController@showAgents');
     Route::post('/houses/{id}/', 'HouseController@Accepter')->name('houses.accept');
     Route::post('/lands/{id}/', 'LandController@AccepterL')->name('lands.accept');
     Route::post('/building/{id}/', 'BuildingController@AccepterB')->name('buildings.accept');
@@ -151,15 +154,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
       Route::post('/lands/add-land-to-favorites', 'LandController@toggleFavorite')->middleware('auth')->name('add-land-to-favorites');
   
   
+      Route::post('house/{id}/send-message', 'MessageController@sendMessage')->name('house.send-message');
+
   
-  
-      //Route::get('/houses/filter', 'HouseController@filter')->name('houses.filter'); //(in progress)
-    //messages
-    // Route::post('/send-message', 'MessageController@sendMessage')->name('send-message');
-    // Route::get('/index', 'MessageController@index')->name('messages.index');
+    //   Route::post('house/{id}/send-message', 'MessageController@sendMessage');
+    //   Route::get('/index', 'MessageController@index')->name('messages.index');
 
-
-
+         Route::post('/ajoutagent', 'UserController@store')->name('agents.store');
 
 
 

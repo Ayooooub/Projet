@@ -83,4 +83,9 @@ public function favoriteLands()
 {
     return $this->belongsToMany(Land::class, 'favorite_lands');
 }
+public function messages()
+{
+    return $this->hasMany(Message::class);
+}
+
 }

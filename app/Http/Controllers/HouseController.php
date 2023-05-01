@@ -8,7 +8,7 @@ use App\Models\House;
 use App\Models\Building;
 use App\Models\Land;
 use App\Models\Image;
-
+use App\Models\Message;
 class HouseController extends Controller
 {
     public function index(){
@@ -198,6 +198,7 @@ public function toggleFavorite(Request $request)
         return redirect()->back()->with('success', 'La maison a été supprimée avec succès.'); // Redirect back to the previous page with a success message
     }
    
+  
     
     
    

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB; 
@@ -111,11 +111,22 @@ public function showClients()
     $clients = DB::table('users')->where('usertype', 'client')->get();
     return view('clients', ['clients' => $clients]);
 }
+public function showAgents()
+{
+    $agents = DB::table('users')->where('usertype', 'agent')->get();
+    return view('agents', ['agents' => $agents]);
+}
 public function remove($id)
 {
     // Logic to delete user from the database
     DB::table('users')->where('id', $id)->delete();
     return redirect('/clients')->with('success', 'User has been deleted successfully.');
+}
+public function remove1($id)
+{
+    // Logic to delete user from the database
+    DB::table('users')->where('id', $id)->delete();
+    return redirect('/agents')->with('success', 'User has been deleted successfully.');
 }
 public function myControllerMethod()
 {
@@ -123,8 +134,34 @@ public function myControllerMethod()
     return view('home.index', ['users' => $users]);
 }
 
-
-
+// UsersController.php
+public function store(Request $request)
+{
+    $user = new User;
+    $user->prenom = $request->input('prenom');
+    $user->nom = $request->input('nom');
+    $user->email = $request->input('email');
+    $user->password = Hash::make($request->input('mdp'));
+    $user->numtel = $request->input('numtel');
+    $user->adresse = $request->input('adresse');
+    if ($request->hasFile('profilep')) {
+        $file = $request->file('profilep');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $path = $file->storeAs('profile_pics', $filename, 'public');
+        $user->profilep = $filename;
+    }
+    else {
+        $user->profilep = 'default.jpg';
+    }
+    
+        $user->usertype = 'agent';
+    // $user->remember_token = Str::random(10);
+    $user->save();
+    
+    // Redirect the user to a success page
+    return redirect('/ajoutagent')->with('success', 'Agent ajouté avec succès!'); 
 }
 
+
         
+}

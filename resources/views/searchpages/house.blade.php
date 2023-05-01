@@ -329,12 +329,13 @@ a.text-decoration-none:hover {
 
           </div>
           <div class="col-md-4 bg-light " style="margin-bottom: 30px; "  >
-            <form id="contact-form" method="post" action="{{ route('send-message') }}" onsubmit="alert('Votre demande a bien été envoyée à l\'agence Urban Success.');" >
+          <form id="contact-form" action="{{ route('house.send-message', ['id' => $house->id]) }}" method="POST">          <input type="hidden" name="sender_id" value="{{ Auth::user()->id }}">
+
               <h3 class="mt-3">Ce bien vous intéresse ?</h3>
               Contactez vite l'agence pour le visiter !
               <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom:</label>
-                <input type="text" class="form-control" id="pre" required>
+                <input type="text"  name="prenom" class="form-control" id="prenom" required>
               </div>
               <div class="mb-3">
                 <label for="nom" class="form-label">Nom:</label>
@@ -351,7 +352,7 @@ a.text-decoration-none:hover {
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Message:</label>
-                <textarea class="form-control" id="message" rows="3"></textarea>
+                <textarea class="form-control"  name="message"id="message" rows="3"></textarea>
               </div>
               
               <div class="mb-2">

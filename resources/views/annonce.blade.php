@@ -425,6 +425,8 @@ td, th {
         </div>
     </div>
     <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+    <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+
     </div>
 	<div id="main">
 

@@ -402,7 +402,9 @@ td, th {
             <a class="dropdown-item" href="/annonce">House Annonces</a>
             <a class="dropdown-item" href="#">Lands Annonces</a>
         </div>
-    </div>      <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Retour à l'Accueil</a>
+    </div>      <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
+    <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+
 </div>
 	<div id="main">
 

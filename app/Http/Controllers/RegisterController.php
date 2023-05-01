@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
@@ -45,5 +45,17 @@ class RegisterController extends Controller
         $user->save();
         return redirect('/')->with('success', "Account successfully registered.");
     }
-    
+    public function register1(RegisterRequest $request) 
+{
+    $user = User::create($request->validated());
+    // $user->prenom = $request->input('prenom');
+    // $user->nom = $request->input('nom');
+    // $user->email = $request->input('email');
+    // $user->password = Hash::make($request->input('password'));
+    // $user->adresse=$request->input('adresse');
+    // $user->numtel = $request->input('numtel');
+    $user->usertype ='agent';
+    $user->save();
+    return redirect('/')->with('success', 'Agent ajouté avec succès!'); 
+}
 }
