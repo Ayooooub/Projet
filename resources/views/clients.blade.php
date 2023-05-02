@@ -408,7 +408,7 @@ border-color: #00416A;
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="/Bannonce">Immeubles</a>
             <a class="dropdown-item" href="/annonce">Maisons</a>
-            <a class="dropdown-item" href="#">Terrains</a>
+            <a class="dropdown-item" href="/lannonce">Terrains</a>
         </div>
     </div>    <a href="/homee" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>
   <a class="nav-link" href="{{ route('logout.perform') }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>

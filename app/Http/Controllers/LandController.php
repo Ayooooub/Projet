@@ -94,4 +94,16 @@ class LandController extends Controller
             return redirect()->route('houses.list');
         
         }
+        public function landslist()
+        {
+            $lands = Land::where('accepted', 0)->get();
+            return view('lannonce', ['lands' => $lands]);
+    
+        }
+        public function destroy($id)
+        {
+            $lands = Land::findOrFail($id); // Find the house by ID or throw a 404 error if it doesn't exist
+            $lands->delete(); // Delete the house from the database
+            return redirect()->back()->with('success', 'La maison a été supprimée avec succès.'); // Redirect back to the previous page with a success message
+        }
 }

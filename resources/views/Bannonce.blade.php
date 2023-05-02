@@ -422,7 +422,7 @@ td, th {
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="/Bannonce">Immeubles</a>
             <a class="dropdown-item" href="/annonce">Maisons</a>
-            <a class="dropdown-item" href="#">Terrains</a>
+            <a class="dropdown-item" href="/lannonce">Terrains</a>
         </div>
     </div>  
        <a href="/home" class="icon-a"><i class="fas fa-home icons"></i> Accueil</a>

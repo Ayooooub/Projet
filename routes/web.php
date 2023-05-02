@@ -131,9 +131,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     //u need this
     Route::get('/annonce', 'HouseController@houseslist')->name('houses.list');
     Route::get('/Bannonce', 'BuildingController@buildinglist')->name('building.list');
+    Route::get('/lannonce', 'LandController@landslist')->name('lands.list');
     Route::delete('/houses/{id}', 'HouseController@destroy')->name('houses.destroy');
     
     Route::delete('/building/{id}', 'BuildingController@destroy')->name('buildings.destroy');
+    Route::delete('/lands/{id}', 'LandController@destroy')->name('lands.destroy');
     Route::get('/index', 'UserController@myControllerMethod');
 
     Route::get('/index', 'HomeController@index')->name('home.index');
